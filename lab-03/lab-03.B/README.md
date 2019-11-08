@@ -51,7 +51,7 @@ npm install -g @angular/cli
 ```
 
 **Angular CLI** es una herramienta para inicializar, desarrollar, construir y mantener aplicaciones **Angular**.
-[Click here](https://cli.angular.io/) para saber más.
+[Pulsa aquí](https://cli.angular.io/) para saber más.
     
 > Dependiendo de tu ordenador y del sistema operativo, algunas dependencias no se instalarán y puede mostrar advertencias durante el proceso de instalación. Tras la instalación, ejecuta el siguiente comando:
 > ```sh
@@ -88,7 +88,7 @@ Sin tocar ni una línea de código, vamos a ejecutar directamente el proyecto cr
 ng serve
 ```
 
-Sí todo ha ido bien, el servidor local de desarrollo que incluy **Angular CLI** nos publicará una página de bienvenida en [http://localhost:4200](http://localhost:4200) donde podremos ver lo siguiente: 
+Sí todo ha ido bien, el servidor local de desarrollo que incluye **Angular CLI** nos publicará una página de bienvenida en [http://localhost:4200](http://localhost:4200) donde podremos ver lo siguiente: 
 
 <p align="center">
     <img src="./resources/capturaBienvenida.png" width="600">
@@ -96,7 +96,7 @@ Sí todo ha ido bien, el servidor local de desarrollo que incluy **Angular CLI**
 
 <br/>
 
-### Paso 5. Modificar el projecto para hacer nuestro "Hola Mundo!!".
+### Paso 5. Modificar el proyecto para hacer nuestro "Hola Mundo!!".
 
 Aunque en este momento el proyecto ya tiene buen aspecto, vamos a modificarlo un poco para practicar. Nuestro objetivo sera modificar la página de bienvenida para que muestre en el centro el logo de la **Openathon V**. También modificaremos ligeramente la barra superior para cambiar el texto "Welcome" por "Hello World!! y eliminar el logo de Twitter.
 
@@ -110,7 +110,7 @@ Descarga [esta](./HelloWorld/src/assets/img/Logo_OpenathonV.png) imagen y grába
 
 #### Paso 5.2. Editar el código HTML.
 
-Los **componentes** son el bloque de construcción más básico de una aplicación Angular. Una aplicación Angular contiene un árbol de **componentes** contenidos unos dentro de otros y que son los responsables de mostrar una determinada región de una determinada página de la aplicación. Cada componente, por lo general se compone de al menos estos tres ficheros:
+Los **componentes** son el bloque de construcción más básico de una aplicación Angular. Una aplicación Angular contiene un árbol de **componentes** contenidos unos dentro de otros y que son los responsables de mostrar una determinada región de una determinada página de la aplicación. Cada componente, por lo general lo forman al menos estos tres ficheros:
 
   - *Fichero .html*: Contiene el fragmento de código HTML necesario para que el componente se renderice.
   - *Fichero .css o scss*: Contiene el fragmento de código CSS necesario para que el componente se renderice.
@@ -362,7 +362,7 @@ Si aún tenemos en ejecución el comando **ng serve** que habíamos ejecutado an
 
 ### Paso 6. Generar el entregable del proyecto
 
-Ahora que hemos realizado todos los cambios que queríamos, vamos a generar el entregable de nuestra web listo para ser desplegado en el cualquier servidor web. Para ello solo debemos ejecutar el siguiente comando en el terminal:
+Ahora que hemos realizado todos los cambios que queríamos, vamos a generar el entregable listo para ser desplegado en el cualquier servidor web. Para ello solo debemos ejecutar el siguiente comando en el terminal:
 
 ```sh
 ng build --prod
