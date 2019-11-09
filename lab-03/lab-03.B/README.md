@@ -18,6 +18,8 @@ Si quieres saber más sobre el desarrollo de aplicaciones con **Angular** puedes
 
 <br/>
 
+## Crear un HolaMundo desde cero en seis pasos.
+
 ### Paso 1. Instalar Visual Studio Code.
 
 <img src="./resources/logoVSCode.png" width="100" style="max-width:100%;">
