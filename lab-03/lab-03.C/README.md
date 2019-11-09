@@ -2,7 +2,7 @@
     <img src="../../resources/header.png">
 </p>
 
-# Lab 03.B - Haciendo el despliegue del HolaMundo a producción con Docker y Nginx
+# Lab 03.B - Haciendo el despliegue del HelloWorld a producción con Docker y Nginx
 
 <br/>
 
@@ -14,13 +14,13 @@
 <br/>
 
 ## Objetivos y resultados
-El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo lo necesario para que al construir un contenedor con ella tengamos nuestra aplicación **HolaMundo desplegada en un servidor Nginx**. Esta imagen estaría **lista para ser desplegada** en nuestro entorno de producción.
+El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo lo necesario para que al construir un contenedor con ella tengamos nuestra aplicación **HelloWorld desplegada en un servidor Nginx**. Esta imagen estaría **lista para ser desplegada** en nuestro entorno de producción.
 
 <br/>
 
 ## Generar una nueva imagen y un contenedor para desplegar nuestra aplicación.
 
-Para comenzar este laboratorio vamos a partir de la aplicación HolaMundo creada en el laboratiorio [anterior](../lab-03.B).
+Para comenzar este laboratorio vamos a partir de la aplicación HelloWorld creada en el laboratiorio [anterior](../lab-03.B).
 
 
 
@@ -28,7 +28,7 @@ Para comenzar este laboratorio vamos a partir de la aplicación HolaMundo creada
 
 Para construir nuestra imagen Docker vamos a utilizar como base otras dos imágenes:
 
-- [Imagen de Node.js](https://hub.docker.com/_/node): Contiene una instalación de Node.js que vamos a necesitar para generar el entregable de nuestro HolaMundo.
+- [Imagen de Node.js](https://hub.docker.com/_/node): Contiene una instalación de Node.js que vamos a necesitar para generar el entregable de nuestro HelloWorld.
 - [Imagen de Nginx](https://hub.docker.com/_/nginx): Contiene una instalación de Nginx que usaremos como servidor web para publicar nuestra aplicación.
 
 Para hacer el pull de ambas imágenes tan solo tenemos que ejecutar los siguientes comandos en nuestro terminal:
@@ -137,7 +137,7 @@ docker images
 
 ### Paso 5. Ejecutar nuestra nueva imagen para generar un nuevo contenedor.
 
-Ahora que tenemos lista nuestra nueva imagen docker tan solo nos queda ejecutarla y crear así nuestro contenedor que arrancará el servidor web Nginx con nuestro HolaMundo.
+Ahora que tenemos lista nuestra nueva imagen docker tan solo nos queda ejecutarla y crear así nuestro contenedor que arrancará el servidor web Nginx con nuestro HelloWorld.
 
 Para ellos vamos a ejecutar el siguiente comando:
 ```sh
