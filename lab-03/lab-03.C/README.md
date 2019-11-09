@@ -44,6 +44,8 @@ Si todo va bien, ambos deben aparecer en nuestra lista de imágenes tras ejecuta
 docker images
 ```
 
+<img src="./resources/docker_images.1.png" width="180" style="max-width:100%;">
+
 ### Paso 2. Crear un fichero de configuración para Nginx.
 
 Para que nuestra aplicación Angular se despliegue y funcione correctamente necesitaremos crear un fichero de configuración básico para el servidor web Nginx. En este fichero se especifican cosas como el puerto en el que se publicará, la ruta del directorio raiz, las rutas permitidas, etc.
@@ -135,6 +137,8 @@ Si todo va bien, nuestra nueva imágen aparecera, junto a las de node y nginx, e
 docker images
 ```
 
+<img src="./resources/docker_images.2.png" width="180" style="max-width:100%;">
+
 ### Paso 5. Ejecutar nuestra nueva imagen para generar un nuevo contenedor.
 
 Ahora que tenemos lista nuestra nueva imagen docker tan solo nos queda ejecutarla y crear así nuestro contenedor que arrancará el servidor web Nginx con nuestro HelloWorld.
@@ -150,6 +154,8 @@ Podemos ver nuestro nuevo contenedor ejecutando el siguiente comando:
 ```sh
 docker ps
 ```
+
+<img src="./resources/docker_ps.png" width="180" style="max-width:100%;">
 
 
 <br/>
