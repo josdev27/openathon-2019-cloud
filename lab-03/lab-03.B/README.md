@@ -300,7 +300,7 @@ Y esto es todo, ya tenemos nuestra aplicación web **HelloWorld** con **Angular*
 
 <br/>
 
-[< Lab 3.A XXXXXXXXXXX ](../lab-03.A) | [ Lab 03.B - Haciendo el despliegue del HelloWorld a producción con Docker y Nginx >](../lab-03.B)
+[< Lab 3.A XXXXXXXXXXX ](../lab-03.A) | [ Lab 03.C - Haciendo el despliegue del HelloWorld a producción con Docker y Nginx >](../lab-03.C)
 
 <p align="center">
     <img src="../../resources/header.png">
