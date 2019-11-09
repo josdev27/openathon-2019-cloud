@@ -157,8 +157,13 @@ docker ps
 
 <img src="./resources/docker_ps.png" style="max-width:100%;">
 
-
 <br/>
+
+<p align="center">
+  <img src="../lab-03.B/resources/CapturaHelloWorld.png" width="600" style="max-width:100%;">
+  <br/>
+  ¡HelloWorld desplegado en Nginx!
+</p>
 
 [< Lab 03.B - Creando un HelloWorld con Angular ](../lab-03.B) | [Lab 04 - XXXXXXXXXX >](../lab-04)
 
