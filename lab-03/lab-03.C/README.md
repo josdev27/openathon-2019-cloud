@@ -44,7 +44,7 @@ Si todo va bien, ambos deben aparecer en nuestra lista de imágenes tras ejecuta
 docker images
 ```
 
-<img src="./resources/docker_images.1.png" width="180" style="max-width:100%;">
+<img src="./resources/docker_images.1.png" style="max-width:100%;">
 
 ### Paso 2. Crear un fichero de configuración para Nginx.
 
@@ -137,7 +137,7 @@ Si todo va bien, nuestra nueva imágen aparecera, junto a las de node y nginx, e
 docker images
 ```
 
-<img src="./resources/docker_images.2.png" width="180" style="max-width:100%;">
+<img src="./resources/docker_images.2.png" style="max-width:100%;">
 
 ### Paso 5. Ejecutar nuestra nueva imagen para generar un nuevo contenedor.
 
@@ -155,7 +155,7 @@ Podemos ver nuestro nuevo contenedor ejecutando el siguiente comando:
 docker ps
 ```
 
-<img src="./resources/docker_ps.png" width="180" style="max-width:100%;">
+<img src="./resources/docker_ps.png" style="max-width:100%;">
 
 
 <br/>
