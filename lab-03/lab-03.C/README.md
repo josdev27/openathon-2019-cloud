@@ -2,7 +2,7 @@
     <img src="../../resources/header.png">
 </p>
 
-# Lab 03.B - Haciendo el despliegue del HelloWorld a producción con Docker y Nginx
+# Lab 03.C - Haciendo el despliegue del HelloWorld a producción con Docker y Nginx
 
 <br/>
 
