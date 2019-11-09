@@ -83,7 +83,7 @@ http {
 
 ### Paso 3. Crear el fichero Dockerfile.
 
-El siguiente paso será crear un fichero Dockerfile para indicar a Docker cual será el contenido de la nueva imagen que vamos a crear. Crea un fichero con el nombre Dockerfile en la raiz del proyecto y copia lo siguiente en su interior:
+El siguiente paso será crear un fichero **Dockerfile** para indicar a Docker cual será el contenido de la nueva imagen que vamos a crear. Crea un fichero con el nombre *Dockerfile* en la raiz del proyecto y copia lo siguiente en su interior:
 
 ```dockerfile
 # Utilizamos la imagen de node como base y la denominamos build
