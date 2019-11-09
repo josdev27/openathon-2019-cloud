@@ -102,8 +102,6 @@ Sí todo ha ido bien, el servidor local de desarrollo que incluye **Angular CLI*
 
 Aunque en este momento el proyecto ya tiene buen aspecto, vamos a modificarlo un poco para practicar. Nuestro objetivo sera modificar la página de bienvenida para que muestre en el centro el logo de la **Openathon V**. También modificaremos ligeramente la barra superior para cambiar el texto "Welcome" por "Hello World!! y eliminar el logo de Twitter.
 
-<br/>
-
 #### Paso 5.1. Copiar la imagen del logo.
 
 Descarga [esta](./HelloWorld/src/assets/img/Logo_OpenathonV.png) imagen y grábala en *src/assets/img*.
