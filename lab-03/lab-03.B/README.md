@@ -169,30 +169,8 @@ Nuestro proyecto actuamente solo contiene un componente que es el único respons
 Ahora debemos modificar el fichero .css para que se adapte a los cambios realizados en el fichero .html. Para ello vamos a abrir el fichero *src/app/app.component.css* y cambiar su contenido por el siguiente:
 
 ```css
-:host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
   p {
     margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
   }
 
   .toolbar {
@@ -218,13 +196,6 @@ Ahora debemos modificar el fichero .css para que se adapte a los cambios realiza
     align-items: center;
   }
 
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
-
   .card {
     border-radius: 4px;
     border: 1px solid #eee;
@@ -241,22 +212,9 @@ Ahora debemos modificar el fichero .css para que se adapte a los cambios realiza
     line-height: 24px;
   }
 
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
   .card.card-small {
     height: 16px;
     width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(black, 0.35);
   }
 
   .card.highlight-card {
@@ -288,41 +246,9 @@ Ahora debemos modificar el fichero .css para que se adapte a los cambios realiza
     z-index: -10;
   }
 
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
-    .card-container > *:not(.circle-link) ,
     .terminal {
       width: 100%;
     }
