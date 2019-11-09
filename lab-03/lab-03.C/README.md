@@ -160,7 +160,7 @@ docker ps
 
 <br/>
 
-[< Lab 3.B XXXXXXXXXXX ](../lab-03.B) | [Lab 04 - XXXXXXXXXX >](../lab-04)
+[< Lab 03.B - Creando un HelloWorld con Angular ](../lab-03.B) | [Lab 04 - XXXXXXXXXX >](../lab-04)
 
 <p align="center">
     <img src="../../resources/header.png">
