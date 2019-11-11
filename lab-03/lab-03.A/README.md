@@ -95,7 +95,7 @@ If we see a message similar to *Command not found*, we need install java, so go 
 
 ### How to install maven 3
 
-You can check if you have already maven 3 installed
+You can check if you have already maven 3 installed:
 
 ```sh
 mvn --version
@@ -106,13 +106,51 @@ mvn --version
     In my case, I have Maven 3.6.1
 </p>
 
+#### Windows
+
+1. Download maven from next link: https://maven.apache.org/download.cgi
+2. Extract the file downloaded.
+3. Add *<your_maven_directory\bin>* to PATH:
+   1. Press *WinKey + Pause*
+   2. Select the *Advanced tab*
+   3. Click on *Environment Variables* button
+   4. Adding or selecting the *PATH variable* in the user variables with the value **<your_maven_directory\bin>**.
+
+#### Mac and Linux
+
+1. Download maven from next link: https://maven.apache.org/download.cgi
+2. Extract the file downloaded.
+3. Add pache-maven-3.6.2\bin to PATH. Open a terminal and execute:
+
+   ```sh
+   export PATH=<your_maven_directory\bin>:$PATH
+   ```
+
+More info in https://maven.apache.org/install.html.
 
 ### How to install Eclipse Enterprise
 
+The process is very similar in Windows, Mac and Linux.
+
 #### Install Eclipse
+
+1. Download Eclipse from https://www.eclipse.org/downloads/
+2. Execute the installer and select **Eclipse IDE for Java EE developers**
 
 #### Install Spring Boot Plugin
 
+1. Open Eclipse
+2. Click in *Help > Eclipse Marketplace...*
+   1. In the search bar, we type *spring boot*
+   2. Click *Install* in *Spring Tools 4*
+
+<br/>
+
+## Create a new Spring Boot Application
+
+
+
+<br/>
 
 [< Lab 03 - Creando un HelloWorld ](../../lab-03)>
 
