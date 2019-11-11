@@ -148,7 +148,20 @@ The process is very similar in Windows, Mac and Linux.
 
 ## Create a new Spring Boot Application
 
+For creating a basic Spring Boot Application, we will use https://start.spring.io/ through the eclipse Wizard:
 
+1. Open Eclipse.
+2. Click in *File > New > Other...*
+3. In the search bar, type *Spring*.
+4. Click in *Spring Starter Project* and *Next*.
+5. In *Name*, the name of your project and *Click in Next*.
+6. In the search bar, we type *Spring Web* and select it. This is the basic dependency for any Spring boot project.
+7. Click in Finish.
+
+## Struct the project
+## Add a new Controller
+## Add a new Service
+## Hello Jos!
 
 <br/>
 
