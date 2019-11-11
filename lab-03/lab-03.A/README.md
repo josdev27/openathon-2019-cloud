@@ -33,16 +33,21 @@ Before start to coding, we need install some tools:
 
 ### How to install Java 8
 
+You can use Oracle JDK, in that case, you have register in Oracle, or use OpenJDK, the open version of JDK (that we will use).
+
+
 #### Check if we already have Java
+
 We can check if we have installed java with the next command:
 
 ```sh
 java -version
 ```
+
 If you see a message similar to *version "1.x"*, where *x* is mayor or equal to 8, skip this section and go to [Install maven 3](#how-to-install-maven-3).
 
 If we see a message similar to *Command not found*, we need install java, so go to [Install Java 8](#install-java-8).
-In another hand, if you see a messsage similar to *version "1.x"*, where *x* is minor to *8*, you need update your version of java, so go to [Update version of Java](#update-version-of-java).
+
 
 <p align="center">
     <img src="./resources/java-version-out.png">
@@ -51,9 +56,42 @@ In another hand, if you see a messsage similar to *version "1.x"*, where *x* is 
 
 #### Install Java 8
 
+#### Windows
 
-#### Update version of Java
+1. Download OpenJDK 8 from next link: https://adoptopenjdk.net/
+2. Extract the zip in the folder you want.
+3. Set the value for **JAVA_HOME**. For that, open cmd and execute next command:
 
+    ```cmd
+    setx /m JAVA_HOME "<full_path_your_folder>"
+    ```
+
+4. Execute *java -version* to verify the installation.
+
+### Mac
+
+1. Download OpenJDK 8 from next link: https://adoptopenjdk.net/
+2. Extract the zip in the folder you want.
+3. Set the value for **JAVA_HOME**. For that, open terminal and execute next command:
+
+    ```sh
+     export JAVA_HOME="<full_path_your_folder>"
+    ```
+
+4. Execute *java -version* to verify the installation.
+
+### Linux
+
+1. Open a terminal.
+2. Execute the next command:
+
+   ```sh
+    sudo apt-get install openjdk-8-jdk
+   ```
+
+3. Execute *java -version* to verify the installation.
+
+<br/>
 
 ### How to install maven 3
 
@@ -76,7 +114,7 @@ mvn --version
 #### Install Spring Boot Plugin
 
 
-[< Lab 03 - Creando un HelloWorld ](../lab-03)>
+[< Lab 03 - Creando un HelloWorld ](../../lab-03)>
 
 <p align="center">
     <img src="../../resources/header.png">
