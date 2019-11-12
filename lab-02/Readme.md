@@ -131,7 +131,7 @@ LABEL <clave> <valor>
 ```
 
 
-COPY: La instrucción copia ficheros y directirios de un path origen y los añade a un path destino dentro del contenedor.
+COPY: La instrucción copia ficheros y directorios de un path origen y los añade a un path destino dentro del contenedor.
 ```sh
 COPY <origen> <destino>
 ```
@@ -152,7 +152,68 @@ USER: Por defecto, todas las acciones son realizadas por el usuario root. Aquí 
 ```sh
 USER <usuario>
 ```
+### Crear imagen con contenido estático
+Es posible crear una imagen que mueste contenido estático. Para ello podemos hacer uso de nginx para que nos proveea del enrutado.
 
+Vamos a realizar un ejemplo de ello. Lo primero es crear un nuevo directorio para realizar la práctica:
+
+```sh
+mkdir laboratorio2_2
+```
+Accedemos al nuevo directorio:
+
+```sh
+cd laboratorio2_2
+```
+
+Vamos a proceder a crear el contenido estático que queremos mostrar. En este caso una etiqueta simple HTML y lo guardaremos en un fichero index.html.
+Para ello, podemos hacer uso de vi o bien usar el editor.
+
+```sh
+vi index.html
+```
+
+Guardamos el fichero(en nuestro caso con contenido  <h1>Hello World</h1>)
+
+Ahora vamos a crear un Dockerfile con el mismo procedimiento. El contenido será el siguiente:
+
+```sh
+  FROM nginx:alpine
+  COPY . /usr/share/nginx/html
+```
+Se parte de una imagen de nginx y copiamos nuestro contenido.
+
+El siguiente paso es crear una imagen para este Dockerfile. 
+
+```sh
+  docker build -t practicanginx:v1 .
+```
+
+¿Sabrías como comprobar que se ha creado la imagen?
+
+```sh
+ [node1] (local) root@192.168.0.33 ~/laboratorio2_2
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+practicanginx       v1                  0f6dbc295378        21 minutes ago      21.4MB
+nginx               alpine              b6753551581f        2 weeks ago         21.4MB
+```
+Ahora vamos a levantar el contenedor:
+```sh
+  docker run -d -p 80:80 practicanginx:v1 
+```
+
+¿Sabías comprobar que el contendor está arrancado?
+```sh
+[node1] (local) root@192.168.0.33 ~/laboratorio2_2
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+e62f948c8f89        practicanginx:v1    "nginx -g 'daemon of…"   25 minutes ago      Up 25 minutes       0.0.0.0:80->80/tcp   distracted_vaughan
+```
+No solo eso, ahora podemos ver que un nuevo link ha aparecido en nuestra ventana, informando que el puerto 80 está a la escucha. 
+![](https://github.com/josdev27/openathon-2019-cloud/resources/Lab2_HTML.JPG)
+Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventana:
+![](https://github.com/josdev27/openathon-2019-cloud/resources/Lab2_HTML.JPG)
 
 
 
