@@ -1,7 +1,7 @@
 # Lab 05 - Creando un stack de servicios con docker-compose
 <br/>
 <p align="center">
-<img src="./resources/docker-compose.png">
+<img src="../resources/docker-compose.png">
 <br/>
 </p>
 <br/>
