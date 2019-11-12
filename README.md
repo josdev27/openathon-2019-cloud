@@ -6,10 +6,11 @@
    3. Alternatives to Docker
    4. Orquestation
 
-2. NGINX and static content (1 h)
+2. Dockerfiles (1 h)
    1. Dockerfile
-   2. ??
-   3. Docker build
+   2. Docker build
+   3. NGINX and static content 
+   
 
 3. A little practice , Hello World of course!
    1. Backend in Spring Boot (30 min)
