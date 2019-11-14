@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:10
+    restart: always
+    environment:
+      - POSTGRES_USER=openathlon6
+      - POSTGRES_PASSWORD=openathlon6
+    volumes:
+      - ./data/postgressql/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  db_administration:
+    image: adminer
+    restart: always
+    ports:
+      - 8888:8080
