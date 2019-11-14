@@ -135,14 +135,33 @@ The process is very similar in Windows, Mac and Linux.
 #### Install Eclipse
 
 1. Download Eclipse from https://www.eclipse.org/downloads/
+   
+   <p align="center">
+    <img src="./resources/download_eclipse.png">
+</p>
+
 2. Execute the installer and select **Eclipse IDE for Java EE developers**
+
+<p align="center">
+    <img src="./resources/eclipse_installer.png">
+</p>
 
 #### Install Spring Boot Plugin
 
 1. Open Eclipse
 2. Click in *Help > Eclipse Marketplace...*
+   
+   <p align="center">
+    <img src="./resources/eclipse_marketplace.png">
+    </p>
+
    1. In the search bar, we type *spring boot*
    2. Click *Install* in *Spring Tools 4*
+
+    <p align="center">
+    <img src="./resources/spring_tools.png">
+    </p>
+
 
 <br/>
 
@@ -152,11 +171,30 @@ For creating a basic Spring Boot Application, we will use https://start.spring.i
 
 1. Open Eclipse.
 2. Click in *File > New > Other...*
+   
+   <p align="center">
+    <img src="./resources/new_project.png">
+</p>
+
 3. In the search bar, type *Spring*.
 4. Click in *Spring Starter Project* and *Next*.
+   
+   <p align="center">
+    <img src="./resources/spring_wizard.png">
+</p>
+
 5. In *Name*, the name of your project and *Click in Next*.
+
+<p align="center">
+    <img src="./resources/name_project.png">
+</p>
+
 6. In the search bar, we type *Spring Web* and select it. This is the basic dependency for any Spring boot project.
 7. Click in Finish.
+
+<p align="center">
+    <img src="./resources/dependencies.png">
+</p>
 
 ## Struct the project
 ## Add a new Controller
