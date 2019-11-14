@@ -1,3 +1,8 @@
+# Laboratorio 2
+En este laboratorio vamos a aprender que es un Dockerfile y como podemos usarlo para la creación de imágenes Docker.
+Crearemos un Dockerfile de ejemplo para convertirlo en imagen y hacerla correr en un contenedor.
+También realizaremos un ejemplo donde se copiará contenido a una imagen mediante Dockerfile.
+
 ## ¿Qué es un DockerFile?
 
 Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
@@ -9,17 +14,13 @@ Ejemplo de Dockerfile:
 ```sh
 # Descarga la imagen de Ubuntu 18.04
 FROM ubuntu:18.04
-
 # Actualiza la imagen base de Ubuntu 18.04
 RUN apt-get update
-
-
 # Instalar Git
 RUN apt-get -qqy install git
 ```
 
 ### Imágenes a medida con Dockerfile
-
 
 Docker puede construir imágenes automáticamente, leyendo las instrucciones indicadas en un fichero Dockerfile. 
 Los pasos principales para crear una imagen a partir de un fichero Dockerfile son:
@@ -40,17 +41,17 @@ Las opciones más comunes son:
 ##### Vamos a crear nuestro primera imagen con Dockerfile
 El primer paso es crear un directorio
 ```sh
-mkdir laboratorio2
+mkdir laboratorio2a
 ```
 Accedemos al nuevo directorio
 ```sh
-cd laboratorio2
+cd laboratorio2a
 ```
 Creamos un nuevo fichero Dockerfile(podemos hacer uso del editor o bien con el comando vi)
 ```sh
 vi Dockerfile
 ```
-Escribimos el siguiente contenido en el fichero:
+Vamos a crear una imagen que parta de la última versión de Ubuntu, realice una actualización de los paquetes y realice una instalación de git. Para ello escribimos el siguiente contenido en el fichero:
 
 ```sh
 FROM ubuntu:latest
@@ -59,44 +60,57 @@ RUN apt-get -y install git;
 CMD ["bash"]
 ```
 
+Para guardar los cambios pulsamos sobre la tecla escape y escribimos :wq.
 Una vez creado el fichero y editado, lo guardamos. Ahora realizamos la construcción de la imagen:
 
 ```sh
-docker build  -t "laboratorio2:dockerfile" .
+docker build  -t "laboratorio2a:v1" .
 ```
 Si todo ha ido bien, aparecerá un mensaje como el siguiente:
 ```sh
-Successfully tagged laboratorio2:dockerfile
+Successfully tagged laboratorio2a:v1
 ```
 Comprobaremos que la imagen está disponible ejecutando docker images
 ```sh
-[node1] (local) root@192.168.0.23 ~/laboratorio2
+[node1] (local) root@192.168.0.23 ~/laboratorio2a
 $ docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
-laboratorio2        dockerfile          d6def67745f8        About a minute ago 186MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+laboratorio2a       v1                  5a00a1083e8d        30 seconds ago      186MB
+ubuntu              latest              775349758637        2 weeks ago         64.2MB
 ```
 
 Ahora vamos a crear un contendor a partir de la imagen. Para ello ejecutaremos lo siguiente:
 
 ```sh
-docker run -dti --name containerlaboratorio2 d6def67745f8
+docker run -dti --name containerlaboratorio2a 5a00a1083e8d
 ```
-Siendo d6def67745f8 el IMAGE ID de nuestra imagen.
+Siendo 5a00a1083e8d el IMAGE ID de nuestra imagen.
 
 Ejecutamos docker ps para verificar que el contenedor está levantado:
 ```sh
-[node1] (local) root@192.168.0.23 ~/laboratorio2
+[node1] (local) root@192.168.0.23 ~/laboratorio2a
 $ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
-5d8723797fd0        d6def67745f8        "bash"              About a minute ago   Up About a minute                       containerlaboratorio2
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+75aafc1d84df        5a00a1083e8d        "bash"              39 seconds ago      Up 37 seconds                           containerlaboratorio2a
 ```
-Por último, accedemos al contenedor para verificar que tiene git instalado.
+Por último, vamos a verificar que el contenedor está arrancado y tiene git instalado. Para ello ejecutamos la siguiente instrucción, que nos abrirá un bash sobre nuestro contenedor:
+
 ```sh
-[node1] (local) root@192.168.0.23 ~/laboratorio2
-$ docker exec -i -t containerlaboratorio2 /bin/bash
+[node1] (local) root@192.168.0.23 ~/laboratorio2a
+$ docker exec -i -t containerlaboratorio2a /bin/bash
 root@5d8723797fd0:/# git --version
 git version 2.17.1
 ```
+Finalmente, escribimos exit para volver a la máquina virtual.
+
+<br/>
+<p align="center">
+<img src="./resources/Lab2_Docker.png">
+<br/>
+</p>
+<br/>
+
+
 
 ### Instrucciones
 Aunque en esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) disponemos de detalle sobre las distintas instrucciones y mejores prácticas para escribir Dockerfiles aquí mostramos un resumen con las más importantes.
@@ -153,17 +167,17 @@ USER: Por defecto, todas las acciones son realizadas por el usuario root. Aquí 
 USER <usuario>
 ```
 ## Crear imagen con contenido estático
-Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de nginx para que nos proveea del enrutado.
+Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de [nginx](https://es.wikipedia.org/wiki/Nginx) para que nos proveea del enrutado.
 
 Vamos a realizar un ejemplo de ello. Lo primero es crear un nuevo directorio para realizar la práctica:
 
 ```sh
-mkdir laboratorio2_2
+mkdir laboratorio2b
 ```
 Accedemos al nuevo directorio:
 
 ```sh
-cd laboratorio2_2
+cd laboratorio2b
 ```
 
 Vamos a proceder a crear el contenido estático que queremos mostrar. En este caso una etiqueta simple HTML y lo guardaremos en un fichero index.html.
@@ -174,9 +188,7 @@ vi index.html
 ```
 
 Guardamos el fichero. En nuestro caso con contenido:  
-`
-<h1>Hello World</h1>
-`
+`<h1>V Openathon Cloud. Docker</h1>`
 
 Ahora vamos a crear un Dockerfile con el mismo procedimiento. El contenido será el siguiente:
 
@@ -184,7 +196,7 @@ Ahora vamos a crear un Dockerfile con el mismo procedimiento. El contenido será
   FROM nginx:alpine
   COPY . /usr/share/nginx/html
 ```
-Se parte de una imagen de nginx y copiamos nuestro contenido.
+Se parte de una imagen de nginx y copiamos nuestro contenido (fichero index.html) al directorio /usr/share/nginx/html.
 
 El siguiente paso es crear una imagen para este Dockerfile. 
 
@@ -195,7 +207,7 @@ El siguiente paso es crear una imagen para este Dockerfile.
 ¿Sabrías como comprobar que se ha creado la imagen?
 
 ```sh
- [node1] (local) root@192.168.0.33 ~/laboratorio2_2
+ [node1] (local) root@192.168.0.33 ~/laboratorio2b
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 practicanginx       v1                  0f6dbc295378        21 minutes ago      21.4MB
@@ -208,7 +220,7 @@ Ahora vamos a levantar el contenedor:
 
 ¿Sabías comprobar que el contendor está arrancado?
 ```sh
-[node1] (local) root@192.168.0.33 ~/laboratorio2_2
+[node1] (local) root@192.168.0.33 ~/laboratorio2b
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
 e62f948c8f89        practicanginx:v1    "nginx -g 'daemon of…"   25 minutes ago      Up 25 minutes       0.0.0.0:80->80/tcp   distracted_vaughan
@@ -216,14 +228,14 @@ e62f948c8f89        practicanginx:v1    "nginx -g 'daemon of…"   25 minutes ag
 No solo eso, ahora podemos ver que un nuevo link ha aparecido en nuestra ventana, informando que el puerto 80 está a la escucha. 
 <br/>
 <p align="center">
-<img src="../resources/Lab2_Puerto.JPG">
+<img src="./resources/Lab2_Puerto.JPG">
 <br/>
 </p>
 <br/>
 Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventana:
 <br/>
 <p align="center">
-<img src="../resources/Lab2_HTML.JPG">
+<img src="./resources/Lab2_HTML.JPG">
 <br/>
 </p>
 <br/>
