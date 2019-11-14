@@ -1,4 +1,4 @@
-# ¿Qué es un DockerFile?
+## ¿Qué es un DockerFile?
 
 Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
 
@@ -152,7 +152,7 @@ USER: Por defecto, todas las acciones son realizadas por el usuario root. Aquí 
 ```sh
 USER <usuario>
 ```
-### Crear imagen con contenido estático
+## Crear imagen con contenido estático
 Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de nginx para que nos proveea del enrutado.
 
 Vamos a realizar un ejemplo de ello. Lo primero es crear un nuevo directorio para realizar la práctica:
@@ -173,7 +173,10 @@ Para ello, podemos hacer uso de vi o bien usar el editor.
 vi index.html
 ```
 
-Guardamos el fichero(en nuestro caso con contenido  <h1>Hello World</h1>)
+Guardamos el fichero. En nuestro caso con contenido:  
+`
+<h1>Hello World</h1>
+`
 
 Ahora vamos a crear un Dockerfile con el mismo procedimiento. El contenido será el siguiente:
 
