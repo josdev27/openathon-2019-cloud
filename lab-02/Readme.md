@@ -1,6 +1,6 @@
 # ¿Qué es un DockerFile?
 
-Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito
+Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
 
 Docker puede construir imágenes automáticamente leyendo las instrucciones de un Dockerfile.
 
@@ -18,7 +18,7 @@ RUN apt-get update
 RUN apt-get -qqy install git
 ```
 
-### Imágenes a media con Dockerfile
+### Imágenes a medida con Dockerfile
 
 
 Docker puede construir imágenes automáticamente, leyendo las instrucciones indicadas en un fichero Dockerfile. 
@@ -98,7 +98,7 @@ root@5d8723797fd0:/# git --version
 git version 2.17.1
 ```
 
-### Intrucciones
+### Instrucciones
 Aunque en esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) disponemos de detalle sobre las distintas instrucciones y mejores prácticas para escribir Dockerfiles aquí mostramos un resumen con las más importantes.
 
 FROM: Indica la imagen base sobre la que se construirá la aplicación dentro del contenedor. Todos los Dockerfiles comienzan con un FROM.
@@ -115,7 +115,7 @@ ENV: Establece variables de entorno dentro del contenedor.
 ```sh
 ENV  <clave> <valor>
 ```
-ADD: Esta instrucción se encarga de copiar los ficheros y directorios desde una ubicación especificada y los agrega al sistema de ficheros del contenedor. Si se trata de añadir un fichero comprimido, al ejecutarse el guión lo descomprimirá de manera automática.
+ADD: Esta instrucción se encarga de copiar los ficheros y directorios desde una ubicación especificada y los agrega al sistema de ficheros del contenedor.
 
 ```sh
 ADD <fuente> <destino>
@@ -140,7 +140,7 @@ EXPOSE: Indica los puertos en los que va a escuchar el contenedor. Con ello, los
 ```sh
 EXPOSE <puerto>
 ```
-VOLUME: Esta instrucción crea un volumen como punto de montaje deltro del contenedor y es visible desde el host anfitrión.
+VOLUME: Esta instrucción crea un volumen como punto de montaje dentro del contenedor y es visible desde el host anfitrión.
 ```sh
 VOLUME <path>
 ```
@@ -153,7 +153,7 @@ USER: Por defecto, todas las acciones son realizadas por el usuario root. Aquí 
 USER <usuario>
 ```
 ### Crear imagen con contenido estático
-Es posible crear una imagen que mueste contenido estático. Para ello podemos hacer uso de nginx para que nos proveea del enrutado.
+Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de nginx para que nos proveea del enrutado.
 
 Vamos a realizar un ejemplo de ello. Lo primero es crear un nuevo directorio para realizar la práctica:
 
@@ -211,9 +211,19 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 e62f948c8f89        practicanginx:v1    "nginx -g 'daemon of…"   25 minutes ago      Up 25 minutes       0.0.0.0:80->80/tcp   distracted_vaughan
 ```
 No solo eso, ahora podemos ver que un nuevo link ha aparecido en nuestra ventana, informando que el puerto 80 está a la escucha. 
-![](https://github.com/josdev27/openathon-2019-cloud/resources/Lab2_HTML.JPG)
+<br/>
+<p align="center">
+<img src="../resources/Lab2_Puerto.JPG">
+<br/>
+</p>
+<br/>
 Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventana:
-![](https://github.com/josdev27/openathon-2019-cloud/resources/Lab2_HTML.JPG)
+<br/>
+<p align="center">
+<img src="../resources/Lab2_HTML.JPG">
+<br/>
+</p>
+<br/>
 
 
 
