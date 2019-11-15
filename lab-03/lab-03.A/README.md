@@ -197,9 +197,237 @@ For creating a basic Spring Boot Application, we will use https://start.spring.i
 </p>
 
 ## Struct the project
+
+Initially, the project have:
+
+1. **DemoApplication.java** : The main class of our application
+2. **application.properties**: The file where we can define the properties of our application
+3. **pom.xml**: The file that describe our application (name, artifact, dependencies, etc)
+   
+<p align="center">
+    <img src="./resources/struct_project_01.png">
+</p>
+
+We will struct the project defining two package:
+
+1. **controller**: contains the controller of our application
+
+2. **service**: contains the services interfaces of our application
+    **impl**: contains the implementations of services.
+
+To create the packages:
+
+1. Right click in the parent package (com.openathon.demo in this example).
+2. Select *New*
+3. Select *Package*
+    <p align="center">
+    <img src="./resources/struct_project_02.png">
+    </p>
+
+4. In the name, we append *controller*
+    <p align="center">
+    <img src="./resources/struct_project_03.png">
+    </p>
+
+
+The result would be the next:
+
+<p align="center">
+    <img src="./resources/struct_project_04.png">
+</p>
+
 ## Add a new Controller
+
+In the controller package, we have to create a Class:
+
+<p align="center">
+    <img src="./resources/new_controller_01.png">
+</p>
+
+We type the name of the class (in this example, DemoController)
+
+<p align="center">
+    <img src="./resources/new_controller_02.png">
+</p>
+
+In this point we have two packages and one class.
+To indicate that this class is a controller, we have to add **@RestController** annotation. Also, we add **@RequestMapping** annotation, to indicate the path of the URL (demo) and the type of the response (JSON)
+
+<p align="center">
+    <img src="./resources/new_controller_03.png">
+    To resolve the imports, Crtl + Shift + O
+</p>
+
+The controller would be the next:
+
+```java
+package com.openathon.demo.controller;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "demo", produces = MediaType.APPLICATION_JSON_VALUE)
+public class DemoController {
+
+}
+```
+
+After, we will add the next method:
+
+```java
+    @GetMapping(value = "/hello")
+    public ResponseEntity<String> getHello(@RequestParam("name") String name) {
+        return ResponseEntity.ok().body("Hello, " + name);
+    }
+```
+
+**@GetMapping** indicate that is a GET with path hello. It is a method that return a String, with 200 OK as HTTP Code, and receive a request param “name”. I mean, the request would be:
+
+```sh
+GET /demo/hello?name={name}
+```
+
+And the response:
+
+```sh
+Hello, {name}
+```
+
+In this time, we will run the application to verify it. 
+We can this by two ways:
+
+##### **In Eclipse:**
+   1. Right click in the project.
+   2. Click Run As
+   3. Click Spring Boot App
+    <p align="center">
+    <img src="./resources/new_controller_04.png">
+</p>
+
+##### **In terminal:**
+   1. Open a terminal and execute the next:
+
+   ```sh
+   mvn spring-boot:run
+   ```
+
+In both ways, you can see **Started DemoApplication** in the last line of the log to verify the application was started.
+
+<p align="center">
+    <img src="./resources/new_controller_05.png">
+</p>
+
+In a browser, type http://localhost:8080/demo/hello?name=Docker. You should see something similar to next image:
+
+<p align="center">
+    <img src="./resources/new_controller_06.png">
+</p>
+
 ## Add a new Service
+
+In this time, we have to add a class in the *service package*:
+
+<p align="center">
+    <img src="./resources/new_service_01.png">
+</p>
+
+The name of the class would be **DemoServiceImpl**:
+
+```java
+import org.springframework.stereotype.Service;
+
+@Service
+public class DemoServiceImpl {
+
+}
+```
+
+You can see, like in the controller, we have added **@Service** annotation to indicate that this class is a *service*.
+
+In the next step, we have to create a subpackage of *service*, with the name **impl**:
+
+<p align="center">
+    <img src="./resources/new_service_02.png">
+</p>
+
+This package will have the implementations of the services of our application. So, in the package *service*, will be the interfaces. We have to add **DemoService** interface:
+
+<p align="center">
+    <img src="./resources/new_service_03.png">
+</p>
+<p align="center">
+    <img src="./resources/new_service_04.png">
+</p>
+
+The interface would be the next:
+
+```java
+public interface DemoService {
+
+    public String getHello(String name);
+    
+}
+```
+
+As you see, It has a simple method **getHello**.
+The implementation will be in *DemoServiceImpl* class:
+
+
+```java
+import org.springframework.stereotype.Service;
+
+import com.openathon.demo.service.impl.DemoService;
+
+@Service
+public class DemoServiceImpl implements DemoService {
+
+    @Override
+    public String getHello(String name) {
+        return "Hello, "+ name;
+    }
+
+}
+```
+
+The method return **Hello, {name}**.
+
+We run the application to verify the new changes:
+
+<p align="center">
+    <img src="./resources/new_service_05.png">
+</p>
+
 ## Hello Jos!
+
+The last step is connect the controller with the service that we created:
+
+```java 
+public class DemoController {
+
+    @Autowired
+    private DemoService demoService;
+    
+    @GetMapping(value = "/hello")
+    public ResponseEntity<String> getHello(@RequestParam("name") String name) {
+        return ResponseEntity.ok().body(demoService.getHello(name));
+    }
+    
+}
+```
+
+We use **@Autowired** annotation, to use DemoService in the controller. The next difference is that the call to *getHello* method of the service to obtain the message:
+
+```java
+return ResponseEntity.ok().body(demoService.getHello(name))
+```
+
+If you start up the application, you will have your first Spring Boot Application. Congratulations! :)
+
+<p align="center">
+    <img src="./resources/final_result.png">
+</p>
 
 <br/>
 
