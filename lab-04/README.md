@@ -32,7 +32,7 @@ Para construir nuestra imagen Docker vamos a utilizar como base otras dos imáge
 
 Vamos a usar **docker run** para iniciar un nuevo contenedor desde la imagen oficial de postgres con el nombre de postgres-openathon y exponiendo el puerto 5432 ( por defecto en PostgreSQL). Lo vamos a ejectuar en modo background con el flag **-d**.
 
-También vamos a montar un volumen con el flag **-v**. El volumen lo identificaremos como postgres-data, docker automáticamente lo creará si no existe un volumen en el mismo nombre.
+También vamos a montar un volumen con el flag **-v**. El volumen lo identificaremos como postgres-data, docker automáticamente lo creará si no existe un volumen con el mismo nombre.
 
 Si es la primera vez que ejecutamos el comando, se hará pull de la imagen. Una vez descargada, iniciará el contenedor y montará el volumen. Tan sólo tenemos que ejecutar el siguiente comando en nuestro terminal:
 
@@ -76,7 +76,11 @@ Para obtener la versión de PostgreSQL
 ```sh
 openathon-db=# select version();
 ```
-Vamos a crear la tabla book
+Creamos la tabla book con la instrucción DDL
+```sh
+openathon-db=# CREATE TABLE book (id int, name varchar(80));
+```
+Insertamos un registro en la tabla book
 ```sh
 openathon-db=# INSERT INTO book (id,name) VALUES (1, 'Using Dooker');
 ```
