@@ -2,7 +2,7 @@
     <img src="../../resources/header.png">
 </p>
 
-# Lab 03.C - Haciendo el despliegue del HelloWorld a producción con Docker y Nginx
+# Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx
 
 <br/>
 
@@ -14,21 +14,20 @@
 <br/>
 
 ## Objetivos y resultados
-El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo lo necesario para que al construir un contenedor con ella tengamos nuestra aplicación **HelloWorld desplegada en un servidor Nginx**. Esta imagen estaría **lista para ser desplegada** en nuestro entorno de producción.
+El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo lo necesario para que al construir un contenedor con una aplicación **HelloWorld desplegada en un servidor Nginx**. Esta imagen estaría **lista para ser desplegada** en nuestro entorno de producción.
 
 <br/>
 
 ## Generar una nueva imagen y un contenedor para desplegar nuestra aplicación.
 
-Para comenzar este laboratorio vamos a partir de la aplicación HelloWorld creada en el laboratiorio [anterior](../lab-03.B).
-
+Para comenzar este laboratorio vamos a partir de una aplicación HelloWorld que hemos creado para la ocasión. Es una aplicación muy básica realizada con Angular que simplemente muestra el logo de la Openathon.
 
 
 ### Paso 1. Hacer pull de las imágenes Docker que usaremos como base.
 
 Para construir nuestra imagen Docker vamos a utilizar como base otras dos imágenes:
 
-- [Imagen de Node.js](https://hub.docker.com/_/node): Contiene una instalación de Node.js que vamos a necesitar para generar el entregable de nuestro HelloWorld.
+- [Imagen de Node.js](https://hub.docker.com/_/node): Contiene una instalación de Node.js que vamos a necesitar para generar el entregable de nuestro HelloWorld con Angular.
 - [Imagen de Nginx](https://hub.docker.com/_/nginx): Contiene una instalación de Nginx que usaremos como servidor web para publicar nuestra aplicación.
 
 Para hacer el pull de ambas imágenes tan solo tenemos que ejecutar los siguientes comandos en nuestro terminal:
@@ -103,7 +102,7 @@ RUN npm install
 COPY ./ /usr/angular-workdir
 
 # Ahora que tenemos todas las dependencias y todo el código podemos generar 
-# nuestro entregable tal y como hacíamos en el laboratorio anterior.
+# nuestro entregable.
 RUN npm run build --prod
 
 # Llega el momento de preparar el servidor web, para ello usaremos la imágen base
