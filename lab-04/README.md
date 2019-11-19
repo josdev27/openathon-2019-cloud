@@ -45,11 +45,10 @@ docker ps
 ```
 y ver la salida de log
 ```sh
-docker ps
-```
 docker logs postgres-openathon
+```
 
-Podemos inspeccionar la información sobre el volumen que hemos creado con **docker volume inspect** y observar 
+Podemos inspeccionar la información sobre el volumen que hemos creado con **docker volume inspect** y comprobar información adicional que nos proporciona.
 ```sh
 docker volume inspect
 ```
@@ -113,7 +112,7 @@ docker exec -it postgres-openathon-v sh
 ```
 e iniciamos una sesión en psql para comprobar que los datos creados siguen estando presentes
 ```sh
-# psql -U postgres mydb
+# psql -U postgres openathon-db
 ```
 ```sh
 openathon-db=# SELECT * FROM book;
