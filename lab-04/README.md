@@ -139,7 +139,7 @@ docker rm -f postgres-openathon-v
 ```sh
 docker volume rm postgres-data
 ``` 
-[< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx ](../lab-03.C) | [Lab 05 - Creando un stack de servicios con docker-compose >](../lab-05)
+[< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx ](../lab-03/lab-03.C) | [Lab 05 - Creando un stack de servicios con docker-compose >](../lab-05)
 <p align="center">
     <img src="resources/header_docker.png">
 </p>
