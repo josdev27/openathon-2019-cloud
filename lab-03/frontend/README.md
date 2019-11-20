@@ -2,7 +2,7 @@
     <img src="../../resources/header.png">
 </p>
 
-# Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx
+# Lab 03. Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx
 
 <br/>
 
@@ -14,13 +14,13 @@
 <br/>
 
 ## Objetivos y resultados
-El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo lo necesario para que al construir un contenedor con una aplicación **HelloWorld desplegada en un servidor Nginx**. Esta imagen estaría **lista para ser desplegada** en nuestro entorno de producción.
+El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo lo necesario para desplegar una aplicación web **HelloWorld en un servidor Nginx**. Esta imagen estaría **lista para ser desplegada** en nuestro entorno de producción.
 
 <br/>
 
 ## Generar una nueva imagen y un contenedor para desplegar nuestra aplicación.
 
-Para comenzar este laboratorio vamos a partir de una aplicación HelloWorld que hemos creado para la ocasión. Es una aplicación muy básica realizada con Angular que simplemente muestra el logo de la Openathon.
+Para comenzar este laboratorio vamos a partir de una aplicación **HelloWorld** que hemos creado para la ocasión y que se encuentra en la ruta **/lab-03/frontend/HelloWorld**. Es una aplicación muy básica realizada con Angular que muestra el logo de la Openathon en la zona central y un saludo en la barra superior. El texto que forma el saludo puede variar porque se obtiene consultando un servicio web publicado en un servidor. Si no fuese posible establecer la comunicación con el servidor se mostrará el saludo **"Hello World!!"** 
 
 
 ### Paso 1. Hacer pull de las imágenes Docker que usaremos como base.
@@ -66,12 +66,7 @@ http {
     root   /usr/share/nginx/html;
     index  index.html index.htm;
     include /etc/nginx/mime.types;
- 
-    gzip on;
-    gzip_min_length 1000;
-    gzip_proxied expired no-cache no-store private auth;
-    gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
- 
+  
     location / {
       try_files $uri $uri/ /index.html;
     }
@@ -159,7 +154,7 @@ docker ps
 <br/>
 
 <p align="center">
-  <img src="../lab-03.B/resources/CapturaHelloWorld.png" width="600" style="max-width:100%;">
+  <img src="./resources/CapturaHelloWorld.png" width="600" style="max-width:100%;">
   <br/>
   ¡HelloWorld desplegado en Nginx!
 </p>
