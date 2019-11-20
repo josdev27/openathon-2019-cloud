@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="resources/header_docker.png">
+</p>
+
 # Lab 04 - PostgreSQL y volúmenes persistentes con docker
 <br/>
 <p align="center">
@@ -30,9 +34,9 @@ Como resultado, obtendremos un contenedor.....
 Para construir nuestra imagen Docker vamos a utilizar como base otras dos imágenes:
 - [Imagen de PostgreSQL](https://hub.docker.com/_/postgres): Contiene una instalación de PostgreSQL.
 
-Vamos a usar **docker run** para iniciar un nuevo contenedor desde la imagen oficial de postgres con el nombre de postgres-openathon y exponiendo el puerto 5432 ( por defecto en PostgreSQL). Lo vamos a ejectuar en modo background con el flag **-d**.
+Vamos a usar `docker run` para iniciar un nuevo contenedor desde la imagen oficial de postgres con el nombre de postgres-openathon y exponiendo el puerto 5432 ( por defecto en PostgreSQL). Lo vamos a ejectuar en modo background con el flag `-d`.
 
-También vamos a montar un volumen con el flag **-v**. El volumen lo identificaremos como postgres-data, docker automáticamente lo creará si no existe un volumen con el mismo nombre.
+También vamos a montar un volumen con el flag `-v`. El volumen lo identificaremos como postgres-data, docker automáticamente lo creará si no existe un volumen con el mismo nombre.
 
 Si es la primera vez que ejecutamos el comando, se hará pull de la imagen. Una vez descargada, iniciará el contenedor y montará el volumen. Tan sólo tenemos que ejecutar el siguiente comando en nuestro terminal:
 
@@ -48,13 +52,13 @@ y ver la salida de log
 docker logs postgres-openathon
 ```
 
-Podemos inspeccionar la información sobre el volumen que hemos creado con **docker volume inspect** y comprobar información adicional que nos proporciona.
+Podemos inspeccionar la información sobre el volumen que hemos creado con `docker volume inspect` y comprobar información adicional que nos proporciona.
 ```sh
 docker volume inspect
 ```
 
 ### Paso 2. Crear una base de datos.
-Vamos a crear una base de datos haciendo uso de **docker exec** para lanzar un shell dentro de nuestro contenedor postgres-openathon
+Vamos a crear una base de datos haciendo uso de `docker exec` para lanzar un shell dentro de nuestro contenedor postgres-openathon
 ```sh
 docker exec -it postgres-openathon sh
 ```
@@ -62,13 +66,13 @@ Dentro del shell creamos una base de datos con el nombre openathon-db
 ```sh
 # createdb -U postgres openathon-db
 ```
-Y por último ejecutamos la utilidad CLI de PostgreSQL **psql** para conectarnos a la base de datos openathon-db
+Y por último ejecutamos la utilidad CLI de PostgreSQL `psql` para conectarnos a la base de datos openathon-db
 ```sh
 # psql -U postgres openathon-db
 ```
 
 ### Paso 3. Explorar la base de datos
-Dentro de psql, vamos a ejecutar algunos comandos básicos. **\l** lista las bases de datos
+Dentro de psql, vamos a ejecutar algunos comandos básicos. `\l` lista las bases de datos
 ```sh
 openathon-db=# \l
 ```
@@ -88,15 +92,15 @@ Comprobamos los datos insertados
 ```sh
 openathon-db=# SELECT * FROM book;
 ``` 
-Podemos salir de psql con **\q** y **exit** de nuestro shell
+Podemos salir de psql con `\q` y `exit` de nuestro shell
 ```sh
 openathon-db=# \q 
 # exit
 ``` 
 
 ### Paso 4. Eliminar el contenedor PostgreSQL
-Vamos a parar y eliminar el contenedor **postgres-openathon** en un sólo comando, el flag **-f** fuerza la eliminación de un contenedor en ejecución. 
-Podemos eliminar el contenedor con la seguridad de no perder los datos, estos seguirán en el volumen **postgres-data**
+Vamos a parar y eliminar el contenedor `postgres-openathon` en un sólo comando, el flag `-f` fuerza la eliminación de un contenedor en ejecución. 
+Podemos eliminar el contenedor con la seguridad de no perder los datos, estos seguirán en el volumen `postgres-data`
 ```sh
 docker rm -f postgres-openathon
 ``` 
@@ -106,7 +110,7 @@ docker ps
 ```
 
 ### Paso 5. Adjuntar un volumen a un contedor
-Vamos a crear un  nuevo contenedor llamado **postgres-openathon-v** pero adjuntando el volumen que creamos anteriormente **postgres-data** que contiene nuestra base de datos
+Vamos a crear un  nuevo contenedor llamado `postgres-openathon-v` pero adjuntando el volumen que creamos anteriormente `postgres-data` que contiene nuestra base de datos
 ```sh
 docker run -d -p 5432:5432 -v postgres-data:/var/lib/postgresql/data --name postgres-openathon-v postgres
 ```
@@ -135,3 +139,7 @@ docker rm -f postgres-openathon-v
 ```sh
 docker volume rm postgres-data
 ``` 
+[< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx ](../lab-03.C) | [Lab 05 - Creando un stack de servicios con docker-compose >](../lab-05)
+<p align="center">
+    <img src="resources/header_docker.png">
+</p>
