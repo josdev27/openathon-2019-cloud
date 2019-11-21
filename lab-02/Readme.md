@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="resources/header_docker.png">
+    <img src="../resources/header.png">
 </p>
 
 # Laboratorio 2
@@ -177,6 +177,7 @@ docker run [OPCIONES] IMAGEN [COMANDO] [ARGUMENTOS...]
 <br/>
 </p>
 <br/>
+
 ## Crear imagen con contenido estático
 Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de [nginx](https://es.wikipedia.org/wiki/Nginx) para que nos proveea del enrutado.
 
@@ -252,9 +253,9 @@ Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventan
 </p>
 <br/>
 
-[< Lab 01 - Introducción a Docker](../lab-01/) | < Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx>](../lab-03/lab-03.C)
+[< Lab 01 - Introducción a Docker](../lab-01/) | [< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx>](../lab-03/lab-03.C)
 <p align="center">
-    <img src="resources/header_docker.png">
+    <img src="../resources/header.png">
 </p>
 
 
