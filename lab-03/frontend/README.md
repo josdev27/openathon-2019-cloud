@@ -20,12 +20,12 @@ El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo
 
 ## Generar una nueva imagen y un contenedor para desplegar nuestra aplicación.
 
-Para comenzar este laboratorio vamos a partir de una aplicación **HelloWorld** que hemos creado para la ocasión y que se encuentra (## ruta al repo de HelloWorld ##). Es una aplicación muy básica realizada con Angular que muestra el logo de la Openathon en la zona central y un saludo en la barra superior. El texto que forma el saludo puede variar porque se obtiene consultando un servicio web publicado en un servidor. Si no fuese posible establecer la comunicación con el servidor se mostrará el saludo **"Hello World!!"** 
+Para comenzar este laboratorio vamos a partir de una aplicación **HelloWorld** que hemos creado para la ocasión y que se encuentra en el siguiente repositorio https://github.com/josdev27/angular_app. Es una aplicación muy básica realizada con Angular que muestra el logo de la Openathon en la zona central y un saludo en la barra superior. El texto que forma el saludo puede variar porque se obtiene consultando un servicio web publicado en un servidor. Si no fuese posible establecer la comunicación con el servidor se mostrará el saludo **"Hello World!!"** 
 
 
 ### Paso 1. Hacer pull de las imágenes Docker que usaremos como base.
 
-Para construir nuestra imagen Docker vamos a utilizar como base otras dos imágenes:
+Para construir la imagen Docker vamos a utilizar como base otras dos imágenes:
 
 - [Imagen de Node.js](https://hub.docker.com/_/node): Contiene una instalación de Node.js que vamos a necesitar para generar el entregable de nuestro HelloWorld con Angular.
 - [Imagen de Nginx](https://hub.docker.com/_/nginx): Contiene una instalación de Nginx que usaremos como servidor web para publicar nuestra aplicación.
@@ -51,7 +51,7 @@ docker images
 
 Para que nuestra aplicación Angular se despliegue y funcione correctamente necesitaremos un fichero de configuración básico para el servidor web Nginx. En este fichero, llamado **nginx.conf**, se especifican cosas como el puerto en el que se publicará, la ruta del directorio raiz, las rutas permitidas, etc.
 
-Puedes encontrar este fichero en la ruta (## RUTA AL FICHERO NGING.CONF ##) y tiene el siguiente contenido:
+Este fichero ya se encuentra en la carpeta raiz de la aplicación. Puede consultarlo en https://github.com/josdev27/angular_app/blob/master/nginx.conf. Su contenido se muestra a continuación:
 
 ```conf
 worker_processes  1;
@@ -81,9 +81,9 @@ http {
 
 ### Paso 3. Fichero Dockerfile.
 
-El siguiente que necesitamos es un fichero **Dockerfile** para indicar a Docker cual será el contenido de la nueva imagen que vamos a crear. 
+También necesitamos es un fichero **Dockerfile** para indicar a Docker cual será el contenido de la nueva imagen que vamos a crear. 
 
-Puedes encontrar este fichero en la ruta (## RUTA AL FICHERO Dockerfile ##) y tiene el siguiente contenido:
+Este fichero ya se encuentra en la carpeta raiz de la aplicación. Puede consultarlo en https://github.com/josdev27/angular_app/blob/master/Dockerfile. Su contenido se muestra a continuación:
 
 ```dockerfile
 # Utilizamos la imagen de node como base y la denominamos build
@@ -124,10 +124,18 @@ En este fichero Dockerfile se especifican los pasos que hay que dar para generar
 
 ### Paso 4. Clonar el proyecto HelloWorld a la instancia de http://play-with-docker.com.
 
-// TODO
+Ahora que conocemos el contenido de los dos fichero clave para crear nuestra imagen. Vamos a clonar toda la aplicación web HelloWorld (que ya incluye estos dos ficheros) en nuestra instancia de http://play-with-docker.com. Para ello ejecutamos el siguiente comando:
 
+```sh
+git clone https://github.com/josdev27/angular_app.git
+```
 
-### Paso 4. Crear la nueva imagen a partir del fichero Dockerfile.
+Cuando finalice la descarga, tendremos una nueva carpeta llamada **angular_app**. Accederemos a su interior con el siguiente comando:
+```sh
+cd angular_app
+```
+
+### Paso 6. Crear la nueva imagen a partir del fichero Dockerfile.
 
 En este punto vamos a crear la imagen Docker que hemos descrito en el punto anterior. Para ello simplemente ejecutaremos el siguiente comando en la ruta donde está el fichero Dockerfile:
 
@@ -142,7 +150,7 @@ docker images
 
 <img src="./resources/docker_images.2.png" style="max-width:100%;">
 
-### Paso 5. Ejecutar nuestra nueva imagen para generar un nuevo contenedor.
+### Paso 6. Ejecutar nuestra nueva imagen para generar un nuevo contenedor.
 
 Ahora que tenemos lista nuestra nueva imagen docker tan solo nos queda ejecutarla y crear así nuestro contenedor que arrancará el servidor web Nginx con nuestro HelloWorld.
 
