@@ -23,7 +23,7 @@ El objetivo de este laboratorio es **crear una imagen Docker** que contenga todo
 Para comenzar este laboratorio vamos a partir de una aplicación **HelloWorld** que hemos creado para la ocasión.
 
 <p align="center">
-<img src="./resources/logoNginxDocker.png" width="500">
+<img src="./resources/HelloWorld.HelloWorld.png" width="500">
 <br/>
 Nuestra aplicación HelloWorld
 </p>
