@@ -141,6 +141,8 @@ COPY --from=build /usr/angular-workdir/dist/HelloWorld /usr/share/nginx/html
 
 En este fichero Dockerfile se especifican los pasos que hay que dar para generar la imagen tal y como la queremos. Los comentarios incluidos en el fichero te indican en que consiste cada paso y cual es su finalidad.
 
+En esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) puedes consultar las distintas instrucciones y mejores prácticas para escribir Dockerfiles.
+
 ### Paso 6. Crear la nueva imagen a partir del fichero Dockerfile.
 
 En este punto vamos a crear la imagen Docker tal y como se describre en el fichero **Dockerfile**. Para ello simplemente ejecutaremos el siguiente comando en la carpte raiz del proyecto:
@@ -182,7 +184,7 @@ docker ps
   ¡HelloWorld desplegado en Nginx!
 </p>
 
-[< Lab 03.B - Creando un HelloWorld con Angular ](../lab-03.B) | [Lab 04 - XXXXXXXXXX >](../lab-04)
+[< Lab 02. Dockerfiles ](../../lab-02) | [ Lab 03. Backend >](../backend)
 
 <p align="center">
     <img src="../../resources/header.png">
