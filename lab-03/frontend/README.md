@@ -170,13 +170,27 @@ En este punto vamos a crear la imagen Docker tal y como se describre en el fiche
 ```sh
 docker build -t helloworld .
 ```
+La ejecución puede tardar casi un minuto e irá mostrando el resultado de la ejecución de cada uno de los pasos incluidos en el fichero Dockerfile. 
+
+> Es posible que se muestre algún mensaje de Warning pero podemos ignorarlos.
 
 Si todo va bien, nuestra nueva imágen aparecera, junto a las de node y nginx, en nuestra lista de imágenes si ejecutamos el siguiente comando:
 ```sh
 docker images
 ```
+Como resultado obtendremos lo siguiente:
 
-<img src="./resources/docker_images.2.png" style="max-width:100%;">
+```sh
+[node1] (local) root@192.168.0.48 ~/angular_app
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+helloworld          latest              889203080254        13 minutes ago      127MB
+<none>              <none>              4c002681fcca        13 minutes ago      1.27GB
+nginx               latest              4152a9608752        2 days ago          126MB
+node                latest              1a77bcb355eb        2 weeks ago         933MB
+```
+
+> La imagen identificada como < none > es una imagen temporal que se ha creado en este proceso.
 
 ### Paso 7. Ejecutar nuestra nueva imagen para generar un nuevo contenedor.
 
@@ -200,7 +214,13 @@ También podemos ver que nuestro nuevo contenedor está en ejecución con el sig
 docker ps
 ```
 
-<img src="./resources/docker_ps.png" style="max-width:100%;">
+Como resultado obtendremos lo siguiente:
+```sh
+[node1] (local) root@192.168.0.48 ~/angular_app
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+7ed0c8cec8e3        helloworld          "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->80/tcp   xenodochial_archimedes
+```
 
 <br/>
 
