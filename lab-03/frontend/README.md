@@ -164,12 +164,18 @@ Ahora que tenemos lista nuestra nueva imagen docker tan solo nos queda ejecutarl
 
 Para ellos vamos a ejecutar el siguiente comando:
 ```sh
-docker run -d -p 8080:80 helloworld
+docker run -d -p 80:80 helloworld
 ```
 
-Si todo va bien, ya tendremos nuestro HelloWorld desplegado en el servidor Nginx, y podemos comprobarlo con solo acceder a [http://localhost:8080](http://localhost:8080).
+Si todo va bien, a la derecha de la dirección IP de la máquina virtual se mostrará un nuevo enlace indicando que la aplicación está publicada en el **puerto 80**. Si pulsamos el enlace se abrirá una nueva pestaña donde podremos ver nuestra aplicación **HelloWorld**.
 
-Podemos ver que nuestro nuevo contenedor está en ejecución con el siguiente comando:
+<p align="center">
+  <img src="./resources/HelloWorld.HelloDocker.png" width="600" style="max-width:100%;">
+  <br/>
+  ¡HelloWorld desplegado en Nginx!
+</p>
+
+También podemos ver que nuestro nuevo contenedor está en ejecución con el siguiente comando:
 ```sh
 docker ps
 ```
@@ -178,11 +184,6 @@ docker ps
 
 <br/>
 
-<p align="center">
-  <img src="./resources/HelloWorld.HelloDocker.png" width="600" style="max-width:100%;">
-  <br/>
-  ¡HelloWorld desplegado en Nginx!
-</p>
 
 [< Lab 02. Dockerfiles ](../../lab-02) | [ Lab 03. Backend >](../backend)
 
