@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="../resources/header.png">
+</p>
+
 # Laboratorio 2
 En este laboratorio vamos a aprender que es un Dockerfile y como podemos usarlo para la creación de imágenes Docker.
 Crearemos un Dockerfile de ejemplo para convertirlo en imagen y hacerla correr en un contenedor.
@@ -79,12 +83,13 @@ laboratorio2a       v1                  5a00a1083e8d        30 seconds ago      
 ubuntu              latest              775349758637        2 weeks ago         64.2MB
 ```
 
-Ahora vamos a crear un contendor a partir de la imagen. Para ello ejecutaremos lo siguiente:
+Ahora vamos a crear un contenedor a partir de la imagen. Para ello ejecutaremos lo siguiente:
 
 ```sh
 docker run -dti --name containerlaboratorio2a 5a00a1083e8d
 ```
 Siendo 5a00a1083e8d el IMAGE ID de nuestra imagen.
+Con la opción --name asignamos un nombre a nuestro contenedor.
 
 Ejecutamos docker ps para verificar que el contenedor está levantado:
 ```sh
@@ -103,16 +108,8 @@ git version 2.17.1
 ```
 Finalmente, escribimos exit para volver a la máquina virtual.
 
-<br/>
-<p align="center">
-<img src="./resources/Lab2_Docker.png">
-<br/>
-</p>
-<br/>
 
-
-
-### Instrucciones
+### Instrucciones Dockerfile
 Aunque en esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) disponemos de detalle sobre las distintas instrucciones y mejores prácticas para escribir Dockerfiles aquí mostramos un resumen con las más importantes.
 
 FROM: Indica la imagen base sobre la que se construirá la aplicación dentro del contenedor. Todos los Dockerfiles comienzan con un FROM.
@@ -166,6 +163,21 @@ USER: Por defecto, todas las acciones son realizadas por el usuario root. Aquí 
 ```sh
 USER <usuario>
 ```
+### Docker run
+En esta [URL](https://docs.docker.com/engine/reference/commandline/run/) podemos encontrar detalle de todas las opciones disponibles para la ejecución de un docker run.
+
+
+```sh
+docker run [OPCIONES] IMAGEN [COMANDO] [ARGUMENTOS...]
+```
+
+<br/>
+<p align="center">
+<img src="./resources/Lab2_Docker.png">
+<br/>
+</p>
+<br/>
+
 ## Crear imagen con contenido estático
 Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de [nginx](https://es.wikipedia.org/wiki/Nginx) para que nos proveea del enrutado.
 
@@ -217,8 +229,9 @@ Ahora vamos a levantar el contenedor:
 ```sh
   docker run -d -p 80:80 practicanginx:v1 
 ```
+Con -p informamos el puerto que expone el contenedor. Como podemos ver, podemos levantar un contenedor a partir de una imagen y tag. 
 
-¿Sabías comprobar que el contendor está arrancado?
+¿Sabrías comprobar que el contendor está arrancado?¿Qué nombre de contenedor le ha asignado si lo informamos con --name?
 ```sh
 [node1] (local) root@192.168.0.33 ~/laboratorio2b
 $ docker ps
@@ -240,5 +253,9 @@ Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventan
 </p>
 <br/>
 
+[< Lab 01 - Introducción a Docker](../lab-01/) | [< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx>](../lab-03/lab-03.C)
+<p align="center">
+    <img src="../resources/header.png">
+</p>
 
 
