@@ -187,7 +187,7 @@ Para ellos vamos a ejecutar el siguiente comando:
 docker run -d -p 80:80 helloworld
 ```
 
-Si todo va bien, a la derecha de la dirección IP de la máquina virtual se mostrará un nuevo enlace indicando que la aplicación está publicada en el **puerto 80**. Si pulsamos el enlace se abrirá una nueva pestaña donde podremos ver nuestra aplicación **HelloWorld**.
+Si todo va bien, en el panel superior de la máquina virtual se mostrará junto al botón *OPEN PORT* un nuevo enlace indicando que la aplicación está publicada en el **puerto 80**. Si pulsamos el enlace se abrirá una nueva pestaña donde podremos ver nuestra aplicación **HelloWorld**.
 
 <p align="center">
   <img src="./resources/HelloWorld.HelloDocker.png" width="600" style="max-width:100%;">
