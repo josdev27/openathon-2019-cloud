@@ -64,7 +64,12 @@ Si todo va bien, despues de completar la descarga, ambas imágenes deben aparece
 docker images
 ```
 
-<img src="./resources/docker_images.1.png" style="max-width:100%;">
+```sh
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              4152a9608752        2 days ago          126MB
+node                latest              1a77bcb355eb        2 weeks ago         933MB
+```
 
 ### Paso 3. Revisemos el fichero de configuración para Nginx.
 
