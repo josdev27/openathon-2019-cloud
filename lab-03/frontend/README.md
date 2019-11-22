@@ -34,9 +34,19 @@ Es una aplicación muy básica realizada con Angular. En la barra superior muest
 ### Paso 1. Clonar el proyecto HelloWorld a la máquina virtual
 
 Vamos a clonar el proyecto HelloWorld en la misma máquina virtual que hemos usado en los laboratiorios anteriores. Para ello ejecutaremos el siguigente comando:
-
 ```sh
 git clone https://github.com/josdev27/angular_app.git
+```
+
+```sh
+[node1] (local) root@192.168.0.48 ~/angular_app
+$ git clone https://github.com/josdev27/angular_app.git
+Cloning into 'angular_app'...
+remote: Enumerating objects: 61, done.
+remote: Counting objects: 100% (61/61), done.
+remote: Compressing objects: 100% (46/46), done.
+remote: Total 61 (delta 14), reused 60 (delta 13), pack-reused 0
+Unpacking objects: 100% (61/61), done.
 ```
 
 Cuando finalice la descarga, tendremos una nueva carpeta llamada **angular_app**. Accederemos a su interior con el siguiente comando:
@@ -55,6 +65,9 @@ Para hacer el pull de ambas imágenes tan solo tenemos que ejecutar los siguient
 
 ```sh
 docker pull node
+```
+
+```sh
 docker pull nginx
 ```
 
@@ -65,6 +78,7 @@ docker images
 ```
 
 ```sh
+[node1] (local) root@192.168.0.48 ~/angular_app
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 nginx               latest              4152a9608752        2 days ago          126MB
