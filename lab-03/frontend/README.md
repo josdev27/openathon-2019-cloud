@@ -37,9 +37,9 @@ Vamos a clonar el proyecto HelloWorld en la misma máquina virtual que hemos usa
 ```sh
 git clone https://github.com/josdev27/angular_app.git
 ```
+Como resultado obtendremos lo siguiente:
 
 ```sh
-[node1] (local) root@192.168.0.48 ~/angular_app
 $ git clone https://github.com/josdev27/angular_app.git
 Cloning into 'angular_app'...
 remote: Enumerating objects: 61, done.
@@ -76,6 +76,7 @@ Si todo va bien, despues de completar la descarga, ambas imágenes deben aparece
 ```sh
 docker images
 ```
+Como resultado obtendremos lo siguiente:
 
 ```sh
 [node1] (local) root@192.168.0.48 ~/angular_app
@@ -91,7 +92,7 @@ Para que nuestra aplicación Angular se despliegue y funcione correctamente nece
 
 Este fichero ya se encuentra en la carpeta raiz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/nginx.conf. Su contenido se muestra a continuación:
 
-```conf
+```Nginx
 worker_processes  1;
  
 events {
@@ -123,7 +124,7 @@ También necesitamos es un fichero **Dockerfile** para indicar a Docker cual ser
 
 Este fichero ya se encuentra en la carpeta raiz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/Dockerfile. Su contenido se muestra a continuación:
 
-```dockerfile
+```Dockerfile
 # Utilizamos la imagen de node como base y la denominamos build
 FROM node as build
 
