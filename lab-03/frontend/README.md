@@ -140,8 +140,8 @@ RUN npm install
 COPY ./ /usr/angular-workdir
 
 # Ahora que tenemos todas las dependencias y todo el código podemos generar 
-# nuestro entregable.
-RUN npm run build --prod
+# nuestro entregable tal y como hacíamos en el laboratorio anterior.
+RUN npm run buildProd
 
 # Llega el momento de preparar el servidor web, para ello usaremos la imágen base
 # de Nginx
@@ -151,7 +151,7 @@ FROM nginx
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # Borramos todos los ficheros que pudieran existir en la ruta donde desplegaremos 
-# el entregable que hemos generado antes 
+# el desplegable que hemos generado antes 
 RUN rm -rf /usr/share/nginx/html/*
 
 # Finalmente copiamos nuestro entregable desde la imagen de node a la ruta de despliegue
