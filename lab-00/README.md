@@ -70,6 +70,15 @@ Ya disponemos de la máquina virtual. Podemos comprobar que Docker está instala
     <img src="resources/playdocker_check_docker_installed.png">
 </p>
 
+Como utilidad para el resto de laboratorios, es posible editar un fichero directamente desde la web. Para ello, el fichero debe existir previamente.
+Para crear un fichero vacío desde línea de comandos podemos ejecutar lo siguiente:
+```sh
+touch fichero.txt
+```
+Cuando tengamos el fichero creado ya podrá ser seleccionado desde el botón Editor, donde se vusualizará un editor de texto que nos permitirá guardar el fichero.
+<p align="center">
+    <img src="resources/playdocker_editor.png">
+</p>
 
 <p align="center">
     <img src="../resources/header.png">
