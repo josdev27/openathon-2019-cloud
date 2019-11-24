@@ -16,7 +16,7 @@ Welcome Spring!
 ## Objetivos y resultados
 El objetivo de este laboratorio es crear y levantar con Docker  un microservicio desarrollado in Java usando [Spring Boot](https://spring.io/projects/spring-boot). Al final de este laboratorio, tendremos una API con un endpoint **Get “/hello?name={name}”**. En los siguientes laboratorios, este microservicio será consumido por una aplicación Angular.
 
-## Prerequisitos
+## Prerrequisitos
 
 El único prerequesito es tener una cuenta en Docker :).
 
