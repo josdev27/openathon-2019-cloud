@@ -67,18 +67,38 @@ $ ls
 Dockerfile  README.md   pom.xml     src
 ```
 
+El contenido de la aplicación es:
+
+1. **src**: contiene todo el código fuente de la aplicación (controlador, servicio, etc).
+2. **pom.xml**: permite a maven saber como construir la aplicación.
+3. **README.md**: es el readme del proyecto.
+4. **Dockerfile**: este fichero nos permite indicarle a Docker como construir la imagen de la aplicación.
+
+Si nos centramos en el *Dockerfile*, podemos ver que contiene dos fases. Una de ellas es usar maven para contruir el jar de nuestra aplicación. La otra es usar openjdk-8 para poder levantarla. Notar que usamos el comando **AS** para indicarle a Docker que del resultado de la primera fase (que es la que parte de maven), lo vamos a usar en la segunda (que es la parte de openjdk). Para más información mirar, https://docs.docker.com/develop/develop-images/multistage-build/. 
+
 ```dockerfile
-### Build application
+### Partimos de una imagen de maven para contruir el jar de la aplicación
 FROM maven:3-jdk-8 AS builder
+
+### Copiamos el pom.xml y el src/ en el directorio build del contenedor
 COPY pom.xml /build/
 COPY src /build/src/
+
+### Cambiamos al directorio build/ para construir el jar
 WORKDIR /build/
 RUN mvn package
 
-### Build image docker
+### Partimos de una imagen de openjdk-8 para poder ejecutar el jar
 FROM openjdk:8-jdk-alpine
+
+### Cambiamos al directorio app
 WORKDIR /app/
+
+### Partiendo de la fase anterior, copiamos el jar a este contenedor y lo llamamos demo.jar
+### Nota: maven por defecto, guarda el jar en target
 COPY --from=builder /build/target/*.jar demo.jar
+
+### Indicamos a Docker que al levantar nuestra imagen ejecute el comando java -jar demo.jar
 ENTRYPOINT ["java","-jar","demo.jar"]
 ```
 
@@ -90,13 +110,14 @@ El siguiente paso es ejecutar la aplicación para verificar que los pasos son co
 docker build -t josdev27/spring_boot_app .
 ```
 
+La opción **-t** nos permite darle un nombre a nuestra imagen Docker, mientras que **.** indicamos que el **Dockerfile** está en el directorio actual.
+Si todo a ido bien, en la salida veremos:
+
 ```sh
 Successfully tagged josdev27/spring_boot_app:latest
 ```
 
-```sh
-docker images
-```
+Una forma de comprobarlo es que al ejecutar el siguiente comando (*docker images*), tenemos que tenerla imagen **josdev27/spring_boot_app**:
 
 ```sh
 [node1] (local) root@192.168.0.23 ~/spring_boot_app
@@ -108,20 +129,21 @@ maven                      3-jdk-8             9b5dcb455379        27 hours ago 
 openjdk                    8-jdk-alpine        a3562aa0b991        6 months ago        105MB
 ```
 
+Para arrancar la imagen de Docker, usamos el mandato *docker run*:
+
 ```sh
 docker run -p 8080:8080 -t josdev27/spring-boot-app
 ```
+
 1. **run**: permite lanzar una imagen de docker. En este caso,  maven:3.3-jdk-8 https://hub.docker.com/_/maven, que nos permite ejecutar maven para contruir y levantar nuestro microservicio.
 2. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo rederijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
-3. **-t**:
-
+3. **-t**: para indicar que imagen queremos ejecutar
 
 Para más información, mirar https://docs.docker.com/engine/reference/commandline/run/.
 
 El proceso puede ser lento ya que tiene que descargar la imagen base (Take easy! ;))
 
 Si todo es correcto, deberias de ver el siguiente mensaje en la terminal:
-
 
 ```sh
 [node1] (local) root@192.168.0.23 ~/spring_boot_app
@@ -149,7 +171,7 @@ $ docker run -p 8080:8080 -t josdev27/spring_boot_app
 
 ### Verificar que la aplicación está escuchando
 
-Lo primero es añadir una nueva instancia, ya que en la otra tenemos levantada la consola del microservicio.  Para hacer la petición, vamos a utilizar el comando curl (the *ip-other-instance* es la IP de la otra instancia, en mi caso *192.168.0.23*):
+Lo primero es añadir una nueva instancia, ya que en la otra tenemos levantada la consola del microservicio.  Para hacer la petición, vamos a utilizar el comando curl (the *ip-other-instance* es la IP de la otra instancia, en mi caso *192.168.0.23*). Este comando nos permite hacer peticiones HTTP desde la terminal:
 
 ```sh
 curl -X GET http://<ip-other-instance>:8080/demo/hello\?name\=Jos
@@ -162,7 +184,6 @@ curl: (7) Failed to connect to 192.168.0.23 port 8080: Connection refused
 [node2] (local) root@192.168.0.22 ~
 $ curl -X GET http://192.168.0.23:8080/demo/hello\?name\=Jos
 Hello, Jos[node2] (local) root@192.168.0.22 ~
-$ 
 ```
 
 Si todo va bien, veremos por la salida:
@@ -172,7 +193,7 @@ Hello, Jos
 ```
 
 ## Resumen
-Hemos clonado una aplicación Spring Boot. La hemos construido y ejecutado usando maven dockerizado. Luego, hemos sido capaces de probar que nuestra aplicación está funcionando. Todo sin escribir una linea de código ;)
+Hemos clonado una aplicación Spring Boot y la hemos dockerizado. Luego, hemos sido capaces de probar que nuestra aplicación está funcionando. Todo sin escribir una linea de código ;)
 
 El siguiente paso será conectar está aplicación al frontend en Angular y a la capa de datos en PostgreSQL, todo ello en contenedores docker.
 
