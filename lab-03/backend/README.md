@@ -2,7 +2,7 @@
     <img src="../../resources/header.png">
 </p>
 
-# Lab 03.A - Hello World in Spring Boot
+# Lab 03 - Hello World en Spring Boot
 
 <br/>
 
@@ -13,45 +13,44 @@ Welcome Spring!
 </p>
 <br/>
 
-## Goals and results
-The goal of this laboratory is create a microservice in Java using [Spring Boot](https://spring.io/projects/spring-boot). Finally, we will have an API with a endpoint **Get /hello?name={name}**  
+## Objetivos y resultados
+El objetivo de este laboratorio es crear y levantar con Docker  un microservicio desarrollado in Java usando [Spring Boot](https://spring.io/projects/spring-boot). Al final de este laboratorio, tendremos una API con un endpoint **Get “/hello?name={name}”**. En los siguientes laboratorios, este microservicio será consumido por una aplicación Angular.
 
-## Prerrequisites
+## Prerequisitos
 
-The only prerrequisite is having an account in Docker :)
+El único prerequesito es tener una cuenta en Docker :).
 
-## Set up your first Spring Boot application
+## Levantar tu primera aplicación Spring Boot
 
-### Introduction
+### Introducción
 
-The microservice has a controller with one endpoint:
+El microservicio tiene un controlador con un único endpoint:
 
 ```sh
 GET /demo/hello?name={name}
 ```
 
-This endpoint receive a request param “name” and return the message *Hello, {name}* with 200 OK as Http Code. 
-I mean, the request would be:
+Este endopint recibe un parámetro “name” y devuelve el String Hello, {name}  con 200 OK como código HTTP:
 
 ```sh
 GET /demo/hello?name=Docker
 ```
 
-And the response:
+Y la respuesta:
 
 ```sh
 Hello, Docker
 ```
 
-### Clone the repository
+### Clonar el repositorio
 
-You have to clone the project from [spring_boot_app](https://github.com/josdev27/spring_boot_app). Add a new instance in [play-with-docker](https://labs.play-with-docker.com/) and execute:
+Tienes que clonar el proyecto desde [spring_boot_app](https://github.com/josdev27/spring_boot_app). Añadir una nueva instancia en play-with-docker y ejecutar:
 
 ```sh
 git clone https://github.com/josdev27/spring_boot_app.git
 ```
 
-In this moment, you have a new folder **spring_boot_app**. Change on it:
+En este momento, hemos generado el directorio **spring_boot_app** con el código fuente. El próximo paso es cambiarnos con el comando *cd*:
 
 ```sh
 cd spring_boot_app
@@ -62,17 +61,28 @@ cd spring_boot_app
 </p>
 
 
-### Build and execute the application
+### Construir y ejecutar el microservicio
 
-In this time, we will run the application to verify it. In the same instance, execute:
+El siguiente paso es ejecutar la aplicación para verificar que los pasos son correctos.. En la misma instancia ejecutamos:
 
 ```sh
 docker run -p 8080:8080 -it --rm --name spring_boot_app -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn spring-boot:run
 ```
+•	run: permite lanzar una imagen de docker. En este caso,  maven:3.3-jdk-8 https://hub.docker.com/_/maven, que nos permite ejecutar maven para contruir y levantar nuestro microservicio.
+•	-p: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo rederijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio). 
+•	--rm: Elimina el contenedor una vez ejecutado.
+•	--name: le asignamos el nombre spring_boot_app al contenedor.
+•	-v: nos permite asociar un directorio local a uno de docker (en nuestro caso el directorio actual a /usr/src/mymaven). De esta forma, docker tiene acceso al proyecto. Ejemplo: https://docs.docker.com/engine/reference/commandline/run/#mount-volume--v---read-only
+•	-w: Asociar un directorio de trabajo. En este caso, /usr/src/mymaven
+•	mvn spring-boot:run : nos permite lanzar contruir y ejecutar el microservicio con maven.
 
-It has to download an image, so the process could be slow (Take easy! ;))
 
-You would have to see the next log message in terminal:
+Para más información, mirar https://docs.docker.com/engine/reference/commandline/run/.
+
+El proceso puede ser lento ya que tiene que descargar la imagen base (Take easy! ;))
+
+Si todo es correcto, deberias de ver el siguiente mensaje en la terminal:
+
 
 ```sh
 INFO 67 --- [           main] com.josdev27.sample.DemoApplication      : Started DemoApplication in 1.915 seconds (JVM running for 2.452)
@@ -82,9 +92,9 @@ INFO 67 --- [           main] com.josdev27.sample.DemoApplication      : Started
     <img src="./resources/execute_ms.png">
 </p>
 
-### Check if application is listening
+### Verificar que la aplicación está escuchando
 
-Add a new instance and execute the next (the *ip-other-instance* in my case was *192.168.0.48*):
+Lo primero es añadir una nueva instancia, ya que en la otra tenemos levantada la consola del microservicio.  Para hacer la petición, vamos a utilizar el comando curl (the *ip-other-instance* es la IP de la otra instancia, en mi caso *192.168.0.48*):
 
 ```sh
 curl -X GET http://<ip-other-instance>:8080/demo/hello\?name\=Jos
@@ -94,14 +104,20 @@ curl -X GET http://<ip-other-instance>:8080/demo/hello\?name\=Jos
     <img src="./resources/result.png">
 </p>
 
-If everything is OK, the stdout is:
+Si todo va bien, veremos por la salida:
 
 ```sh
 Hello, Jos
 ```
 
+## Resumen
+Hemos clonado una aplicación Spring Boot. La hemos construido y ejecutado usando maven dockerizado. Luego, hemos sido capaces de probar que nuestra aplicación está funcionando. Todo sin escribir una linea de código ;)
 
-[< Lab 03 - Creando un HelloWorld ](../../lab-03)>
+El siguiente paso será conectar está aplicación al frontend en Angular y a la capa de datos en PostgreSQL, todo ello en contenedores docker.
+
+
+
+< [Lab 02](../lab-02/Readme.md) | [Lab 03 - Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx ](../../lab-03)>
 
 <p align="center">
     <img src="../../resources/header.png">
