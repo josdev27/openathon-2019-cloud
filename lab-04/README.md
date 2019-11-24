@@ -225,13 +225,23 @@ Una vez ejecutado el comnado anterior estaremos ya estamos dentro del Shell del 
 # openathon-db: nombre de la base de datos
 createdb -U postgres openathon-db
 ```
-Y por último ejecutamos la utilidad CLI de PostgreSQL `psql` para conectarnos a la base de datos openathon-db
+Ejecutamos la utilidad CLI de PostgreSQL `psql` para conectarnos a la base de datos openathon-db
 ```sh
 # psql: CLI de PostgreSQL
 # -U postgres: usuario por defecto con permisos de superadmin
 # openathon-db: nombre de la base de datos
 psql -U postgres openathon-db
 ```
+
+Necesitamos crear un usuario con permisos sólo a la base de datos creada, para ello ejecutamos 
+```sh
+# openathon-db: nombre de la base de datos
+create user docker with encrypted password 'docker';
+```
+ Por último le concedemos todos los privilegios
+ ```sh
+grant all privileges on database openathon-db to docker;
+ ```
 
 ### Paso 3. Explorar la base de datos
 Dentro de psql, vamos a ejecutar algunos comandos básicos. `\l` lista las bases de datos
