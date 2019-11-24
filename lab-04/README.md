@@ -235,11 +235,12 @@ psql -U postgres openathon-db
 
 Necesitamos crear un usuario con permisos sólo a la base de datos creada, para ello ejecutamos 
 ```sh
-# openathon-db: nombre de la base de datos
+# creación de usuario y contraseña
 create user docker with encrypted password 'docker';
 ```
  Por último le concedemos todos los privilegios
  ```sh
+ # definición de privilegios de un usuario sobre una bd
 grant all privileges on database openathon-db to docker;
  ```
 
@@ -451,5 +452,5 @@ docker volume rm postgres-data
 ``` 
 [< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx ](../lab-03/lab-03.C) | [Lab 05 - Creando un stack de servicios con docker-compose >](../lab-05)
 <p align="center">
-    <img src="resources/header_docker.png">
+    <img src="../resources/header.png">
 </p>
