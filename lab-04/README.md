@@ -437,7 +437,7 @@ $
 ```
 
 ### Paso 6. Eliminando recursos (opcional)
-El contenedor postgres-openathon-v y el volumen postgres-data lo necesitarás para el siguiente labotorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recuros creados eliminado tanto el contedor como el volumen creado.
+El volumen postgres-data lo necesitarás para el siguiente labotorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recuros creados eliminado tanto el contedor como el volumen creado.
 ```sh
 # rm: elimina un contenedor 
 # -f fuerza la eliminación de un contenedor en ejecución
@@ -450,7 +450,13 @@ Hasta que no borremos los contenedores que usen un volumen, no prodremos borrar 
 # postgres-data: nombre del volumen
 docker volume rm postgres-data
 ``` 
-[< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx ](../lab-03/lab-03.C) | [Lab 05 - Creando un stack de servicios con docker-compose >](../lab-05)
+## Resumen
+Hemos creado un volumen de datos para persitir la información fuera del ciclo de vida del contenedor. Luego hemos instanciado un servicio del gestor de base de datos PostgreSQL que mapeamos contra el volumen para compartir la información la base de datos entre contenedores.
+
+El siguiente paso será conectar las aplicaciones dockerizadas de frontend, backend del lab-03 y con nuestra base datos. No abandones esta instancia vm, necesitarás el volumen `postgres-data` para el siguiente laboratorio.
+
+
+[< Lab 03 - Hello World en Spring Boot](../lab-03/backend) | [Lab 05 - Creando un stack de servicios con docker-compose >](../lab-05)
 <p align="center">
     <img src="../resources/header.png">
 </p>
