@@ -4,7 +4,7 @@
 
 # Openathon V - Cloud
 
-## !Bienvenidos al Openathon V! 
+### !Bienvenidos al Openathon V! 
 
 En este openathon tendremos la oportunidad de aprender, de manera práctica, los conceptos básicos de docker, crearemos imágenes para distintos tipos de proyectos y veremos cómo orquestrarlos.  
 
