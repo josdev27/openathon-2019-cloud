@@ -132,7 +132,7 @@ openjdk                    8-jdk-alpine        a3562aa0b991        6 months ago 
 Para arrancar la imagen de Docker, usamos el mandato *docker run*:
 
 ```sh
-docker run -p 8080:8080 -t josdev27/spring-boot-app
+docker run -p 8080:8080 -t josdev27/spring_boot_app
 ```
 
 1. **run**: permite lanzar una imagen de docker. En este caso,  maven:3.3-jdk-8 https://hub.docker.com/_/maven, que nos permite ejecutar maven para contruir y levantar nuestro microservicio.
@@ -178,9 +178,6 @@ curl -X GET http://<ip-other-instance>:8080/demo/hello\?name\=Jos
 ```
 
 ```sh
-[node2] (local) root@192.168.0.22 ~
-$ curl -X GET http://192.168.0.23:8080/demo/hello\?name\=Jos
-curl: (7) Failed to connect to 192.168.0.23 port 8080: Connection refused
 [node2] (local) root@192.168.0.22 ~
 $ curl -X GET http://192.168.0.23:8080/demo/hello\?name\=Jos
 Hello, Jos[node2] (local) root@192.168.0.22 ~
