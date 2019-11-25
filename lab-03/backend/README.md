@@ -30,7 +30,7 @@ El microservicio tiene un controlador con un único endpoint:
 GET /demo/hello?name={name}
 ```
 
-Este endopint recibe un parámetro “name” y devuelve el String Hello, {name}  con 200 OK como código HTTP:
+Este endpoint recibe un parámetro “name” y devuelve un JSON con el atributo "saludo" y 200 OK como código HTTP:
 
 ```sh
 GET /demo/hello?name=Docker
@@ -39,7 +39,7 @@ GET /demo/hello?name=Docker
 Y la respuesta:
 
 ```sh
-Hello, Docker
+{"saludo":"Hello, Docker"}
 ```
 
 ### Clonar el repositorio
@@ -176,22 +176,22 @@ $ docker run -p 8080:8080 -t josdev27/spring_boot_app
 
 ### Verificar que la aplicación está escuchando
 
-Lo primero es añadir una nueva instancia, ya que en la otra tenemos levantada la consola del microservicio.  Para hacer la petición, vamos a utilizar el comando curl (the *ip-other-instance* es la IP de la otra instancia, en mi caso *192.168.0.23*). Este comando nos permite hacer peticiones HTTP desde la terminal:
+Para hacer la petición, vamos a utilizar el comando curl. Este comando nos permite hacer peticiones HTTP desde la terminal:
 
 ```sh
-curl -X GET http://<ip-other-instance>:8080/demo/hello\?name\=Jos
+curl -X GET http://localhost:8080/demo/hello\?name\=Jos
 ```
 
 ```sh
 [node2] (local) root@192.168.0.22 ~
 $ curl -X GET http://192.168.0.23:8080/demo/hello\?name\=Jos
-Hello, Jos[node2] (local) root@192.168.0.22 ~
+{"saludo":"Hello, Jos"}[node2] (local) root@192.168.0.22 ~
 ```
 
 Si todo va bien, veremos por la salida:
 
 ```sh
-Hello, Jos
+{"saludo":"Hello, Jos"}
 ```
 
 ## Resumen
