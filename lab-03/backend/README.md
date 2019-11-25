@@ -196,7 +196,7 @@ El siguiente paso será conectar está aplicación al frontend en Angular y a la
 
 
 
-< [Lab 02](../lab-02/Readme.md) | [Lab 03 - Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx ](../../lab-03)>
+< [Lab 02](../../lab-02/Readme.md) | [Lab 03 - Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx ](../../lab-03/frontend)>
 
 <p align="center">
     <img src="../../resources/header.png">
