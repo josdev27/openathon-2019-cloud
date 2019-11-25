@@ -151,9 +151,8 @@ El proceso puede ser lento ya que tiene que descargar la imagen base (Take easy!
 Si todo es correcto, deberias de ver el siguiente mensaje en la terminal:
 
 ```sh
-[node1] (local) root@192.168.0.23 ~/spring_boot_app
-$ docker run -p 8080:8080 -t josdev27/spring_boot_app
-
+[node1] (local) root@192.168.0.8 ~/spring_boot_app
+$ docker run -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=local" -t josdev27/spring_boot_app
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -162,16 +161,16 @@ $ docker run -p 8080:8080 -t josdev27/spring_boot_app
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.1.RELEASE)
 
-2019-11-24 18:29:55.884  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : Starting DemoApplication v0.0.1-SNAPSHOT on 6cd796d80e88 with PID 1 (/app/demo.jar started by root in /app)
-2019-11-24 18:29:55.894  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : No active profile set, falling back to default profiles: default
-2019-11-24 18:30:00.740  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2019-11-24 18:30:00.778  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-11-24 18:30:00.784  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-11-24 18:30:00.943  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-11-24 18:30:00.943  INFO 1 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4796 ms
-2019-11-24 18:30:01.750  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2019-11-24 18:30:02.843  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2019-11-24 18:30:02.858  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : Started DemoApplication in 9.137 seconds (JVM running for 11.171)
+2019-11-25 12:03:59.941  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : Starting DemoApplication v0.0.1-SNAPSHOT on 62ba03bc412d with PID 1 (/app/demo.jar started by root in /app)
+2019-11-25 12:03:59.946  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : The following profiles are active: local
+2019-11-25 12:04:03.344  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-11-25 12:04:03.376  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-25 12:04:03.377  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-25 12:04:03.538  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-25 12:04:03.539  INFO 1 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3402 ms
+2019-11-25 12:04:04.231  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-25 12:04:04.833  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-25 12:04:04.839  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : Started DemoApplication in 6.191 seconds (JVM running for 7.4)
 ```
 
 ### Verificar que la aplicación está escuchando
