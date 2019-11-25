@@ -74,7 +74,8 @@ El contenido de la aplicación es:
 3. **README.md**: es el readme del proyecto.
 4. **Dockerfile**: este fichero nos permite indicarle a Docker como construir la imagen de la aplicación.
 
-Si nos centramos en el *Dockerfile*, podemos ver que contiene dos fases. Una de ellas es usar maven para construir el jar de nuestra aplicación. La otra es usar openjdk-8 para poder levantarla. Notar que usamos el comando **AS** para indicarle a Docker que del resultado de la primera fase (que es la que parte de maven), lo vamos a usar en la segunda (que es la parte de openjdk). Para más información mirar, https://docs.docker.com/develop/develop-images/multistage-build/. 
+Si nos centramos en el *Dockerfile*, podemos ver que contiene dos fases. Una de ellas es usar maven para construir el jar de nuestra aplicación. La otra es usar openjdk-8 para poder levantarla. Notar que usamos el comando **AS** para indicarle a Docker que del resultado de la primera fase (que es la que parte de maven), lo vamos a usar en la segunda (que es la parte de openjdk). 
+Para más información mirar, https://docs.docker.com/develop/develop-images/multistage-build/. 
 
 ```dockerfile
 ### Partimos de una imagen de maven para contruir el jar de la aplicación
