@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="../resources/header.png">
+    <img src="resources/header.png">
 </p>
 
 # Openathon V - Cloud
@@ -33,5 +33,5 @@ Los contenidos que os mostraremos en este openathon son los siguientes:
     2. Dockerizer Event-UI
 	
 <p align="center">
-    <img src="../resources/header.png">
+    <img src="resources/header.png">
 </p>
