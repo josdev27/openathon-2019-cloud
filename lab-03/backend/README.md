@@ -14,7 +14,7 @@ Welcome Spring!
 <br/>
 
 ## Objetivos y resultados
-El objetivo de este laboratorio es crear y levantar con Docker  un microservicio desarrollado in Java usando [Spring Boot](https://spring.io/projects/spring-boot). Al final de este laboratorio, tendremos una API con un endpoint **Get “/hello?name={name}”**. En los siguientes laboratorios, este microservicio será consumido por una aplicación Angular, y se conectará a una base de datos dockerizada para obtener saludos aleatoriamente.
+El objetivo de este laboratorio es crear y levantar con Docker  un microservicio desarrollado en Java usando [Spring Boot](https://spring.io/projects/spring-boot). Al final de este laboratorio, tendremos una API con un endpoint **Get “/hello?name={name}”**. En los siguientes laboratorios, este microservicio será consumido por una aplicación Angular, y se conectará a una base de datos dockerizada para obtener saludos aleatoriamente.
 
 ## Prerrequisitos
 
@@ -74,7 +74,7 @@ El contenido de la aplicación es:
 3. **README.md**: es el readme del proyecto.
 4. **Dockerfile**: este fichero nos permite indicarle a Docker como construir la imagen de la aplicación.
 
-Si nos centramos en el *Dockerfile*, podemos ver que contiene dos fases. Una de ellas es usar maven para contruir el jar de nuestra aplicación. La otra es usar openjdk-8 para poder levantarla. Notar que usamos el comando **AS** para indicarle a Docker que del resultado de la primera fase (que es la que parte de maven), lo vamos a usar en la segunda (que es la parte de openjdk). Para más información mirar, https://docs.docker.com/develop/develop-images/multistage-build/. 
+Si nos centramos en el *Dockerfile*, podemos ver que contiene dos fases. Una de ellas es usar maven para construir el jar de nuestra aplicación. La otra es usar openjdk-8 para poder levantarla. Notar que usamos el comando **AS** para indicarle a Docker que del resultado de la primera fase (que es la que parte de maven), lo vamos a usar en la segunda (que es la parte de openjdk). Para más información mirar, https://docs.docker.com/develop/develop-images/multistage-build/. 
 
 ```dockerfile
 ### Partimos de una imagen de maven para contruir el jar de la aplicación
@@ -136,8 +136,8 @@ docker run -p 8080:8080 -t josdev27/spring_boot_app
 ```
 
 1. **run**: permite lanzar una imagen de docker. En este caso,  maven:3.3-jdk-8 https://hub.docker.com/_/maven, que nos permite ejecutar maven para contruir y levantar nuestro microservicio.
-2. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo rederijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
-3. **-t**: para indicar que imagen queremos ejecutar
+2. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
+3. **-t**: para indicar qué imagen queremos ejecutar
 
 Para más información, mirar https://docs.docker.com/engine/reference/commandline/run/.
 
