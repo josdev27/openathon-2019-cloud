@@ -183,7 +183,7 @@ curl -X GET http://localhost:8080/demo/hello\?name\=Jos
 
 ```sh
 [node2] (local) root@192.168.0.22 ~
-$ curl -X GET http://192.168.0.23:8080/demo/hello\?name\=Jos
+$ curl -X GET http://localhost:8080/demo/hello\?name\=Jos
 {"saludo":"Hello, Jos"}[node2] (local) root@192.168.0.22 ~
 ```
 
