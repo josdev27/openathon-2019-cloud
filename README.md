@@ -1,4 +1,14 @@
+<p align="center">
+    <img src="../resources/header.png">
+</p>
+
 # Openathon V - Cloud
+
+###!Bienvenidos al Openathon V! 
+
+En este openathon tendremos la oportunidad de aprender, de manera práctica, los conceptos básicos de docker, crearemos imágenes para distintos tipos de proyectos y veremos cómo orquestrarlos.  
+
+Los contenidos que os mostraremos en este openathon son los siguientes:
 
 1. Introduction (30 min)
    1. What is Docker?
@@ -21,3 +31,7 @@
 6. Bonus
     1. Scale services
     2. Dockerizer Event-UI
+	
+<p align="center">
+    <img src="../resources/header.png">
+</p>

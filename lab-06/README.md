@@ -1,14 +1,10 @@
 <p align="center">
-    <img src="../../resources/header.png">
+    <img src="../resources/header.png">
 </p>
 
 # Lab 06 - Escalado y orquestración de microservicios (Reto para los valientes)
 <br/>
-<p align="center">
-<img src="./resources/logoAngular.png" width="500">
-<br/>
-¡Reto! 
-</p>
+Llegamos al siguiente nivel... ¡Reto! 
 <br/>
 
 ## Objetivos y resultados
@@ -90,7 +86,7 @@ Si estamos en linux, ejecutar este otro comando:
 
     eval $(docker-machine env <docker-machine-name>)
 
-Usamos el comando swarm join en cada nodo ya sea manager o worker:	
+Usamos el comando swarm join en cada nodo ya sea manager o worker:
 
     docker swarm join --token <manager-or-worker-token> 192.168.66.100:2377
 
@@ -103,17 +99,25 @@ Una vez esta inicializado el swarm, podemos pararlo con el siguiente comando:
 Y para arrancarlo de nuevo, usaremos este comando:
 
     docker-machine start docker-swarm-manager-1 docker-swarm-manager-2 docker-swarm-manager-3 docker-swarm-worker-1 docker-swarm-worker-2 docker-swarm-worker-3
+<br/>
 
+## Escalar los servicios ##
+
+Para escalar los servicios en el swarm, accedre al manager y ejecutar el siguiente comando:
+
+	docker service scale <SERVICE-ID>=<NUMBER-OF-TASKS>
+	
 <br/>
 
 ## Reto! 
 
+El reto consiste en crear un cluster con docker swarm y orquestrar y escalr los servicios que se han creado en los laboratorios 03 y 04.
 
 
 
 [< Lab 5 ](../lab-05) | [ Lab 7 -  >](../lab-07)
 
 <p align="center">
-    <img src="../../resources/header.png">
+    <img src="../resources/header.png">
 </p>
 
