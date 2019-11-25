@@ -3,7 +3,9 @@
 </p>
 
 # Lab 00 - Play with Docker
-
+En este laboratorio vamos a mostrar como crear un usuario en Docker. Con el usuario creado podremos logarnos en https://labs.play-with-docker.com/,
+que será la herramienta propuesta para realizar nuestros siguientes laboratorios ya que nos facilita una máquina virtual con docker instalado.
+Al final del laboratorio tendrás un ejemplo de como es posible editar online un fichero ubicado en la máquina virtual.
 <br/>
 
 # Crear usuario en DockerHub

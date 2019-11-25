@@ -7,6 +7,13 @@ En este laboratorio vamos a aprender que es un Dockerfile y como podemos usarlo 
 Crearemos un Dockerfile de ejemplo para convertirlo en imagen y hacerla correr en un contenedor.
 También realizaremos un ejemplo donde se copiará contenido a una imagen mediante Dockerfile.
 
+<br/>
+<p align="center">
+<img src="./resources/Lab2_Docker.png">
+<br/>
+</p>
+<br/>
+
 ## ¿Qué es un DockerFile?
 
 Un Dockerfile es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.
@@ -42,7 +49,7 @@ Las opciones más comunes son:
 -   –no-cache. Establecida por defecto, Docker guarda en memoria caché las acciones realizadas recientemente. Si se diese el caso de que ejecutamos un docker build varias veces, Docker comprobará si el fichero contiene las mismas instrucciones y, en caso afirmativo, no generará una nueva imagen. Para generar una nueva imagen omitiendo la memoria caché utilizaremos siempre esta opción.
 -   –pull. También por defecto. Docker solo descargará la imagen especificada en la expresión FROM si no existe en el repositorio local. Para forzar que descargue la nueva versión de la imagen utilizaremos esta opción.
 -   –quiet. Por defecto, se muestra todo el proceso de creación, los comandos ejecutados y su salida. Utilizando esta opción solo mostrará el identificador de la imagen creada.
-##### Vamos a crear nuestro primera imagen con Dockerfile
+### Vamos a crear nuestro primera imagen con Dockerfile
 El primer paso es crear un directorio
 ```sh
 mkdir laboratorio2a
@@ -55,7 +62,7 @@ Creamos un nuevo fichero Dockerfile(podemos hacer uso del editor o bien con el c
 ```sh
 vi Dockerfile
 ```
-Vamos a crear una imagen que parta de la última versión de Ubuntu, realice una actualización de los paquetes y realice una instalación de git. Para ello escribimos el siguiente contenido en el fichero:
+Vamos a crear una imagen que parta de la última versión de Ubuntu, realice una actualización de los paquetes, realice una instalación de git y ejecute el comando bash. Para ello escribimos el siguiente contenido en el fichero:
 
 ```sh
 FROM ubuntu:latest
@@ -122,6 +129,20 @@ RUN: Nos permite ejecutar comandos en el contenedor.
 ```sh
 RUN  <comando>
 ```
+CMD: Se encarga de pasar valores por defecto a un contenedor. Entre estos valores se pueden pasar ejecutables.
+```sh
+CMD [“ejecutable”, “parametro1”, “parametro2”, …]
+
+CMD [“parametro1”, “parametro2”, ….]
+```
+La segunda opción se utiliza para pasar parámetros al comando EntryPoint.
+
+A diferencia del comando RUN,   que se utiliza para crear la imagen de un contenedor, CMD se ejecuta una vez que el contenedor se ha inicializado.
+
+ENTRYPOINT: Se utiliza cuando se quiere ejecutar un ejecutable en el contenedor en su arranque.
+```sh
+ENTRYPOINT "comando" "parametro1" "parametro2"
+```
 ENV: Establece variables de entorno dentro del contenedor.
 ```sh
 ENV  <clave> <valor>
@@ -170,13 +191,6 @@ En esta [URL](https://docs.docker.com/engine/reference/commandline/run/) podemos
 ```sh
 docker run [OPCIONES] IMAGEN [COMANDO] [ARGUMENTOS...]
 ```
-
-<br/>
-<p align="center">
-<img src="./resources/Lab2_Docker.png">
-<br/>
-</p>
-<br/>
 
 ## Crear imagen con contenido estático
 Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de [nginx](https://es.wikipedia.org/wiki/Nginx) para que nos proveea del enrutado.
