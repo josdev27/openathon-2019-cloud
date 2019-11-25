@@ -100,7 +100,7 @@ WORKDIR /app/
 COPY --from=builder /build/target/*.jar demo.jar
 
 ### Indicamos a Docker que al levantar nuestra imagen ejecute el comando java -jar demo.jar
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java", "-jar", "demo.jar"]
 ```
 
 ### Construir y ejecutar el microservicio
@@ -133,12 +133,16 @@ openjdk                    8-jdk-alpine        a3562aa0b991        6 months ago 
 Para arrancar la imagen de Docker, usamos el mandato *docker run*:
 
 ```sh
-docker run -p 8080:8080 -t josdev27/spring_boot_app
+docker run -d -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=local" -t josdev27/spring_boot_app
 ```
 
 1. **run**: permite lanzar una imagen de docker. En este caso,  maven:3.3-jdk-8 https://hub.docker.com/_/maven, que nos permite ejecutar maven para contruir y levantar nuestro microservicio.
-2. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
-3. **-t**: para indicar qué imagen queremos ejecutar
+2. **-d**: permite lanza el contenedor en background.
+3. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
+4. **-e**: nos permite pasar variables de entorno. En este caso, para que el microservicio se ejecute con el perfil *local*. El perfil *db* es que nos permite usar la base de datos que se verá en el [lab-04](../../lab-04/README.md).
+3. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
+3. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
+5. **-t**: para indicar qué imagen queremos ejecutar
 
 Para más información, mirar https://docs.docker.com/engine/reference/commandline/run/.
 
