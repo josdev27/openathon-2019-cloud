@@ -241,7 +241,7 @@ create user docker with encrypted password 'docker';
  Por último le concedemos todos los privilegios
  ```sh
  # definición de privilegios de un usuario sobre una bd
-grant all privileges on database "openathon-db" to docker;
+grant all privileges on database 'openathon-db' to docker;
  ```
 
 ### Paso 3. Explorar la base de datos
