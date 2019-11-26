@@ -244,6 +244,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 <br/>
 
+## Resumen
+Hemos clonado una aplicación web hecha con Angular. Hemos creado una nueva imagen a partir otras dos (Node y Nginx) y en ella hemos incluido un servidor Nginx que publica nuestra aplicación web. Luego hemos generado un contenedor a partir de esa imagen y hemos comprobado que la aplicación se publica tal y como esperábamos.
 
 [< Lab 02. Dockerfiles ](../../lab-02) | [ Lab 03. Backend >](../backend)
 
