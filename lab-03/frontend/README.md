@@ -33,7 +33,7 @@ Es una aplicación muy básica realizada con Angular. En la barra superior muest
 
 ### Paso 1. Clonar el proyecto HelloWorld a la máquina virtual
 
-Vamos a clonar el proyecto HelloWorld en la misma máquina virtual que hemos usado en los laboratiorios anteriores. Para ello ejecutaremos el siguigente comando en la carpeta home del usuario:
+Vamos a clonar el proyecto HelloWorld en la misma máquina virtual que hemos usado en los laboratorios anteriores. Para ello ejecutaremos el siguiente comando en la carpeta home del usuario:
 ```sh
 cd
 git clone https://github.com/josdev27/angular_app.git
@@ -72,7 +72,7 @@ docker pull node
 docker pull nginx
 ```
 
-Si todo va bien, despues de completar la descarga, ambas imágenes deben aparecer en nuestra lista tras ejecutar el siguiente comando:
+Si todo va bien, después de completar la descarga, ambas imágenes deben aparecer en nuestra lista tras ejecutar el siguiente comando:
 
 ```sh
 docker images
@@ -89,9 +89,9 @@ node                latest              1a77bcb355eb        2 weeks ago         
 
 ### Paso 3. Revisemos el fichero de configuración para Nginx.
 
-Para que nuestra aplicación Angular se despliegue y funcione correctamente necesitaremos un fichero de configuración básico para el servidor web Nginx. En este fichero, llamado **nginx.conf**, se especifican cosas como el puerto en el que se publicará, la ruta del directorio raiz, las rutas permitidas, etc. En esta [URL](http://nginx.org/en/docs/beginners_guide.html#conf_structure) puedes obtener más detalles sobre su estructura. 
+Para que nuestra aplicación Angular se despliegue y funcione correctamente necesitaremos un fichero de configuración básico para el servidor web Nginx. En este fichero, llamado **nginx.conf**, se especifican cosas como el puerto en el que se publicará, la ruta del directorio raíz, las rutas permitidas, etc. En esta [URL](http://nginx.org/en/docs/beginners_guide.html#conf_structure) puedes obtener más detalles sobre su estructura. 
 
-Este fichero ya se encuentra en la carpeta raiz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/nginx.conf. Su contenido se muestra a continuación:
+Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/nginx.conf. Su contenido se muestra a continuación:
 
 ```Nginx
 worker_processes  1;
@@ -121,9 +121,9 @@ http {
 
 ### Paso 4. Revisemos el fichero Dockerfile.
 
-También necesitamos un fichero **Dockerfile** para indicar a Docker cual será el contenido de la nueva imagen que vamos a crear. En esta [URL](https://docs.docker.com/engine/reference/builder/) puedes obtener información detallada sobre los ficheros **Dockerfile**.
+También necesitamos un fichero **Dockerfile** para indicar a Docker cuál será el contenido de la nueva imagen que vamos a crear. En esta [URL](https://docs.docker.com/engine/reference/builder/) puedes obtener información detallada sobre los ficheros **Dockerfile**.
 
-Este fichero ya se encuentra en la carpeta raiz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/Dockerfile. Su contenido se muestra a continuación:
+Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/Dockerfile. Su contenido se muestra a continuación:
 
 ```Dockerfile
 # Utilizamos la imagen de node como base y la denominamos build
@@ -151,7 +151,7 @@ COPY ./ /usr/angular-workdir
 # nuestro entregable tal y como hacíamos en el laboratorio anterior.
 RUN npm run buildProd
 
-# Llega el momento de preparar el servidor web, para ello usaremos la imágen base
+# Llega el momento de preparar el servidor web, para ello usaremos la imagen base
 # de Nginx
 FROM nginx
 
@@ -175,13 +175,13 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /usr/angular-workdir/dist/HelloWorld /usr/share/nginx/html
 ```
 
-En este fichero Dockerfile se especifican los pasos que hay que dar para generar la imagen tal y como la queremos. Los comentarios incluidos en el fichero te indican en que consiste cada paso y cual es su finalidad.
+En este fichero Dockerfile se especifican los pasos que hay que dar para generar la imagen tal y como la queremos. Los comentarios incluidos en el fichero te indican en que consiste cada paso y cuál es su finalidad.
 
 En esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) puedes consultar las distintas instrucciones y mejores prácticas para escribir Dockerfiles.
 
 ### Paso 5. Crear la nueva imagen a partir del fichero Dockerfile.
 
-En este punto vamos a crear la imagen Docker tal y como se describre en el fichero **Dockerfile**. Para ello simplemente ejecutaremos el siguiente comando en la carpeta raiz del proyecto:
+En este punto vamos a crear la imagen Docker tal y como se describe en el fichero **Dockerfile**. Para ello simplemente ejecutaremos el siguiente comando en la carpeta raíz del proyecto:
 
 ```sh
 # -t nos permite asignar un tag (nombre) a la imagen, en este caso el nombre es "helloworld"
@@ -194,7 +194,7 @@ La ejecución puede tardar casi un minuto e irá mostrando el resultado de la ej
 
 > Es posible que se muestre algún mensaje de Warning pero podemos ignorarlos.
 
-Si todo va bien, nuestra nueva imágen aparecera, junto a las de node y nginx, en nuestra lista de imágenes si ejecutamos el siguiente comando:
+Si todo va bien, nuestra nueva imagen aparecera, junto a las de node y nginx, en nuestra lista de imágenes si ejecutamos el siguiente comando:
 ```sh
 docker images
 ```
