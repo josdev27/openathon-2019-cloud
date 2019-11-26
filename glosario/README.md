@@ -19,7 +19,7 @@ Arquitectura Docker
 
 **Contenedor**: instancia ejecutable de una imagen 
 
-**Registry/Hub**: registo privado o público para descargar imágenes
+**Registry/Hub**: registro privado o público para descargar imágenes
 
 ## Comandos
 
@@ -70,7 +70,7 @@ docker rmi <nombre imagen>
 # Borrar todas las imágenes
 docker rmi $(docker images -q)
 
-# Interectuar dentro del contenedor mediante bash shell
+# Interactuar dentro del contenedor mediante bash shell
 sudo docker exec -it <nombre contenedor> bash
 
 # Crear volumen
@@ -101,7 +101,7 @@ docker-compose stop -t 1
 # docker compose borrar contenedores
 docker-compose rm -f
 
-# docker compose descargar imagenes
+# docker compose descargar imágenes
 docker-compose pull
 ```
 	
