@@ -2,7 +2,7 @@
     <img src="../resources/header.png">
 </p>
 
-# Lab-03 Una pequeña prática, un "Hola Mundo" por supuesto.
+# Lab-03 Una pequeña práctica, un "Hola Mundo" por supuesto.
 
 ## Introducción
 
@@ -13,7 +13,7 @@ Este laboratorio está dividido en dos secciones:
 
 
 ### Objetivos y resultados
-El principal objetivo y resultado esperado es dockerizar por un lado el frontend y por otro el backend. En estos laboratorios no estableceremos la conexión entre ambas y dejaremos eso para otro laboratiorio posterior donde se integraran junto al servidor de base de datos.
+El principal objetivo y resultado esperado es dockerizar por un lado el frontend y por otro el backend. En estos laboratorios no estableceremos la conexión entre ambas y dejaremos eso para otro laboratorio posterior donde se integrarán junto al servidor de base de datos.
 
 < [Lab 02. Dokerfiles](../lab-02) | [Lab 03. Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx](./frontend)>
 
