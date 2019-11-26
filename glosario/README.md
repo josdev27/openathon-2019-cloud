@@ -13,13 +13,13 @@ Arquitectura Docker
 
 ## Glosario
 
-**Capa**: archivo de sólo lectura a disposiciin del sistema
+**Capa**: archivo de sólo lectura a disposición del sistema
 
 **Imagen**: conjunto vertical y adyacente de capas. Es la base del contenedor
 
 **Contenedor**: instancia ejecutable de una imagen 
 
-**Registry/Hub**: registo privado o público para descargar imgágenes
+**Registry/Hub**: registo privado o público para descargar imágenes
 
 ## Comandos
 
