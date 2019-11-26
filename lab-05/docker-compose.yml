@@ -1,20 +1,30 @@
-version: '3.1'
-
+version: '3.2'
 services:
-
-  db:
-    image: postgres:10
-    restart: always
+ my-frontend:
+    container_name: frontend
+    hostname: frontend
+    image: helloworld:latest
+    ports:
+      - 80:80
+ my-backend:
+    container_name: backend
+    hostname: backend
+    image: josdev27/spring_boot_app
+    ports:
+      - 8080:8080
     environment:
-      - POSTGRES_USER=openathlon6
-      - POSTGRES_PASSWORD=openathlon6
-    volumes:
-      - ./data/postgressql/data:/var/lib/postgresql/data
+      - SPRING_PROFILES_ACTIVE=db
+      - DB_URL=db
+ db:
+    container_name: db
+    hostname: db
+    image: postgres:latest
     ports:
       - 5432:5432
-
-  db_administration:
-    image: adminer
-    restart: always
-    ports:
-      - 8888:8080
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+volumes:
+  postgres-data:
+    external: true

@@ -7,12 +7,15 @@
 <br/>
 
 ## Objetivos y resultados
-El objetivo de este laboratorio es crear una stack de servicios orquestados por **docker-compose**. Para ello, aprovecharemos la imágenes Docker que hemos generado en los laboratiorios anteriores.
-Como resultado, obtendremos un fichero YAML con toda la configuración necesarioa para levantar nuestro stack con un solo comando.
+El objetivo de este laboratorio es crear una stack de servicios, es decir, definiciones en un archivo de texto en formato YAML de múltiples servicios además de volúmenes y redes orquestados por **docker-compose**. Para ello, aprovecharemos la imágenes Docker que hemos generado en los laboratiorios anteriores. Como resultado, obtendremos un fichero YAML con toda la configuración necesaria para levantar nuestro stack con un solo comando.
+<p align="center">
+<img src="../resources/docker-compose-diagram.png">
 <br/>
+</p>
+<br/>
+
 ## ¿Qué es docker-compose?
-Se trata de una herramienta ideal para ejecutar **stacks** de aplicaciones contenerizadas. 
-Mediante una definición YAML, se configuran todos los servicios implicados en el stack y, mediante un único comando, permite desplegar un stack completo de servicios. 
+Se trata de una herramienta ideal para ejecutar **stacks** de aplicaciones contenerizadas. Por ejemplo, un conjunto de servicios que requieren ser orquestados de forma conjunta. Un caso típico es una aplicación compuesta de un front-end, un back-end y una capa de persistencia. Mediante una definición YAML, se configuran todos los servicios implicados en el stack y, mediante un único comando, permite desplegar el stack completo de servicios.
 <br/>
 ## ¿Cuál es la ventaja de usar docker-compose?
 Se trata de un tipo de orquestación de stacks de contenedores. Cuando queremos gestionar distintos servicios que tienen que interactuar entre sí, compose se encarga de mantener los procesos y configurar la red subyacente para que estos estén constantemente **up and running**. Si alguno de los servicios falla, compose se encarga de volver a arrancarlo manteniendo la integridad del stack. 
@@ -20,7 +23,7 @@ Se trata de un tipo de orquestación de stacks de contenedores. Cuando queremos 
 ## ¿Cómo funciona?
 En un fichero docker-compose, es posible definir tres tipos de recursos básicos:
 <br/>
-**-	Servicios:** la sección de servicios hace referencia a la configuración de los contendores. Teniendo en cuenta nuestro objetivo final, nuestra sección se servicios estará compuesta por tres servicios contenerizados, un servicio de front, un back y una capa de persistencia.
+**-	Servicios:** la sección de servicios hace referencia a la configuración de los contenedores. Teniendo en cuenta nuestro objetivo final, nuestra sección se servicios estará compuesta por tres servicios contenerizados, un servicio de front, un back y una capa de persistencia.
 <br/>
 **-	Volúmenes:** hace referencia a un espacio de disco físico que será reservado en el host para persistir la información de uno o varios servicios contenerizados.
 <br/>
@@ -43,8 +46,33 @@ networks:
    my-stack-network:
 ```
 ## Crear un stack de servicios gestionados por doker-compose.
+> Antes de empezar este laboratorio, debemos asegurarnos que los contenedores no estan corriendo ya que al levantar los servicios del stack, podemos encontrarnos con un conflicto de puertos. Para ello, podemos ejecutar el siguiente comando:
+
+```
+# Este comando nos devuelve una lista de los contenedores independientemente de su estado
+docker ps -a
+```
+> Si el comando anterior nos devuelve contenedores, para asegurarnos que no existe ningun conflicto, ejecutamos el siguiente comando:
+
+```
+# Este comando elimina todos los contenedores independientemente de su estado
+docker rm -f $(docker ps -aq)
+```
+> Podemos observar que eliminar los contenedores no implica eliminar las imágenes o los volumenes que hemos creado anteriormente
+
+```
+# Con este comando podemos ver la lista de volúmenes
+docker volume ls
+```
+```
+# Con este comando podemos ver la lista de imágenes
+docker images
+```
 
 ### Paso 1. Instalar docker-compose.
+
+> **No es necesario si vamos a trabajar con Play With Docker**
+
 Descarga el paquete
 <br/>
 ```curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose```
@@ -62,69 +90,179 @@ Añádelo al PATH mediante un enlace simbólico
 > Si todo ha ido bien, se mostrará la versión instalada de docker-compose.
 <br/>
 
-### Paso 2. Definir la configuración del servicio de frontend.
+### Paso 2. Creación de directorio de trabajo.
+Cramos una carpeta en el directorio de root
+```
+mkdir docker-compose
+```
+### Paso 3. Creación de fichero docker-compose.yaml.
+Creamos un fichero docker-compose.yaml usando tu editor de texto favorito.
+```
+vi docker-compose.yaml
+```
+
+### Paso 4. Definir la configuración del servicio de frontend.
 Para definir la configuración del servicio de frontend, debemos tener en cuenta los siguientes puntos:
 <br/>
+- Nombre del contenedor
+- Hostname
 - Nombre de la imagen
 - Puerto que expone
 ```
-my-frontend:
+frontend:
+    container_name: frontend
+    hostname: frontend
     image: helloworld:latest
     ports:
-      - "8080:80"
+      - 80:80
 ```
-### Paso 3. Definir la configuración del servicio de backend.
+### Paso 5. Definir la configuración del servicio de backend.
 Para definir la configuración del servicio de backend, debemos tener en cuenta los siguientes puntos:
 <br/>
+- Nombre del contenedor
+- Hostname
 - Nombre de la imagen
+- Variables de entorno
 - Puerto que expone
 ```
-my-backend:
-    image: ...
+ backend:
+    container_name: backend
+    hostname: backend
+    image: josdev27/spring_boot_app
+    environment:
+      - SPRING_PROFILES_ACTIVE=db
+      - DB_URL=db
     ports:
-      - "...."
+      - 8080:8080
 ```
-### Paso 4. Definir la configuración del servicio de persistencia.
+### Paso 6. Definir la configuración del servicio de persistencia.
 Para definir la configuración del servicio de persistencia, debemos tener en cuenta los siguientes puntos:
 <br/>
+- Nombre del contenedor
+- Hostname
 - Nombre de la imagen
 - Puerto que expone
-- Mapeo del volumen de persistencia de datos
+- Mapeo del volumen de persistencia de datos indicando el tipo de volumen, el nombre y el target.
 ```
-db:
-    image: ...
+ db:
+    container_name: db
+    hostname: db
+    image: postgres:latest
     ports:
-      - "...."
+      - 5432:5432
     volumes:
-      - my-volume:/.../...
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
 ```
-### Paso 5. Definir el fichero YAML completo.
+### Paso 7. Definir el fichero YAML completo.
 Ahora que tenemos la configuración de los tres servicios, ya podemos definir el docker-compose completo. Guarda fichero como "docker-compose.yml".
 ```
-version: '3'
+version: '3.2'
 services:
-  my-frontend:
-      image: helloworld:latest
-      ports:
-        - "8080:80"
-  my-backend:
-      image: ...
-      ports:
-        - "...."
-  db:
-      image: ...
-      ports:
-        - "...."
-      volumes:
-        - my-volume:/.../...
+ my-frontend:
+    container_name: frontend
+    hostname: frontend
+    image: helloworld:latest
+    ports:
+      - 80:80
+ my-backend:
+    container_name: backend
+    hostname: backend
+    image: josdev27/spring_boot_app
+    environment:
+      - SPRING_PROFILES_ACTIVE=db
+      - DB_URL=db
+    ports:
+      - 8080:8080
+ db:
+    container_name: db
+    hostname: db
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
 volumes:
-  - my-volume:
+  postgres-data:
+    external: true
 ```
 > **Recuerda definir el recurso de volúmenes**
-### Paso 6. Levantar el stack de recursos.
+### Paso 8. Levantar el stack de recursos.
 Para levantar el stack de recursos definido anteriormente, ejecuta el siguiente comando en la ruta donde tengas el fichero docker-compsoe:
 <br/>
-```docker-compose up```
+```docker-compose up -d```
+> **Utilizamos el flag "-d" para levantar el stack en modo detached. Si falla, lo mejor será quitar el flag para ver los logs de arranque.**
 <br/>
-Puedes comprobar en el log si todo ha ido bien.
+docker-compose irá informando a medida que los diferentes servicios esten levantados.
 
+```
+[node1] (local) root@192.168.0.33 ~/docker-compose
+$ docker-compose up -d
+Creating network "docker-compose_default" with the default driver
+Creating db       ... done
+Creating backend  ... done
+Creating frontend ... done
+```
+### Paso 9. Comprobamos el estado de los servicios.
+Como puedes ver en e log, docker-compose se ha encargado de crear una nueva red para levantar nuestros servicios (docker-compose_default). Es por esto, que todos los servicios que esten en esa red podrán descubrirse mediante hostname.
+Al igual que en los casos anteriores, podemos conocer el estado de los servicios mediante los siguientes comandos:
+
+```
+[node1] (local) root@192.168.0.33 ~/docker-compose
+$ docker-compose ps
+  Name                Command              State           Ports         
+-------------------------------------------------------------------------
+backend    java -jar demo.jar              Up      0.0.0.0:8080->8080/tcp
+db         docker-entrypoint.sh postgres   Up      0.0.0.0:5432->5432/tcp
+frontend   nginx -g daemon off;            Up      0.0.0.0:80->80/tcp    
+```
+```
+[node1] (local) root@192.168.0.33 ~/docker-compose
+$ docker ps
+CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS                    NAMES
+7d1f619c3b09        josdev27/spring_boot_app   "java -jar demo.jar"     8 minutes ago       Up 8 minutes        0.0.0.0:8080->8080/tcp   backend
+d5cf55d4bd10        helloworld:latest          "nginx -g 'daemon of…"   8 minutes ago       Up 8 minutes        0.0.0.0:80->80/tcp       frontend
+b13347584877        postgres:latest            "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes        0.0.0.0:5432->5432/tcp   db
+```
+### Paso 10. Comprobamos el mapeo del volumen persistente.
+Si utilizamos el comando "docker inspect" podemos observar como nuestra base de datos tiene un volumen mapeado al directorio del volumen persistente que preparamos en el lab04:
+
+```
+docker inspect db
+```
+
+```
+"Mounts": [
+            {
+                "Type": "volume",
+                "Name": "postgres-data",
+                "Source": "/var/lib/docker/volumes/postgres-data/_data",
+                "Destination": "/var/lib/postgresql/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ]
+```
+### Resumen.
+En este laboratorio hemos levantado un stack de servicios dockerizados mediante docker-compose. Esta herramienta ha gestionado de manera automática la generación de los contenedores, la creación de una red común (y aislada) para nuestro servicios, el mapeo de puertos y de volúmenes, mediante la definición de un fichero YAML y la utilización de un solo comando.
+Si ejecutamos el siguiente comando, podemos ver como docker-compose elimina los recursos generados:
+
+```
+[node1] (local) root@192.168.0.33 ~/docker-compose
+$ docker-compose down
+Stopping db       ... done
+Stopping backend  ... done
+Stopping frontend ... done
+Removing db       ... done
+Removing backend  ... done
+Removing frontend ... done
+Removing network docker-compose_default
+
+```
+En este log, docker-compose nos esta indicando que esta parando cada uno de los servicios, eliminando cada contenedor y eliminando la red que había creado para levantarlos.
+De esta forma, docker-compose se vuelve una herramienta sumamente útil para aquellas aplicaciones con interdependencias y que necesitan de más servicios para funcionar correctamente.
