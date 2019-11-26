@@ -3,7 +3,7 @@
 </p>
 
 # Laboratorio 2
-En este laboratorio vamos a aprender que es un Dockerfile y como podemos usarlo para la creación de imágenes Docker.
+En este laboratorio vamos a aprender que es un Dockerfile y cómo podemos usarlo para la creación de imágenes Docker.
 Crearemos un Dockerfile de ejemplo para convertirlo en imagen y hacerla correr en un contenedor.
 También realizaremos un ejemplo donde se copiará contenido a una imagen mediante Dockerfile.
 
@@ -49,7 +49,7 @@ Las opciones más comunes son:
 -   –no-cache. Establecida por defecto, Docker guarda en memoria caché las acciones realizadas recientemente. Si se diese el caso de que ejecutamos un docker build varias veces, Docker comprobará si el fichero contiene las mismas instrucciones y, en caso afirmativo, no generará una nueva imagen. Para generar una nueva imagen omitiendo la memoria caché utilizaremos siempre esta opción.
 -   –pull. También por defecto. Docker solo descargará la imagen especificada en la expresión FROM si no existe en el repositorio local. Para forzar que descargue la nueva versión de la imagen utilizaremos esta opción.
 -   –quiet. Por defecto, se muestra todo el proceso de creación, los comandos ejecutados y su salida. Utilizando esta opción solo mostrará el identificador de la imagen creada.
-### Vamos a crear nuestro primera imagen con Dockerfile
+### Vamos a crear nuestra primera imagen con Dockerfile
 El primer paso es crear un directorio
 ```sh
 mkdir laboratorio2a
@@ -193,7 +193,7 @@ docker run [OPCIONES] IMAGEN [COMANDO] [ARGUMENTOS...]
 ```
 
 ## Crear imagen con contenido estático
-Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de [nginx](https://es.wikipedia.org/wiki/Nginx) para que nos proveea del enrutado.
+Es posible crear una imagen que muestre contenido estático. Para ello podemos hacer uso de [nginx](https://es.wikipedia.org/wiki/Nginx) para que nos provea del enrutado.
 
 Vamos a realizar un ejemplo de ello. Lo primero es crear un nuevo directorio para realizar la práctica:
 
