@@ -438,7 +438,7 @@ $
 ```
 
 ### Paso 6. Eliminando recursos (opcional)
-El volumen postgres-data lo necesitarás para el siguiente labotorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recuros creados eliminado tanto el contedor como el volumen creado.
+El volumen postgres-data lo necesitarás para el siguiente labotorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminado tanto el contedor como el volumen creado.
 ```sh
 # rm: elimina un contenedor 
 # -f fuerza la eliminación de un contenedor en ejecución
