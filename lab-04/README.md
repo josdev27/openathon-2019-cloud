@@ -18,7 +18,7 @@ Como resultado, obtendremos un contenedor con una instancia de la base de datos 
 En primer lugar, veremos una introducción a los volúmenes en docker y cómo administrarlos.
 <br/>
 ## Uso de volúmenes
- El uso de volúmenes de datos es fundamental para compartir datos en entornos dockerizados. Hasta ahora, los ficheros que hemos creado en un contenedor permanecen o están disponibles mientras el contendor no sea borrado, es decir, la información es volátil y está ligada al ciclo de vida del contenedor. Sin embargo, las aplicaciones necesitan persistir y comparir datos.
+ El uso de volúmenes de datos es fundamental para compartir datos en entornos dockerizados. Hasta ahora, los ficheros que hemos creado en un contenedor permanecen o están disponibles mientras el contendor no sea borrado, es decir, la información es volátil y está ligada al ciclo de vida del contenedor. Sin embargo, las aplicaciones necesitan persistir y compartir datos.
  
  Los volúmenes no son más que carpetas en nuestro sistema de ficheros que son capaces de sobrevivir al ciclo de vida del contenedor. 
  El volumen de datos no es parte del sistema de ficheros del propio contenedor, si no que tiene su propio ciclo de vida independiente. Se alojan fuera del contenedor, en el propio sistema de archivos del host donde está corriendo docker, de tal manera que podemos cambiar, parar o borrar un contenedor sin que afecte a los datos.
@@ -28,16 +28,16 @@ Los volúmenes son el mecanismo preferido para los datos persistentes generados 
 - Funcionan tanto en contenedores de Linux como de Windows
 - Los volúmenes se pueden compartir de forma segura entre contenedores
 - Volúmenes nuevos pueden contener contenido cargado previamente por un contenedor
-- Mediente drivers específicos nos permiten almacener volúmenes en hosts remotos o proveedores en la nube, cifrar el contenido del volumen o incluso añadir otras funcionalidades
+- Mediante drivers específicos nos permiten almacenar volúmenes en hosts remotos o proveedores en la nube, cifrar el contenido del volumen o incluso añadir otras funcionalidades
 
 En este laboratorio cubriremos funcionalidades básicas de uso con volúmenes, como la administración y compartición de datos. Si deseas profundizar más, en la [documentación oficial](https://docs.docker.com/storage/) encontrarás más información sobre almacenamiento en docker.
 <br/>
 
 ## ¿Cómo funciona?
-Podemos crear y administar volúmenes fuera del ámbito de un contenedor. El comando `docker volume` proporciona los subcomandos:
+Podemos crear y administrar volúmenes fuera del ámbito de un contenedor. El comando `docker volume` proporciona los subcomandos:
 - `create`: crea un nuevo volumen
 - `inspect`: muestra información detallada sobre uno o más volumenes
-- `ls`: lista los volumenes en el Docker host
+- `ls`: lista los volúmenes en el Docker host
 - `rm`: elimina un volumen
 
 Pongamos en práctica estos comandos y desde la máquina virtual que hemos usado en laboratorios anteriores vamos a ejecutar los comandos anteriores.
@@ -438,7 +438,7 @@ $
 ```
 
 ### Paso 6. Eliminando recursos (opcional)
-El volumen postgres-data lo necesitarás para el siguiente laboratorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminado tanto el contedor como el volumen creado.
+El volumen postgres-data lo necesitarás para el siguiente laboratorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminado tanto el contenedor como el volumen creado.
 ```sh
 # rm: elimina un contenedor 
 # -f fuerza la eliminación de un contenedor en ejecución
@@ -452,7 +452,7 @@ Hasta que no borremos los contenedores que usen un volumen, no podremos borrar e
 docker volume rm postgres-data
 ``` 
 ## Resumen
-Hemos creado un volumen de datos para persitir la información fuera del ciclo de vida del contenedor. Luego hemos instanciado un servicio del gestor de base de datos PostgreSQL que mapeamos contra el volumen para compartir la información la base de datos entre contenedores.
+Hemos creado un volumen de datos para persistir la información fuera del ciclo de vida del contenedor. Luego hemos instanciado un servicio del gestor de base de datos PostgreSQL que mapeamos contra el volumen para compartir la información la base de datos entre contenedores.
 
 El siguiente paso será conectar las aplicaciones dockerizadas de frontend, backend del lab-03 y con nuestra base datos. No abandones esta instancia vm, necesitarás el volumen `postgres-data` para el siguiente laboratorio.
 
