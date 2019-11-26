@@ -27,10 +27,10 @@ Arquitectura Docker
 # Listar todas las imágenes
 docker images -a
 
-#Listar todos los contenedores en ejecución
+# Listar todos los contenedores en ejecución
 docker ps
 
-#Listar todos los contenedores
+# Listar todos los contenedores
 docker ps -a
 
 # Iniciar un contenedor nuevo
