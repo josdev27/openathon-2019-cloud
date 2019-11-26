@@ -103,13 +103,13 @@ Y para arrancarlo de nuevo, usaremos este comando:
 
 ## Escalar los servicios ##
 
-Para escalar los servicios en el swarm, accedre al manager y ejecutar el siguiente comando:
+Para escalar los servicios en el swarm, acceder al manager y ejecutar el siguiente comando:
 
 	docker service scale <SERVICE-ID>=<NUMBER-OF-TASKS>
 	
 <br/>
 
-## Reto! 
+## ¡Reto! 
 
 El reto consiste en crear un cluster con docker swarm y orquestrar y escalr los servicios que se han creado en los laboratorios 03 y 04.
 
