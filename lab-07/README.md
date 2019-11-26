@@ -6,7 +6,7 @@
 
 ## Introducción.
 
-Con todo lo aprendido en los anteriores laboratorios, ya estas suficientemente preparado para abordar retos más complejos y cercanos a los que encontramos en nuestro trabajo. Así que ahora te vamos a proponer el reto definitivo, la dockerización de una aplicación web real. 
+Con todo lo aprendido en los laboratorios anteriores, ya estas suficientemente preparado para abordar retos más complejos y cercanos a los que encontramos en nuestro trabajo. Así que ahora te vamos a proponer el reto definitivo, la dockerización de una aplicación web real. 
 
 En la [Openathon IV](https://github.com/Accenture/openathon-2019-angular) dedicada a el desarrollo de aplicaciones web con **Angular**, se lanzo un reto final que consistía en la elaboración de una aplicación que cumpliera unos requisitos concretos, tanto en funcionalidad como en calidad. De entre todas las aplicaciones que se presentaron, se proclamó como ganadora la aplicación [Event-UI](https://github.com/pacobull/event-ui). **El reto que te planteamos ahora es dokerizar esta aplicación**.
 
