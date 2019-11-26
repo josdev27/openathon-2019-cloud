@@ -13,7 +13,7 @@
 
 ## Objetivos y resultados
 El objetivo de este laboratorio es crear una imagen oficial de la base de datos **PostgreSQL** y la creación de un volumen persistente de datos.
-Como resultado, obtendremos un contenedor con una instacia de la base de datos PostgreSQL donde crearemos una tabla para guardar saludos en diferentes idiomas.
+Como resultado, obtendremos un contenedor con una instancia de la base de datos PostgreSQL donde crearemos una tabla para guardar saludos en diferentes idiomas.
 
 En primer lugar, veremos una introducción a los volúmenes en docker y cómo administrarlos.
 <br/>
@@ -24,13 +24,13 @@ En primer lugar, veremos una introducción a los volúmenes en docker y cómo ad
  El volumen de datos no es parte del sistema de ficheros del propio contenedor, si no que tiene su propio ciclo de vida independiente. Se alojan fuera del contenedor, en el propio sistema de archivos del host donde está corriendo docker, de tal manera que podemos cambiar, parar o borrar un contenedor sin que afecte a los datos.
  <br/>
 ## ¿Cuál es la ventaja de usar volúmenes?
-Los volúmenes son el mecanismo preferido para los datos persistentes generados y usados por los contenedores docker. Además de la persitencia de datos, el uso de volúmenes nos aporta las siguientes ventajas:
+Los volúmenes son el mecanismo preferido para los datos persistentes generados y usados por los contenedores docker. Además de la persistencia de datos, el uso de volúmenes nos aporta las siguientes ventajas:
 - Funcionan tanto en contenedores de Linux como de Windows
 - Los volúmenes se pueden compartir de forma segura entre contenedores
 - Volúmenes nuevos pueden contener contenido cargado previamente por un contenedor
 - Mediente drivers específicos nos permiten almacener volúmenes en hosts remotos o proveedores en la nube, cifrar el contenido del volumen o incluso añadir otras funcionalidades
 
-En este laboratorio cubriremos funcionalidades básicas de uso con volúmenes, como la administración y compartición de datos. Si deseas profundizar más, en la [documentación oficial](https://docs.docker.com/storage/) encontrás más información sobre almacenamiento en docker.
+En este laboratorio cubriremos funcionalidades básicas de uso con volúmenes, como la administración y compartición de datos. Si deseas profundizar más, en la [documentación oficial](https://docs.docker.com/storage/) encontrarás más información sobre almacenamiento en docker.
 <br/>
 
 ## ¿Cómo funciona?
@@ -99,17 +99,17 @@ mi-volumen
 ```
 
 ## Creación de la base de datos con PostgreSQL
-Ahora que sabemos como administrar un volumen, vamos a asociarlo a un contendor para guardar la información generada por el contenedor el volumen.  
+Ahora que sabemos como administrar un volumen, vamos a asociarlo a un contendor para guardar la información generada por el contenedor en el volumen.  
 
 ### Paso 1. Generar una nueva imagen e iniciar un contenedor con PostgreSQL.
-Para construir nuestra imagen docker vamos a utilizar como base la imagen oficial:
+Para construir nuestra imagen docker vamos a utilizar cómo base la imagen oficial:
 - [Imagen de PostgreSQL](https://hub.docker.com/_/postgres): contiene una instalación de PostgreSQL.
 
 En una única instrucción descargaremos la imagen e iniciaremos el contenedor con el volumen de datos asociado.
 
 Vamos a usar el comando `docker run` para iniciar un nuevo contenedor de postgres con el nombre de **postgres-openathon**  y exponer el puerto 5432 por defecto en PostgreSQL.
 
-El volumen que vamos a montar lo identificaremos como **postgres-data**, docker lo creará siempre que no exista un volumen con el mismo nombre. El volumen se montará en el direcorio del propio host con el nombre `postgres-data` y lo mapearemos contra el contenedor en `/var/lib/postgresql/data`, ubicación por defecto donde PostgreSQL almacena los datos. Esto nos asegura que los datos persisnten incluso despúes de que el contenedor sea eliminado.
+El volumen que vamos a montar lo identificaremos como **postgres-data**, docker lo creará siempre que no exista un volumen con el mismo nombre. El volumen se montará en el directorio del propio host con el nombre `postgres-data` y lo mapearemos contra el contenedor en `/var/lib/postgresql/data`, ubicación por defecto donde PostgreSQL almacena los datos. Esto nos asegura que los datos persisten incluso después de que el contenedor sea eliminado.
 
 Si es la primera vez que ejecutamos el comando, se hará pull de la imagen. Una vez descargada, iniciará el contenedor y montará el volumen. Tan sólo tenemos que ejecutar el siguiente comando en nuestro terminal:
 
@@ -157,7 +157,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 f4e7aae5e28e        postgres            "docker-entrypoint.s…"   3 minutes ago       Up 3 minutes        0.0.0.0:5432->5432/tcp   postgres-openathon
 ```
 
-Con `docker logs <nombre contenedor>` podemos ver la salida de log del contenedor y la información del proceso del servico de PostgreSQL
+Con `docker logs <nombre contenedor>` podemos ver la salida de log del contenedor y la información del proceso del servicio de PostgreSQL
 ```sh
 # logs: comando que obtiene el log del contenedor
 # postgres-openathon: nombre del contenedor
@@ -194,7 +194,7 @@ docker volume inspect postgres-data
     }
 ]
 ```
-Si hacemos ls al ruta del punto de montaje veremos los ficheros que se han copiado a nuestro host
+Si hacemos ls a la ruta del punto de montaje veremos los ficheros que se han copiado a nuestro host
 ```sh 
 # listar directorio
 ls /var/lib/docker/volumes/postgres-data/_data/
@@ -251,7 +251,7 @@ Dentro de psql, vamos a ejecutar algunos comandos básicos. `\l` lista las bases
 #comando lista todas las bases de datos creadas con más detalle
 \l+
 ```
-> En la salida vemos la base de datos qu hemos creado openathon-db y otros objetos de bd que se crean a por defecto.
+> En la salida vemos la base de datos que hemos creado openathon-db y otros objetos de bd que se crean por defecto.
 ```sh
 openathon-db=# \l+
                                                                     List of databases
@@ -380,7 +380,7 @@ Una vez iniciado el contenedor accedemos al shell del contedor, ejecutamos el co
 # sh: comando shell
 docker exec -it postgres-openathon-v sh
 ```
-e iniciamos una sesión en la basde de datos openathon-db para comprobar que los datos creados siguen estando presentes
+e iniciamos una sesión en la base de de datos openathon-db para comprobar que los datos creados siguen estando presentes
 ```sh
 # psql: CLI de PostgreSQL
 # -U postgres: usuario por defecto con permisos de superadmin
@@ -438,16 +438,16 @@ $
 ```
 
 ### Paso 6. Eliminando recursos (opcional)
-El volumen postgres-data lo necesitarás para el siguiente labotorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminado tanto el contedor como el volumen creado.
+El volumen postgres-data lo necesitarás para el siguiente laboratorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminado tanto el contedor como el volumen creado.
 ```sh
 # rm: elimina un contenedor 
 # -f fuerza la eliminación de un contenedor en ejecución
 # postgres-openathon-v: nombre del contenedor
 docker rm -f postgres-openathon-v
 ``` 
-Hasta que no borremos los contenedores que usen un volumen, no prodremos borrar el volumen
+Hasta que no borremos los contenedores que usen un volumen, no podremos borrar el volumen
 ```sh
-# volume rm: comando elimiar volumen
+# volume rm: comando eliminar volumen
 # postgres-data: nombre del volumen
 docker volume rm postgres-data
 ``` 
