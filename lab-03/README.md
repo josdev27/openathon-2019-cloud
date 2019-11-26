@@ -2,15 +2,20 @@
     <img src="../resources/header.png">
 </p>
 
-# Lab-03 Contectar y dockerizar Angular y Spring Boot
+# Lab-03 Una pequeña prática, un "Hola Mundo" por supuesto.
 
 ## Introducción
-Este laboratorio está dividido en dos secciones. La primera de ellas consiste en levantar una aplicación Spring Boot usando Docker. La segunda, levantar una aplicación Angular usando Docker, la cual está conectada a la aplicación backend.
+
+Este laboratorio está dividido en dos secciones:
+
+- [**Dockerizar una aplicación web**](./frontend): Tomando como base una pequeña aplicación *HelloWorld* realizada con Angular, crearemos una imagen Docker que incluya un servidor web **Nginx** que publique la aplicación. La aplicación web intentará conectarse a un servidor para obtener un saludo personalizado. Si no es posible obtener el saludo desde el servidor mostrará un saludo por defecto.  
+- [**Dockerizar una aplicación Spring Boot**](./backend): Partiendo de una aplicación Spring Boot, crearemos una imagen que al arrancar publicará una API Rest que podrá ser consumida por la aplicación Web. La API devuelve saludos personalizados en distintos idiomas. Los distintos saludos los obtiene conectándose a una base de datos alojada en otro servidor. Si no es posible acceder a la base de datos devuelve un saludo por defecto.
+
 
 ### Objetivos y resultados
-El principal objetivo y resultado esperado es dockerizar por un lado el backend, por otro el frontend, y conectar ambas aplicaciones. Más adelante, la parte backend llamará a una base de datos dockerizada por lo que tendremos tres contenedores correspondientes a las 3 capas básicas de una aplicación: Frontend + Backend + Data.
+El principal objetivo y resultado esperado es dockerizar por un lado el frontend y por otro el backend. En estos laboratorios no estableceremos la conexión entre ambas y dejaremos eso para otro laboratiorio posterior donde se integraran junto al servidor de base de datos.
 
-< [Lab 02](../lab-02/Readme.md) | [Lab 03 - Hello World en Spring Boot](./backend)>
+< [Lab 02. Dokerfiles](../lab-02) | [Lab 03. Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx](./frontend)>
 
 <p align="center">
     <img src="../resources/header.png">
