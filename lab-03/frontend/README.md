@@ -176,13 +176,11 @@ En esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-pra
 Con todos los ingredientes que tenemos, ahora tan solo nos queda pedirle a Docker que siga los pasos descritos en el *Dockerfile* para elaborar la imagen, como si de una receta de cocina se tratase. Para ello usaremos el comando *build* con una serie de parámetros que detallamos a continuación:
 
 - *-t*: Nos permite asignar un tag (nombre) a la imagen. En este caso el nombre será "helloworld"
-- *--build-arg*: Nos permite especificar un parámetro de entrada que se utilizará en la ejecución del Dockerfile. En este caso nuestro Dockerfile recoge un parámetro opcional denominado ARG_API_URL en el que debemos indicar el nombre (o IP) del host al que la aplicación se intentará conectar para obtener el saludo personalizado. Para obtener el nombre del host adecuado para usarlo en *Play with Docker* debemos construirlo siguiendo los siguientes pasos:
+- *--build-arg*: Nos permite especificar un parámetro de entrada que se utilizará en la ejecución del Dockerfile. En este caso nuestro Dockerfile recoge un parámetro opcional denominado **ARG_API_URL** en el que debemos indicar el nombre del host al que la aplicación se intentará conectar para obtener el saludo personalizado. Para obtener el nombre del host adecuado para usarlo en *Play with Docker* debemos construirlo siguiendo los siguientes pasos:
 1. Obtenemos el identificador de nuestra instancia de *Play with Docker* que podemos obtener de la primera sección (hasta la @) de la URL para la conexión mediante SSH. En la siguiente imagen se muestra un **ejemplo** remarcando la sección que representa el identificador. **Atención:** No confundir con el identificador mostrado justo encima de la IP. Son parecidos pero no iguales.
 
 <p align="center">
-<img src="./resources/identificador" width="500">
-<br/>
-¡Despleguemos con Docker y Nginx!
+<img src="./resources/identificador.png" width="500">
 </p>
 
 2. Concatenarle la siguiente cadena al final: **-8080.direct.labs.play-with-docker.com**
