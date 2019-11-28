@@ -108,14 +108,14 @@ ENTRYPOINT ["java", "-jar", "demo.jar"]
 El siguiente paso es ejecutar la aplicación para verificar que los pasos son correctos.. En la misma instancia ejecutamos:
 
 ```sh
-docker build -t josdev27/spring_boot_app .
+docker build -t spring_boot_app .
 ```
 
 La opción **-t** nos permite darle un nombre a nuestra imagen Docker, mientras que **.** indicamos que el **Dockerfile** está en el directorio actual.
 Si todo a ido bien, en la salida veremos:
 
 ```sh
-Successfully tagged josdev27/spring_boot_app:latest
+Successfully tagged spring_boot_app:latest
 ```
 
 Una forma de comprobarlo es que al ejecutar el siguiente comando (*docker images*), tenemos que tenerla imagen **josdev27/spring_boot_app**:
@@ -123,55 +123,36 @@ Una forma de comprobarlo es que al ejecutar el siguiente comando (*docker images
 ```sh
 [node1] (local) root@192.168.0.23 ~/spring_boot_app
 $ docker images
-REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
-josdev27/spring_boot_app   latest              b150c2fb08de        8 seconds ago       122MB
-<none>                     <none>              366efaa5317f        16 seconds ago      567MB
-maven                      3-jdk-8             9b5dcb455379        27 hours ago        499MB
-openjdk                    8-jdk-alpine        a3562aa0b991        6 months ago        105MB
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+spring_boot_app     latest              4569f0c0cdc9        About a minute ago   144MB
+<none>              <none>              d408a2d30092        About a minute ago   607MB
+helloworld          latest              0db343658dd8        14 minutes ago       127MB
+<none>              <none>              1a6bf96b8268        14 minutes ago       1.27GB
+node                latest              760e12e87878        2 days ago           934MB
+maven               3-jdk-8             9b5dcb455379        4 days ago           499MB
+nginx               latest              231d40e811cd        5 days ago           126MB
+openjdk             8-jdk-alpine        a3562aa0b991        6 months ago         105MB
 ```
 
 Para arrancar la imagen de Docker, usamos el mandato *docker run*:
 
 ```sh
-docker run -d -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=local" -t josdev27/spring_boot_app
+docker run -d -p 8080:8080 --name "spring_boot_app" -e "SPRING_PROFILES_ACTIVE=local" -t spring_boot_app
 ```
 
 1. **run**: permite lanzar una imagen de docker. En este caso,  maven:3.3-jdk-8 https://hub.docker.com/_/maven, que nos permite ejecutar maven para contruir y levantar nuestro microservicio.
-2. **-d**: permite lanza el contenedor en background.
+2. **-d**: permite lanzar el contenedor en background.
 3. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
-4. **-e**: nos permite pasar variables de entorno. En este caso, para que el microservicio se ejecute con el perfil *local*. El perfil *db* es que nos permite usar la base de datos que se verá en el [lab-04](../../lab-04/README.md).
-3. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
-3. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
-5. **-t**: para indicar qué imagen queremos ejecutar
+4. **--name**: permite dar un nombre identificativo al contenedor. 
+5. **-e**: nos permite pasar variables de entorno. En este caso, para que el microservicio se ejecute con el perfil *local*. El perfil *db* es que nos permite usar la base de datos que se verá en el [lab-04](../../lab-04/README.md).
+6. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
+7. **-p**: el formato es host_port:container_port. En este caso, el puerto 8080 de la máquina lo redirijimos al puerto 8080 del contenedor (por el que está escuchando el microservicio).
+8. **-t**: para indicar qué imagen queremos ejecutar
 
 Para más información, mirar https://docs.docker.com/engine/reference/commandline/run/.
 
 El proceso puede ser lento ya que tiene que descargar la imagen base (Take easy! ;))
 
-Si todo es correcto, deberias de ver el siguiente mensaje en la terminal:
-
-```sh
-[node1] (local) root@192.168.0.8 ~/spring_boot_app
-$ docker run -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=local" -t josdev27/spring_boot_app
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.2.1.RELEASE)
-
-2019-11-25 12:03:59.941  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : Starting DemoApplication v0.0.1-SNAPSHOT on 62ba03bc412d with PID 1 (/app/demo.jar started by root in /app)
-2019-11-25 12:03:59.946  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : The following profiles are active: local
-2019-11-25 12:04:03.344  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2019-11-25 12:04:03.376  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-11-25 12:04:03.377  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-11-25 12:04:03.538  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-11-25 12:04:03.539  INFO 1 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3402 ms
-2019-11-25 12:04:04.231  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2019-11-25 12:04:04.833  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2019-11-25 12:04:04.839  INFO 1 --- [           main] com.josdev27.sample.DemoApplication      : Started DemoApplication in 6.191 seconds (JVM running for 7.4)
-```
 
 ### Verificar que la aplicación está escuchando
 
@@ -191,6 +172,14 @@ Si todo va bien, veremos por la salida:
 
 ```sh
 {"saludo":"Hello, Jos"}
+```
+
+### Detener la aplicación
+
+Para detener el microservicio, usaríamos la siguiente instrucción, donde el argumento de *docker stop* sería el nombre dando al contenedor:
+
+```sh
+docker stop spring_boot_app
 ```
 
 ## Resumen
