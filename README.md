@@ -14,6 +14,7 @@ En este openathon tendremos la oportunidad de aprender, de manera práctica, los
 
 Los contenidos que os mostraremos en este openathon son los siguientes:
 
+0. Play with Docker
 1. Introducción a Docker y containerización
    1. Conceptos básicos de Docker
    2. Alternativas a Docker
