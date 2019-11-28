@@ -206,7 +206,7 @@ Si todo va bien, veremos por la salida:
 
 ### Detener y eliminar el contenedor
 
-Para detener y eliminar el contenedor, usaríamos la siguiente instrucción, donde el argumento de *docker rm --force* sería el nombre dando al contenedor:
+Para detener y eliminar el contenedor, usaríamos la siguiente instrucción, donde el argumento de *docker rm --force* sería el nombre dado al contenedor:
 
 ```sh
 docker rm --force spring_boot_app
