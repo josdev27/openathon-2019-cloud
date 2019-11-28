@@ -191,9 +191,9 @@ El resultado final debería tener un aspecto parecido a del siguiente **ejemplo*
 <img src="./resources/identificador2.png" width="500">
 </p>
 
-Ahora tan solo nos queda construir el comando completo sustituyendo la etiqueta *<HOST>* por el identificador que acabamos de construir y lo ejecutamos en la consola:
+Ahora tan solo nos queda construir el comando completo sustituyendo la etiqueta *< HOST >* por el identificador que acabamos de construir y lo ejecutamos en la consola:
     
-> **ATENCION:** Asegurate de construir correctamente el identificador, de lo contrario la imagen que se generará será incapaz de conectarse al servidor cuando la usemos en los próximos laboratios.
+> **ATENCION:** Asegurate de construir correctamente el identificador y sustituirlo por *< HOST >* en el comando, de lo contrario la imagen que se generará será incapaz de conectarse al servidor cuando la usemos en los próximos laboratios.
 
 ```sh
 docker build -t helloworld --build-arg ARG_API_URL=<HOST> .
