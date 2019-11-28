@@ -238,7 +238,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 ### Paso 7. Detener y eliminar el contenedor.
 
-Como paso final, despues de haber disfrutado de esta mágnifica aplicación :), vamos a prodecer a parar y eliminar el contenedor con el siguiente comando:
+Como paso final, después de haber disfrutado de esta magnífica aplicación :), vamos a parar y eliminar el contenedor con el siguiente comando:
 
 ```sh
 docker rm -f helloworld
