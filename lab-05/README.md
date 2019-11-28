@@ -133,7 +133,7 @@ Para definir la configuración del servicio de backend, debemos tener en cuenta 
  backend:
     container_name: backend
     hostname: backend
-    image: josdev27/spring_boot_app
+    image: spring_boot_app
     environment:
       - SPRING_PROFILES_ACTIVE=db
       - DB_URL=db
@@ -174,7 +174,7 @@ services:
  my-backend:
     container_name: backend
     hostname: backend
-    image: josdev27/spring_boot_app
+    image: spring_boot_app
     environment:
       - SPRING_PROFILES_ACTIVE=db
       - DB_URL=db
@@ -228,7 +228,7 @@ frontend   nginx -g daemon off;            Up      0.0.0.0:80->80/tcp
 [node1] (local) root@192.168.0.33 ~/docker-compose
 $ docker ps
 CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS                    NAMES
-7d1f619c3b09        josdev27/spring_boot_app   "java -jar demo.jar"     8 minutes ago       Up 8 minutes        0.0.0.0:8080->8080/tcp   backend
+7d1f619c3b09        spring_boot_app   "java -jar demo.jar"     8 minutes ago       Up 8 minutes                0.0.0.0:8080->8080/tcp   backend
 d5cf55d4bd10        helloworld:latest          "nginx -g 'daemon of…"   8 minutes ago       Up 8 minutes        0.0.0.0:80->80/tcp       frontend
 b13347584877        postgres:latest            "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes        0.0.0.0:5432->5432/tcp   db
 ```
