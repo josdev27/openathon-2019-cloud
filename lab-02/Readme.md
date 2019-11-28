@@ -2,7 +2,7 @@
     <img src="../resources/header.png">
 </p>
 
-# Laboratorio 2
+# Lab 02 - Dockerfiles
 En este laboratorio vamos a aprender que es un Dockerfile y cómo podemos usarlo para la creación de imágenes Docker.
 Crearemos un Dockerfile de ejemplo para convertirlo en imagen y hacerla correr en un contenedor.
 También realizaremos un ejemplo donde se copiará contenido a una imagen mediante Dockerfile.
@@ -267,7 +267,7 @@ Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventan
 </p>
 <br/>
 
-[< Lab 01 - Introducción a Docker](../lab-01/) | [< Lab 03.C - Haciendo el despliegue de un HelloWorld a producción con Docker y Nginx>](../lab-03/lab-03.C)
+[< Lab 01 - Introducción a Docker](../lab-01/) | [ Lab - 03 Una pequeña práctica, un "Hola Mundo" por supuesto. >](../lab-03)
 <p align="center">
     <img src="../resources/header.png">
 </p>

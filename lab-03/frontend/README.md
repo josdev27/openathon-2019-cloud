@@ -173,16 +173,29 @@ En esta [URL](https://docs.docker.com/develop/develop-images/dockerfile_best-pra
 
 ### Paso 5. Crear la nueva imagen a partir del fichero Dockerfile.
 
-En este punto vamos a crear la imagen Docker tal y como se describe en el fichero **Dockerfile**. Para ello simplemente ejecutaremos el siguiente comando en la carpeta raíz del proyecto:
+Con todos los ingredientes que tenemos, ahora tan solo nos queda pedirle a Docker que siga los pasos descritos en el *Dockerfile* para elaborar la imagen, como si de una receta de cocina se tratase. Para ello usaremos el comando *build* con una serie de parámetros que detallamos a continuación:
+
+- *-t*: Nos permite asignar un tag (nombre) a la imagen. En este caso el nombre será "helloworld"
+- *--build-arg*: Nos permite especificar un parámetro de entrada que se utilizará en la ejecución del Dockerfile. En este caso nuestro Dockerfile recoge un parámetro opcional denominado **ARG_API_URL** en el que debemos indicar el nombre del host al que la aplicación se intentará conectar para obtener el saludo personalizado. Para obtener el nombre del host adecuado para usarlo en *Play with Docker* debemos construirlo siguiendo los siguientes pasos:
+1. Obtenemos el identificador de nuestra instancia de *Play with Docker* que podemos obtener de la primera sección (hasta la @) de la URL para la conexión mediante SSH. En la siguiente imagen se muestra un **ejemplo** remarcando la sección que representa el identificador. **Atención:** No confundir con el identificador mostrado justo encima de la IP. Son parecidos pero no iguales.
+
+<p align="center">
+<img src="./resources/identificador.png" width="500">
+</p>
+
+2. Concatenarle la siguiente cadena al final: **-8080.direct.labs.play-with-docker.com**
+
+El resultado final debería tener un aspecto parecido a del siguiente **ejemplo**:
+
+Ahora tan solo nos queda construir el comando completo sustituyendo la etiqueta *<HOST>* por el identificador que acabamos de construir y lo ejecutamos en la consola:
+    
+> **ATENCION:** Asegurate de construir correctamente el identificador, de lo contrario la imagen que se generará será incapaz de conectarse al servidor cuando la usemos en los próximos laboratios.
 
 ```sh
-# -t nos permite asignar un tag (nombre) a la imagen, en este caso el nombre es "helloworld"
-# --build-arg permite especificar un valor para el argumento ARG_API_URL que se utiliza en el Dockerfile como parámetro de entrada. 
-# En el argumento ARG_API_URL deberíamos poner el nombre (o IP) del host que publica la API Rest. Este argumento es opcional, y por defecto toma el valor "localhost".
-docker build -t helloworld --build-arg ARG_API_URL=localhost .
+docker build -t helloworld --build-arg ARG_API_URL=<HOST> .
 ```
 
-La ejecución puede tardar casi un minuto e irá mostrando el resultado de la ejecución de cada uno de los pasos incluidos en el fichero Dockerfile. 
+La ejecución puede tardar más de un minuto e irá mostrando el resultado de la ejecución de cada uno de los pasos incluidos en el fichero Dockerfile. 
 
 > Es posible que se muestre algún mensaje de Warning pero podemos ignorarlos.
 
@@ -253,7 +266,7 @@ docker ps
 ## Resumen
 Hemos clonado una aplicación web hecha con Angular. Hemos creado una nueva imagen a partir otras dos (Node y Nginx) y en ella hemos incluido un servidor Nginx que publica nuestra aplicación web. Luego hemos generado un contenedor a partir de esa imagen y hemos comprobado que la aplicación se publica tal y como esperábamos.
 
-[< Lab 02. Dockerfiles ](../../lab-02) | [ Lab 03. Backend >](../backend)
+[< Lab - 03. Una pequeña práctica, un "Hola Mundo" por supuesto. ](../README.md) | [ Lab 03. Backend >](../backend)
 
 <p align="center">
     <img src="../../resources/header.png">

@@ -31,9 +31,11 @@ Docker Swarm proporciona alta disponibilidad de nodos managers utilizando un alg
 
 ## Crear un cluster swarm
 
+> Los siguientes pasos están pensados para hacerlos utilizando el demonio de Docker, instalando en tu sistema operativo de preferencia. En cada paso se darán pistas de cómo poder reproducirlo dentro del entorno Play with Docker 
+
 ### Paso 1. Configurando el cluster
 
-Con esta configuración, el swarm estara formado por 3 nodos managers y 3 nodos wrokers:
+Con esta configuración, el swarm estara formado por 3 nodos managers y 3 nodos workers:
 
     docker-swarm-manager-1
     docker-swarm-manager-2
@@ -63,12 +65,16 @@ Si estamos en windows, ejecutar este comando:
 Si estamos en linux, ejecutar este otro comando:
 
     eval $(docker-machine env docker-swarm-manager-1)
+
+En Play with Docker sólo podemos utilizar cinco instancias, por lo que no podremos tener 3 nodos managers y 3 workers. Como el algoritmo Raft necesita un número impar de nodos, tendremos 3 managers y 2 workers. Abriremos cinco instancias diferenciadas utilizando el botón "Add new instance" en la izquierda de la interfaz.
 	
 ### Paso 2. Inicilizar el swarm
 
 Para inicializar el swarm, se usa el siguiente comando:
 
-    docker swarm init --advertise-addr 192.168.66.100
+    docker swarm init --advertise-addr <IP de la instancia o de la primera ip del pool DHCP> 
+
+En windows/linux utilizaríamos la IP 192.168.66.100 de ejemplo. En Play With Docker, usaremos la IP de la instancia donde ejecutemos el comando, podemos ver la IP de cada instancia en la parte izquierda de la pantalla.
 
 Una vez inicializado, el swarm expone dos tokens: Uno para añadir nodos manager y otro para añadir nodos workers
 El comando para obtener los tokens es:
@@ -78,7 +84,7 @@ El comando para obtener los tokens es:
 
 Una vez tengamos los tokens, cambia el entorno para que apunte a cada docker machine, cada nodo manager y cada nodo worker.
 	
- Si estamos en windows, ejecutar este comando:
+Si estamos en windows, ejecutar este comando:
 
     @FOR /f "tokens=*" %i IN ('docker-machine env <docker-machine-name>') DO @%i
 
@@ -90,7 +96,29 @@ Usamos el comando swarm join en cada nodo ya sea manager o worker:
 
     docker swarm join --token <manager-or-worker-token> 192.168.66.100:2377
 
-### Paso 3. Manejar el swarm	
+En Play with Docker, tendremos que ir instancia a instancia ejecutando el siguiente comando (como la instancia que inicializó el swarm es un manager, el join tendrá que ejecutarse en dos instancias utilizando el token de manager, y en otras dos utilizando el token de worker):
+
+    docker swarm join --token <manager-or-worker-token> <IP de la instancia dónde se inicializó  el swarm>:2377
+
+Se puede obtener este comando resolviendo ya los token y la IP si ejecutamos el comando `docker swarm join-token manager` (para managers) o `docker swarm join-token worker` (para workers) en la instancia que inició el swarm. Copiando la salida del primer comando en dos instancias y la salida del segundo en otras dos, ya tendremos el swarm con los cinco nodos añadidos.
+
+Ejecutando el comando
+
+    docker node ls
+
+veremos si se ha creado el swarm correctamente, con todos sus nodos asociados, y podremos reconocer el rol de cada nodo dentro del swarm por el contenido de la columna MANAGER STATUS.
+
+<br/>
+
+## Paso 3. Escalar los servicios ##
+
+Para escalar los servicios en el swarm, desde cualquiera de los nodos manager, se puede ejecutar el siguiente comando:
+
+	docker service scale <SERVICE-ID>=<NUMBER-OF-TASKS>
+
+<br/>
+
+### Paso 4. Manejar el swarm	
 
 Una vez esta inicializado el swarm, podemos pararlo con el siguiente comando:	
 
@@ -101,17 +129,13 @@ Y para arrancarlo de nuevo, usaremos este comando:
     docker-machine start docker-swarm-manager-1 docker-swarm-manager-2 docker-swarm-manager-3 docker-swarm-worker-1 docker-swarm-worker-2 docker-swarm-worker-3
 <br/>
 
-## Escalar los servicios ##
+En Play with Docker no tenemos instalada la funcionalidad `docker-machine`, por lo que no podemos parar y arrancar el swarm. Para abandonar el swarm, podemos utilizar el siguiente comando nodo a nodo en todos ellos:
 
-Para escalar los servicios en el swarm, acceder al manager y ejecutar el siguiente comando:
-
-	docker service scale <SERVICE-ID>=<NUMBER-OF-TASKS>
-	
-<br/>
+    docker swarm leave --force
 
 ## ¡Reto! 
 
-El reto consiste en crear un cluster con docker swarm y orquestrar y escalr los servicios que se han creado en los laboratorios 03 y 04.
+El reto consiste en crear un cluster con docker swarm y orquestrar y escalar los servicios que se han creado en los laboratorios 03 y 04.
 
 
 
