@@ -204,13 +204,14 @@ Si todo va bien, veremos por la salida:
 {"saludo":"Hello, Jos"}
 ```
 
-### Detener la aplicación
+### Detener y eliminar el contenedor
 
-Para detener el microservicio, usaríamos la siguiente instrucción, donde el argumento de *docker stop* sería el nombre dando al contenedor:
+Para detener y eliminar el contenedor, usaríamos la siguiente instrucción, donde el argumento de *docker rm --force* sería el nombre dando al contenedor:
 
 ```sh
-docker stop spring_boot_app
+docker rm --force spring_boot_app
 ```
+Donde *--force* es para eliminar un contenedor que está ejecutandose.
 
 ## Resumen
 Hemos clonado una aplicación Spring Boot y la hemos dockerizado. Luego, hemos sido capaces de probar que nuestra aplicación está funcionando. Todo sin escribir una linea de código ;)
