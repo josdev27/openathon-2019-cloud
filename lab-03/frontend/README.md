@@ -126,13 +126,13 @@ También necesitamos un fichero **Dockerfile** para indicar a Docker cuál será
 Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/Dockerfile. Su contenido se muestra a continuación:
 
 ```Dockerfile
-# Utilizamos la imagen de node como base y la denominamos build
+# Utilizamos la imagen de node como base ya que la necesitamos para "compilar" los fuentes del proyecto Angular. Denominaremos a esta imagen "build"
 FROM node as build
 
 # Recogemos el argumento de entrada si existe, si no usaremos el valor por defecto (localhost)
 ARG ARG_API_URL=localhost
 
-# Asignamos a la variable de entorno API_URL el valor del argumento de entrada
+# Asignamos a la variable de entorno API_URL el valor del argumento de entrada definido en el paso anterior.
 # Esta variable de entorno la utiliza el compilador de Angular para establecerla en el momento de la "compilación"
 ENV API_URL=$ARG_API_URL
 
@@ -140,7 +140,7 @@ ENV API_URL=$ARG_API_URL
 COPY ./package.json /usr/angular-workdir/
 WORKDIR /usr/angular-workdir
 
-# Lanzamos el comando npm install para que se descargue todas las dependencias
+# Lanzamos el comando npm install para que node se descargue todas las dependencias
 # definidas en nuestro fichero package.json
 RUN npm install
 
@@ -148,7 +148,7 @@ RUN npm install
 COPY ./ /usr/angular-workdir
 
 # Ahora que tenemos todas las dependencias y todo el código podemos generar 
-# nuestro entregable tal y como hacíamos en el laboratorio anterior.
+# nuestro entregable ejecutando el siguiente comando.
 RUN npm run buildProd
 
 # Llega el momento de preparar el servidor web, para ello usaremos la imagen base
@@ -157,14 +157,6 @@ FROM nginx
 
 # Copiamos el fichero nginx.conf a la ruta adecuada en la imagen nginx
 COPY ./nginx.conf /etc/nginx/nginx.conf
-
-# Borramos todos los ficheros que pudieran existir en la ruta donde desplegaremos 
-# el desplegable que hemos generado antes 
-RUN rm -rf /usr/share/nginx/html/*
-
-# Finalmente copiamos nuestro entregable desde la imagen de node a la ruta de despliegue
-# en la imagen de Nginx 
-COPY --from=build /usr/angular-workdir/dist/HelloWorld /usr/share/nginx/html
 
 # Borramos todos los ficheros que pudieran existir en la ruta donde desplegaremos 
 # el desplegable que hemos generado antes 
@@ -185,11 +177,11 @@ En este punto vamos a crear la imagen Docker tal y como se describe en el ficher
 
 ```sh
 # -t nos permite asignar un tag (nombre) a la imagen, en este caso el nombre es "helloworld"
-# --build-arg permite especificar un valor para el argumento ARG_API_URL que utiliza el Dockerfile como parámetro de entrada. 
-# En <HOST> hay que indicar el nombre (o IP) del host donde se publica la API Rest que vamos a consumir. 
-# Si no se conocemos el <HOST> podemos no incluir el "--build-arg ARG_API_URL=<HOST>" y en tal caso se usará el valor "localhost".   
-docker build -t helloworld --build-arg ARG_API_URL=<HOST> .
+# --build-arg permite especificar un valor para el argumento ARG_API_URL que se utiliza en el Dockerfile como parámetro de entrada. 
+# En el argumento ARG_API_URL deberíamos poner el nombre (o IP) del host que publica la API Rest. Este argumento es opcional, y por defecto toma el valor "localhost".
+docker build -t helloworld --build-arg ARG_API_URL=localhost .
 ```
+
 La ejecución puede tardar casi un minuto e irá mostrando el resultado de la ejecución de cada uno de los pasos incluidos en el fichero Dockerfile. 
 
 > Es posible que se muestre algún mensaje de Warning pero podemos ignorarlos.
