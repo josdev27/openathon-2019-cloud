@@ -115,7 +115,7 @@ El reto consiste en crear un cluster con docker swarm y orquestrar y escalr los 
 
 
 
-[< Lab 5 ](../lab-05) | [ Lab 7 -  >](../lab-07)
+[< Lab 05 - Creando un stack de servicios con docker-compose](../lab-05) | [Lab 07 - Dockerización de la aplicación Event-UI >](../lab-07)
 
 <p align="center">
     <img src="../resources/header.png">
