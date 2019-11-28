@@ -33,6 +33,7 @@ Los contenidos que os mostraremos en este openathon son los siguientes:
 6. Escalado y orquetación de microservicios
 7. Dockerización de la aplicación Event-UI
 
+[ Lab 00. Play with Docker >](./lab-00)
 	
 <p align="center">
     <img src="resources/header.png">
