@@ -7,7 +7,7 @@
 ### ¡Bienvenidos al Openathon V! 
 
 <p align="center">
-    <img src="resources/logo_OpenathonV_tr.png">
+    <img src="resources/logo_OpenathonV_tr.png" width="600">
 </p>
 
 En este openathon tendremos la oportunidad de aprender, de manera práctica, los conceptos básicos de docker, crearemos imágenes para distintos tipos de proyectos y veremos cómo orquestrarlos.  
