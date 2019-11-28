@@ -236,6 +236,20 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 <br/>
 
+### Paso 7. Detener y eliminar el contenedor.
+
+Como paso final, despues de haber disfrutado de esta mágnifica aplicación :), vamos a prodecer a parar y eliminar el contenedor con el siguiente comando:
+
+```sh
+docker rm -f helloworld
+```
+
+Y verificamos que ya no está en ejecución con este otro:
+
+```sh
+docker ps
+```
+
 ## Resumen
 Hemos clonado una aplicación web hecha con Angular. Hemos creado una nueva imagen a partir otras dos (Node y Nginx) y en ella hemos incluido un servidor Nginx que publica nuestra aplicación web. Luego hemos generado un contenedor a partir de esa imagen y hemos comprobado que la aplicación se publica tal y como esperábamos.
 
