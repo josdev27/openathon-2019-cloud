@@ -2,7 +2,7 @@
     <img src="../resources/header.png">
 </p>
 
-# Lab-03 Una pequeña práctica, un "Hola Mundo" por supuesto.
+# Lab - 03 Una pequeña práctica, un "Hola Mundo" por supuesto.
 
 ## Introducción
 
