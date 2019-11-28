@@ -189,7 +189,7 @@ El siguiente paso será conectar está aplicación al frontend en Angular y a la
 
 
 
-< [Lab 03 - Frontend - Haciendo el despliegue de un HelloWorld con Docker y Nginx ](../frontend) | [Lab 04 - PostgreSQL y volúmenes persistentes con docker](../../lab-04/)>
+< [Lab 03 Frontend ](../frontend) | [Lab 04 - PostgreSQL y volúmenes persistentes con docker](../../lab-04/)>
 
 <p align="center">
     <img src="../../resources/header.png">
