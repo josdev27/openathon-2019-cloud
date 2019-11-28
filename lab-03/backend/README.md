@@ -46,6 +46,20 @@ Y la respuesta:
 
 Partiendo del directorio home (~), tienes que clonar el proyecto desde [spring_boot_app](https://github.com/josdev27/spring_boot_app). Añadir una nueva instancia en play-with-docker y ejecutar:
 
+Para cambiar al directorio home:
+
+```sh
+cd
+```
+
+Clonamos el repositorio:
+
+```sh
+git clone https://github.com/josdev27/spring_boot_app.git
+```
+
+Si todo es correcto, obtendremos la siguiente salida:
+
 ```sh
 [node1] (local) root@192.168.0.23 ~
 $ git clone https://github.com/josdev27/spring_boot_app.git
@@ -60,9 +74,12 @@ Unpacking objects: 100% (47/47), done.
 En este momento, hemos generado el directorio **spring_boot_app** con el código fuente. El próximo paso es cambiarnos con el comando *cd*:
 
 ```sh
-[node1] (local) root@192.168.0.23 ~
-$ cd spring_boot_app/
-[node1] (local) root@192.168.0.23 ~/spring_boot_app
+cd spring_boot_app/
+```
+
+Si hacemos un *ls*, podemos ver el contenido del repositorio:
+
+```sh
 $ ls
 Dockerfile  README.md   pom.xml     src
 ```
@@ -121,6 +138,12 @@ Successfully tagged spring_boot_app:latest
 Una forma de comprobarlo es que al ejecutar el siguiente comando (*docker images*), tenemos que tenerla imagen **josdev27/spring_boot_app**:
 
 ```sh
+docker images
+```
+
+La salida del comando debería ser el siguiente:
+
+```sh
 [node1] (local) root@192.168.0.23 ~/spring_boot_app
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
@@ -161,6 +184,7 @@ Para hacer la petición, vamos a utilizar el comando curl. Este comando nos perm
 ```sh
 curl -X GET http://localhost:8080/demo/hello\?name\=Jos
 ```
+La salida debería de ser:
 
 ```sh
 [node2] (local) root@192.168.0.22 ~
