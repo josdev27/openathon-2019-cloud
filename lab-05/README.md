@@ -270,7 +270,7 @@ Removing network docker-compose_default
 En este log, docker-compose nos está indicando que está parando cada uno de los servicios, eliminando cada contenedor y eliminando la red que había creado para levantarlos. De esta forma, docker-compose se vuelve una herramienta sumamente útil para aquellas aplicaciones con interdependencias y que necesitan de más servicios para funcionar correctamente.
 Como podemos ver, los servicios interactúan entre sí de forma conjunta dentro de una red aislada. Es por eso que, por ejemplo, el backend puede comunicarse con la base de datos mediante nombre del servicio y no es necesario indicar una URL o una IP.
 
-[< Lab 04 - PostgreSQL y volúmenes persistentes con docker](../lab-04) | [Lab 06 - Escalado y orquestración de microservicios (Reto para los valientes) >](../lab-06)
+[< Lab 04 - PostgreSQL y volúmenes persistentes con docker](../lab-04) | [Lab 06 - Escalado y orquestración de microservicios >](../lab-06)
 <p align="center">
     <img src="../resources/header.png">
 </p>
