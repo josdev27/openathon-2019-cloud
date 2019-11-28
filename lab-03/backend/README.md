@@ -81,6 +81,12 @@ Si hacemos un *ls*, podemos ver el contenido del repositorio:
 
 ```sh
 $ ls
+```
+
+La salida del comando sería:
+
+```sh
+$ ls
 Dockerfile  README.md   pom.xml     src
 ```
 
