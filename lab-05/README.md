@@ -253,6 +253,10 @@ docker inspect db
             }
         ]
 ```
+
+### Paso 11. Comprobamos el funcionamiento de la aplicación.
+Hemos comprobado que los servicios se han levantado correctamente y que la BBDD tiene un volumen mapeado, ¿Serías capaz de comprobar si la aplicación funciona correctamente?
+
 ### Resumen.
 En este laboratorio hemos levantado un stack de servicios dockerizados mediante docker-compose. Esta herramienta ha gestionado de manera automática la generación de los contenedores, la creación de una red común (y aislada) para nuestros servicios, el mapeo de puertos y de volúmenes, mediante la definición de un fichero YAML y la utilización de un solo comando. Si ejecutamos el siguiente comando, podemos ver como docker-compose elimina los recursos generados:
 ```
