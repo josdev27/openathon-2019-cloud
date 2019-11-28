@@ -267,7 +267,7 @@ Si abrimos el link podremos ver el contenido de nuestro HTML en una nueva ventan
 </p>
 <br/>
 
-[< Lab 01 - Introducción a Docker](../lab-01/) | [< Lab - 03 Una pequeña práctica, un "Hola Mundo" por supuesto. >](../lab-03)
+[< Lab 01 - Introducción a Docker](../lab-01/) | [ Lab - 03 Una pequeña práctica, un "Hola Mundo" por supuesto. >](../lab-03)
 <p align="center">
     <img src="../resources/header.png">
 </p>
