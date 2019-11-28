@@ -26,7 +26,7 @@ Con este reto se pretende unir las dos primeras piezas (Angular y Docker) de un 
 
 ## ¡A por ello! 
 
-De entre todos los participantes se seleccionará un laboratorio que será utilizado como referencia para los próximos Openathones. ¡¡ Puede ser el tuyo !!
+De entre todos los participantes se seleccionará un laboratorio que será utilizado como referencia para los próximos Openathones. **¡¡ Puede ser el tuyo !!**
 
 <p align="center">
     <img src="./resources/uncle-sam-wants-you.jpg" width="400">
