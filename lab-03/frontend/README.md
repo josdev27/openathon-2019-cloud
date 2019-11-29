@@ -36,12 +36,12 @@ Es una aplicación muy básica realizada con Angular. En la barra superior muest
 Vamos a clonar el proyecto HelloWorld en la misma máquina virtual que hemos usado en los laboratorios anteriores. Para ello ejecutaremos el siguiente comando en la carpeta home del usuario:
 ```sh
 cd
-git clone https://github.com/josdev27/angular_app.git
+git clone https://github.com/Accenture/openathon-2019-docker-angular-app.git
 ```
 Como resultado obtendremos lo siguiente:
 
 ```sh
-$ git clone https://github.com/josdev27/angular_app.git
+$ git clone https://github.com/Accenture/openathon-2019-docker-angular-app.git
 Cloning into 'angular_app'...
 remote: Enumerating objects: 61, done.
 remote: Counting objects: 100% (61/61), done.
@@ -50,9 +50,9 @@ remote: Total 61 (delta 14), reused 60 (delta 13), pack-reused 0
 Unpacking objects: 100% (61/61), done.
 ```
 
-Cuando finalice la descarga, tendremos una nueva carpeta llamada **angular_app**. Accederemos a su interior con el siguiente comando:
+Cuando finalice la descarga, tendremos una nueva carpeta llamada **openathon-2019-docker-angular-app**. Accederemos a su interior con el siguiente comando:
 ```sh
-cd angular_app
+cd openathon-2019-docker-angular-app
 ```
 
 ### Paso 2. Hacer pull de las imágenes Docker que usaremos como base.
@@ -80,7 +80,7 @@ docker images
 Como resultado obtendremos lo siguiente:
 
 ```sh
-[node1] (local) root@192.168.0.48 ~/angular_app
+[node1] (local) root@192.168.0.48 ~/openathon-2019-docker-angular-app
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 nginx               latest              4152a9608752        2 days ago          126MB
@@ -91,7 +91,7 @@ node                latest              1a77bcb355eb        2 weeks ago         
 
 Para que nuestra aplicación Angular se despliegue y funcione correctamente necesitaremos un fichero de configuración básico para el servidor web Nginx. En este fichero, llamado **nginx.conf**, se especifican cosas como el puerto en el que se publicará, la ruta del directorio raíz, las rutas permitidas, etc. En esta [URL](http://nginx.org/en/docs/beginners_guide.html#conf_structure) puedes obtener más detalles sobre su estructura. 
 
-Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/nginx.conf. Su contenido se muestra a continuación:
+Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/Accenture/openathon-2019-docker-angular-app/blob/master/nginx.conf. Su contenido se muestra a continuación:
 
 ```Nginx
 worker_processes  1;
@@ -123,7 +123,7 @@ http {
 
 También necesitamos un fichero **Dockerfile** para indicar a Docker cuál será el contenido de la nueva imagen que vamos a crear. En esta [URL](https://docs.docker.com/engine/reference/builder/) puedes obtener información detallada sobre los ficheros **Dockerfile**.
 
-Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/josdev27/angular_app/blob/master/Dockerfile. Su contenido se muestra a continuación:
+Este fichero ya se encuentra en la carpeta raíz de la aplicación. Puedes consultarlo en https://github.com/Accenture/openathon-2019-docker-angular-app/blob/master/Dockerfile. Su contenido se muestra a continuación:
 
 ```Dockerfile
 # Utilizamos la imagen de node como base ya que la necesitamos para "compilar" los fuentes del proyecto Angular. Denominaremos a esta imagen "build"
@@ -210,7 +210,7 @@ docker images
 Como resultado obtendremos lo siguiente:
 
 ```sh
-[node1] (local) root@192.168.0.48 ~/angular_app
+[node1] (local) root@192.168.0.48 ~/openathon-2019-docker-angular-app
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 helloworld          latest              889203080254        13 minutes ago      127MB
@@ -245,7 +245,7 @@ docker ps
 
 Como resultado obtendremos lo siguiente:
 ```sh
-[node1] (local) root@192.168.0.48 ~/angular_app
+[node1] (local) root@192.168.0.48 ~/openathon-2019-docker-angular-app
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
 7ed0c8cec8e3        helloworld          "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->80/tcp   xenodochial_archimedes
