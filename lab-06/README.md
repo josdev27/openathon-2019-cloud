@@ -31,7 +31,7 @@ Docker Swarm proporciona alta disponibilidad de nodos managers utilizando un alg
 
 ## Crear un clúster swarm
 
-> Los siguientes pasos están pensados para hacerlos utilizando el demonio de Docker, instalando en tu sistema operativo de preferencia. Al final de cada paso se darán opciones para poder reproducirlo dentro del entorno Play with Docker.
+> Los siguientes pasos están pensados para hacerlos utilizando el demonio de Docker, instalando en tu sistema operativo de preferencia (Linux/OSX preferentemente). Al final de cada paso se darán opciones para poder reproducirlo dentro del entorno Play with Docker.
 
 ### Paso 1. Configurando el clúster
 
