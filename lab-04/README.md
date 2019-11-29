@@ -40,7 +40,7 @@ Podemos crear y administrar volúmenes fuera del ámbito de un contenedor. El co
 - `ls`: lista los volúmenes en el Docker host
 - `rm`: elimina un volumen
 
-Pongamos en práctica estos comandos y desde la máquina virtual que hemos usado en laboratorios anteriores vamos a ejecutar los comandos anteriores.
+Pongamos en práctica estos comandos y desde la una nueva instancia de la máquina virtual que hemos usado en laboratorios anteriores vamos a ejecutar los comandos anteriores.
 
 **Crear un volumen**
 ```sh
@@ -242,10 +242,22 @@ create user docker with encrypted password 'docker';
  ```sh
  # definición de privilegios de un usuario sobre una bd
 grant all privileges on database "openathon-db" to docker;
-grant all privileges on all tables in schema public to docker;
  ```
+Finalmente abandonamos la sesión saliendo del intérprete con `\q`
+```sh
+\q
+``` 
 
 ### Paso 3. Explorar la base de datos
+
+Iniciamos una sesión en la base de de datos openathon-db con el usuario docker. Este usuario al no ser superadmin el prompt de la shell cambiará a `>`
+```sh
+# psql: CLI de PostgreSQL
+# -U docker: usuario creado con permisos a openathon-db
+# openathon-db: nombre de la base de datos
+psql -U docker openathon-db
+```
+
 Dentro de psql, vamos a ejecutar algunos comandos básicos. `\l` lista las bases de datos
 ```sh
 #comando lista todas las bases de datos creadas con más detalle
@@ -253,7 +265,7 @@ Dentro de psql, vamos a ejecutar algunos comandos básicos. `\l` lista las bases
 ```
 > En la salida vemos la base de datos que hemos creado openathon-db y otros objetos de bd que se crean por defecto.
 ```sh
-openathon-db=# \l+
+openathon-db=> \l+
                                                                     List of databases
      Name     |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges   |  Size   | Tablespace |                Description                 
 --------------+----------+----------+------------+------------+-----------------------+---------+------------+--------------------------------------------
@@ -274,7 +286,7 @@ select version();
 ````
 > Cuando se redactó este labotorio la última versión de PostgreSQL era la 12.1
 ```sh
-openathon-db=# select version();
+openathon-db=> select version();
                                                      version                                                      
 ------------------------------------------------------------------------------------------------------------------
  PostgreSQL 12.1 (Debian 12.1-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
@@ -288,7 +300,7 @@ CREATE TABLE saludos (id int, saludo varchar(50));
 ```
 > Seguidamente veremos en nuestro prompt que la tabla fue creada `CREATE TABLE `
 ```sh
-openathon-db=# CREATE TABLE saludos (id int, saludo varchar(50));
+openathon-db=> CREATE TABLE saludos (id int, saludo varchar(50));
 CREATE TABLE
 ```
 
@@ -308,7 +320,7 @@ SELECT * FROM saludos;
 ``` 
 > Debemos ver los siete registros que insertamos de esta forma
 ```sh
-openathon-db=# SELECT * FROM saludos;
+openathon-db=> SELECT * FROM saludos;
  id |   saludo    
 ----+-------------
   1 | Hola
@@ -326,7 +338,7 @@ Finalmente salimos del intérprete con `\q`
 ```
 > Veremos el prompt # del la shell del contenedor
 ```sh
-openathon-db=# \q 
+openathon-db=> \q 
 #
 ``` 
  escribimos `exit` para salir del shell del contenedor
@@ -380,21 +392,22 @@ Una vez iniciado el contenedor accedemos al shell del contedor, ejecutamos el co
 # sh: comando shell
 docker exec -it postgres-openathon-v sh
 ```
-e iniciamos una sesión en la base de de datos openathon-db para comprobar que los datos creados siguen estando presentes
+
+e iniciamos una sesión en la base de de datos openathon-db con  el usuario docker para comprobar que los datos creados siguen estando presentes
 ```sh
 # psql: CLI de PostgreSQL
-# -U postgres: usuario por defecto con permisos de superadmin
+# -U docker: usuario creado con permisos a openathon-db
 # openathon-db: nombre de la base de datos
-psql -U postgres openathon-db
+psql -U docker openathon-db
 ```
 
-> Una vez dentro veremos el prompt con el nombre de la base de datos seguido de #
+> Una vez dentro veremos el prompt con el nombre de la base de datos seguido de > (usuario sin permisos admin)
 ```sh
-# psql -U postgres openathon-db
+# psql -U docker openathon-db
 psql (12.1 (Debian 12.1-1.pgdg100+1))
 Type "help" for help.
 
-openathon-db=# 
+openathon-db=> 
 ```
 
 Lanzamos una consulta sobre la tabla de saludos
@@ -403,7 +416,7 @@ SELECT * FROM saludos;
 ```
 > Y vemos que los datos que insertamos no se borraron aunque el contenedor incial fue borrado
 ```sh
-openathon-db=# SELECT * FROM saludos;
+openathon-db=> SELECT * FROM saludos;
  id |   saludo    
 ----+-------------
   1 | Hola
@@ -422,7 +435,7 @@ Por último, salimos de nuevo del intérprete con `\q`
 ```
 > Veremos el prompt # del la shell del contenedor
 ```sh
-openathon-db=# \q 
+openathon-db=> \q 
 #
 ``` 
  escribimos `exit` para salir del shell del contenedor
@@ -437,15 +450,20 @@ exit
 $
 ```
 
-### Paso 6. Eliminando recursos (opcional)
-El volumen postgres-data lo necesitarás para el siguiente laboratorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminado tanto el contenedor como el volumen creado.
+### Paso 6. Eliminando recursos
+El volumen postgres-data lo necesitarás para el siguiente laboratorio pero si quieres repetir este laboratorio desde el principio, puedes eliminar todos los recursos creados eliminando tanto el contenedor como el volumen creado.
+
+#### Eliminar contenedor bd
+Para el siguiente laboratorio es necesario eliminar el contenedor `postgres-openathon-v` para evitar una colisión en los puertos que exponen
 ```sh
 # rm: elimina un contenedor 
 # -f fuerza la eliminación de un contenedor en ejecución
 # postgres-openathon-v: nombre del contenedor
 docker rm -f postgres-openathon-v
 ``` 
-Hasta que no borremos los contenedores que usen un volumen, no podremos borrar el volumen
+
+#### Eliminar volumen (opcional)
+Si eliminas el volumen no podrás avanzar al siguiente laboratorio. Tendrás que crear de nuevo el volumen y los datos que generamos desde el paso 1. Como precondición, hasta que no se borren los contenedores que usen un volumen, no se prodrá borrar un volumen
 ```sh
 # volume rm: comando eliminar volumen
 # postgres-data: nombre del volumen
