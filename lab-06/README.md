@@ -56,21 +56,15 @@ Para crear cada docker machine en VirtualBox, ejecuta el siguiente comando ponie
 
     docker-machine create --driver virtualbox --virtualbox-cpu-count 1 --virtualbox-memory 1024 --virtualbox-hostonly-cidr "192.168.66.1/24" <docker-machine-name>
 
-Antes de configuar el clúster, debemos hace que el entorno apunte a la primera docker machine.
-
-Si estamos en windows, ejecutar este comando:
-
-    @FOR /f "tokens=*" %i IN ('docker-machine env docker-swarm-manager-1') DO @%i
-
-Si estamos en linux, ejecutar este otro comando:
+Antes de configuar el clúster, debemos hace que el entorno apunte a la primera docker machine:
 
     eval $(docker-machine env docker-swarm-manager-1)
 
-En Play with Docker sólo podemos utilizar cinco instancias, por lo que no podremos tener 3 nodos managers y 3 workers. Como el algoritmo Raft necesita un número impar de nodos, tendremos 3 managers y 2 workers. 
+En Play with Docker sólo podemos utilizar cinco instancias, por lo que no podremos tener 3 nodos managers y 3 workers. Como el algoritmo Raft necesita un número impar de nodos managers, tendremos 3 managers y 2 workers. 
 
 > **Si partimos de una nueva sesión de Play with Docker, o no tenemos instancias abiertas, podemos crear automáticamente cinco instancias pinchando en el icono de la llave inglesa y seleccionando la opción "3 Managers and 2 Workers". Esto nos llevaría directamente al final del paso 2.**
 
-Si lo queremos hacer manualmente, o utilizar una instancia ya creara, abriremos hasta cinco instancias diferentes utilizando el botón "Add new instance" en la izquierda de la interfaz.
+Si lo queremos hacer manualmente, o utilizar una instancia ya creada, abriremos hasta cinco instancias diferentes utilizando el botón "Add new instance" en la izquierda de la interfaz.
 	
 ### Paso 2. Inicializar el clúster
 
@@ -78,7 +72,7 @@ Para inicializar el clúster, se usa el siguiente comando:
 
     docker swarm init --advertise-addr <IP-DE-LA-INSTANCIA> 
 
-En windows/linux utilizaríamos la IP 192.168.66.100 de ejemplo. En Play With Docker, usaremos la IP de la instancia donde ejecutemos el comando, podemos ver la IP de cada instancia en la parte izquierda de la pantalla.
+En nuestra maquina local utilizaríamos la IP 192.168.66.100 de ejemplo. En Play With Docker, usaremos la IP de la instancia donde ejecutemos el comando, podemos ver la IP de cada instancia en la parte izquierda de la pantalla.
 
 Una vez inicializado, el clúster expone dos tokens: Uno para añadir nodos manager y otro para añadir nodos workers
 El comando para obtener los tokens es:
@@ -86,13 +80,7 @@ El comando para obtener los tokens es:
     docker swarm join-token manager -q
     docker swarm join-token worker -q
 
-Una vez tengamos los tokens, cambia el entorno para que apunte a cada docker machine, cada nodo manager y cada nodo worker.
-	
-Si estamos en windows, ejecutar este comando:
-
-    @FOR /f "tokens=*" %i IN ('docker-machine env <docker-machine-name>') DO @%i
-
-Si estamos en linux, ejecutar este otro comando:
+Una vez tengamos los tokens, cambia el entorno para que apunte a cada docker machine, cada nodo manager y cada nodo worker:
 
     eval $(docker-machine env <docker-machine-name>)
 
@@ -106,7 +94,7 @@ En Play with Docker, tendremos que ir instancia a instancia ejecutando el siguie
 
 Se puede obtener este comando resolviendo ya los token y la IP si ejecutamos el comando `docker swarm join-token manager` (para managers) o `docker swarm join-token worker` (para workers) en la instancia que inició el clúster. Copiando la salida del primer comando en dos instancias y la salida del segundo en otras dos, ya tendremos el clúster con los cinco nodos añadidos.
 
-Ejecutando el comando
+Ejecutando el comando,
 
     docker node ls
 
@@ -142,7 +130,7 @@ Si todo ha ido bien, nuestro servidor de `nginx` se habrá replicado por todo el
 
 podremos ver información sobre las réplicas levantadas, su estado, y que nodo que gestiona cada una.
 
-Finalmente, con una llamada al comando
+Finalmente, con una llamada al comando,
 	
 	docker service rm nginx_server
 	
