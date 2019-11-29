@@ -50,9 +50,9 @@ remote: Total 61 (delta 14), reused 60 (delta 13), pack-reused 0
 Unpacking objects: 100% (61/61), done.
 ```
 
-Cuando finalice la descarga, tendremos una nueva carpeta llamada **openathon-2019-docker-angular-app**. Accederemos a su interior con el siguiente comando:
+Cuando finalice la descarga, tendremos una nueva carpeta llamada **angular-app**. Accederemos a su interior con el siguiente comando:
 ```sh
-cd openathon-2019-docker-angular-app
+cd angular-app
 ```
 
 ### Paso 2. Hacer pull de las imágenes Docker que usaremos como base.
@@ -80,7 +80,7 @@ docker images
 Como resultado obtendremos lo siguiente:
 
 ```sh
-[node1] (local) root@192.168.0.48 ~/openathon-2019-docker-angular-app
+[node1] (local) root@192.168.0.48 ~/angular-app
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 nginx               latest              4152a9608752        2 days ago          126MB
@@ -210,7 +210,7 @@ docker images
 Como resultado obtendremos lo siguiente:
 
 ```sh
-[node1] (local) root@192.168.0.48 ~/openathon-2019-docker-angular-app
+[node1] (local) root@192.168.0.48 ~/angular-app
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 helloworld          latest              889203080254        13 minutes ago      127MB
@@ -245,7 +245,7 @@ docker ps
 
 Como resultado obtendremos lo siguiente:
 ```sh
-[node1] (local) root@192.168.0.48 ~/openathon-2019-docker-angular-app
+[node1] (local) root@192.168.0.48 ~/angular-app
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
 7ed0c8cec8e3        helloworld          "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->80/tcp   xenodochial_archimedes
