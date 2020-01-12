@@ -213,7 +213,7 @@ Como resultado obtendremos lo siguiente:
 [node1] (local) root@192.168.0.48 ~/angular-app
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
-7ed0c8cec8e3        helloworld          "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->80/tcp   xenodochial_archimedes
+7ed0c8cec8e3        event-ui            "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->80/tcp   xenodochial_archimedes
 ```
 
 <br/>
