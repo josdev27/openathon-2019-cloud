@@ -200,7 +200,7 @@ Si todo va bien, en el panel superior de la máquina virtual se mostrará junto 
 <p align="center">
   <img src="./resources/HelloWorld.HelloDocker.png" width="600" style="max-width:100%;">
   <br/>
-  ¡HelloWorld desplegado en Nginx!
+  ¡Event-UI desplegado en Nginx!
 </p>
 
 También podemos ver que nuestro nuevo contenedor está en ejecución con el siguiente comando:
