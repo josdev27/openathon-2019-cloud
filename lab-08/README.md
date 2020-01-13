@@ -202,7 +202,7 @@ docker run -d -p 80:80 event-ui
 Si todo va bien, en el panel superior de la máquina virtual se mostrará junto al botón *OPEN PORT* un nuevo enlace indicando que la aplicación está publicada en el **puerto 80**. Si pulsamos el enlace se abrirá una nueva pestaña donde podremos ver nuestra aplicación **Event-UI**.
 
 <p align="center">
-  <img src="./resources/HelloWorld.HelloDocker.png" width="600" style="max-width:100%;">
+  <img src="./resources/captura-event-ui.png" width="600" style="max-width:100%;">
   <br/>
   ¡Event-UI desplegado en Nginx!
 </p>
