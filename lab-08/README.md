@@ -7,7 +7,7 @@
 <br/>
 
 <p align="center">
-<img src="./resources/logoNginxDocker.png" width="500">
+<img src="../lab-03/frontend/resources/logoNginxDocker.png" width="500">
 <br/>
 ¡Despleguemos Event-UI con Docker y Nginx!
 </p>
