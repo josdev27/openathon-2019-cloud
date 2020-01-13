@@ -89,6 +89,8 @@ Para que nuestra aplicación Angular se despliegue y funcione correctamente nece
 
 Debemos crear el fichero **nginx.conf** en la carpeta raiz del proyecto con este contenido:
 
+> Recuerda que para crear un fichero nuevo en PlayWithDocker solo tienes que arrastrar el fichero a la consola.
+
 ```Nginx
 worker_processes  1;
  
@@ -120,6 +122,8 @@ http {
 También necesitamos un fichero **Dockerfile** para indicar a Docker cuál será el contenido de la nueva imagen que vamos a crear.
 
 Debemos crear el fichero Dockerfile en la carpeta raiz del proyecto con este contenido:
+
+> Recuerda que para crear un fichero nuevo en PlayWithDocker solo tienes que arrastrar el fichero a la consola.
 
 ```Dockerfile
 # Utilizamos la imagen de node como base ya que la necesitamos para "compilar" los fuentes del proyecto Angular. Denominaremos a esta imagen "build"
