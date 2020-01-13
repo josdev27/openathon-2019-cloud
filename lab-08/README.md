@@ -23,8 +23,6 @@ Vamos a partir de la aplicación web **Event-UI** que fue creada para la Openath
 * [Even-UI en GitHub](https://github.com/pacobull/event-ui)
 * [Openathon IV Angular](https://github.com/Accenture/openathon-2019-angular)
 
-<br/>
-
 ### Paso 1. Clonar el proyecto Event-UI a la máquina virtual
 
 Vamos a clonar el proyecto Event-UI en una nueva máquina virtual. Para ello ejecutaremos el siguiente comando en la carpeta home del usuario:
