@@ -14,9 +14,7 @@
 <br/>
 
 ## Objetivos y resultados
-El objetivo de este laboratorio es resolver el desafio lanzado en el laboratorio anterior. El desfío consiste en **crear una imagen Docker** que contenga todo lo necesario para desplegar la aplicación web **Event-UI en un servidor Nginx**.
-
-<br/>
+El objetivo de este laboratorio es resolver el desafio lanzado en el laboratorio [anterior](../lab-07). El desfío consiste en **crear una imagen Docker** que contenga todo lo necesario para desplegar la aplicación web **Event-UI en un servidor Nginx**.
 
 ## Punto de partida.
 
