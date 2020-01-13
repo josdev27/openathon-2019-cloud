@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="../../resources/header.png">
+    <img src="../resources/header.png">
 </p>
 
 # Lab 08. Resolución del desafio. Haciendo el despliegue de la aplicación Event-UI con Docker y Nginx
@@ -240,6 +240,6 @@ docker ps
 Hemos clonado una aplicación web hecha con Angular. Hemos creado una nueva imagen a partir otras dos (Node y Nginx) y en ella hemos incluido un servidor Nginx que publica nuestra aplicación web. Luego hemos generado un contenedor a partir de esa imagen y hemos comprobado que la aplicación se publica tal y como esperábamos.
 
 <p align="center">
-    <img src="../../resources/header.png">
+    <img src="../resources/header.png">
 </p>
 
