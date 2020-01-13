@@ -34,7 +34,7 @@ De entre todos los participantes se seleccionará un laboratorio que será utili
 
 <br>
 
-< [Lab 06 - Escalado y orquestración de microservicios (Reto para los valientes)](../lab-06) | [Lab 08 - Resolución del desafio](../lab-08) 
+< [Lab 06 - Escalado y orquestración de microservicios (Reto para los valientes)](../lab-06) | [Lab 08 - Resolución del desafio](../lab-08) >
 
 <p align="center">
     <img src="../resources/header.png">
